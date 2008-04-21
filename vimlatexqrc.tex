@@ -1,0 +1,256 @@
+
+% VIM Quick Reference Card
+% Copyright (c) 2002 Laurent Gregoire.
+% TeX Format
+
+
+% Note:  Comment the following line (\input outopt.tex) if you want
+% to generate yourself the card, either in DVI or PDF format.
+% Uncomment the three next lines for PDF generation.
+% Command for DVI : tex vimqrc.tex
+% Command for PDF : pdftex vimqrc.tex
+
+% \input outopt.tex
+
+% \pdfoutput=1
+\pdfpageheight=21cm
+\pdfpagewidth=29.7cm
+
+% Font definitions
+\font\bigbf=cmbx12
+\font\smallrm=cmr8
+\font\smalltt=cmtt8
+\font\tinyit=cmmi5
+
+\def\\{\hfil\break}
+
+\def\title#1{\hfil{\bf #1}\hfil\par\vskip 2pt\hrule}
+\def\cm#1#2{{\tt#1} \dotfill {#2}\par}
+\def\cmlong#1#2{{\tt#1}\\{}\indent{~~~}#2\par}
+\def\cn#1{\hfill$\lfloor$ #1\par}
+\def\sect#1{\vskip 0.7cm {\it#1\/}\par}
+
+% Characters definitions
+\def\bs{$\backslash$}
+\def\backspace{$\leftarrow$}
+\def\ctrl{{\rm\char94}\kern-1pt}
+\def\enter{$\hookleftarrow$}
+\def\or{\thinspace{\tinyit{or}}\thinspace}
+\def\key#1{$\langle${\rm{\it#1\/}}$\rangle$}
+\def\rapos{\char125}
+\def\lapos{\char123}
+\def\bs{\char92}
+\def\bt{\`{}}
+\def\lt{\char60}
+\def\gt{\char62}
+\def\plus{$+$}
+\def\lbracket{\char123}
+\def\rbracket{\char125}
+\def\tild{\char126}
+\def\hat{\char94}
+\def\percent{\char37}
+\def\dollar{\char36}
+\def\atsign{\char64}
+\def\andsign{\char38}
+\def\vertbar{\char124}
+\def\placeholder{\lt{}\char43\char43\gt{}}
+\def\brplaceholder{\lbracket{}\placeholder\rbracket{}}
+
+% Three columns definitions
+\parindent 0pt
+\nopagenumbers
+\hoffset=-1.56cm
+\voffset=-1.54cm
+\newdimen\fullhsize
+\fullhsize=27.9cm
+\hsize=8.5cm
+\vsize=19cm
+\def\fullline{\hbox to\fullhsize}
+\let\lr=L
+\newbox\leftcolumn
+\newbox\midcolumn
+\output={
+  \if L\lr
+    \global\setbox\leftcolumn=\columnbox
+    \global\let\lr=M
+  \else\if M\lr
+    \global\setbox\midcolumn=\columnbox
+    \global\let\lr=R
+  \else
+    \tripleformat
+    \global\let\lr=L
+  \fi\fi
+  \ifnum\outputpenalty>-20000
+  \else
+    \dosupereject
+  \fi}
+\def\tripleformat{
+  \shipout\vbox{\fullline{\box\leftcolumn\hfil\box\midcolumn\hfil\columnbox}}
+  \advancepageno}
+\def\columnbox{\leftline{\pagebody}}
+
+% Card content
+% Header
+%\hrule\vskip 3pt
+\title{VIM LATEX-SUITE REFERENCE CARD}
+
+
+\sect{Inserting Templates}
+\cm{:TTemplate\enter}{choose template from list}
+
+\sect{Latex-Suite Macros}
+\cm{\key{Ctrl-J}}{jump to next place holder}
+\cm{call IMAP('\bt{}w', '\bs{}omega', 'tex')}{override macro}
+\cm{\dots\bs\lt{}CR\gt{}\dots}{newline in macro}
+\cm{set g:Imap\_FreezeImap=1}{pause macro extension}
+\cm{\key{F5}}{insert/wrap in environment}
+\cm{\key{Shift-F5}}{change environment}
+\cm{\key{F7}}{insert/enclose in/make word into command}
+
+\sect{Environment Macros}
+\cm{ELI (,li)}{list}
+\cm{EDE (,de)}{description}
+\cm{EEN (,en)}{enumerate}
+\cm{EIT (,it)}{itemize}
+\cm{ETE (,te)}{table}
+\cm{ETG (,tg)}{tabbing}
+\cm{ETR (,tr)}{tabular}
+\cm{EAR (,ar)}{array}
+\cm{EEQ (,eq)}{equation}
+\cm{ECE (,ce)}{center}
+\cm{EFL (,fl)}{flushleft}
+\cm{EFR (,fr)}{flushright}
+\cm{EQN (,qn)}{quotation}
+\cm{EQE (,qe)}{quote}
+\cm{EVM (,vm)}{verbatim}
+\cm{EVE (,ve)}{verse}
+\cm{EOV (,ov)}{overlay}
+\cm{ESL (,sl)}{slide}
+\cm{SPA (,pa)}{part}
+\cm{SCH (,ch)}{chapter}
+\cm{SSE (,se)}{section}
+\cm{SSS (,ss)}{subsection}
+\cm{SS2 (,s2)}{subsubsection}
+\cm{SPG (,pg)}{paragraph}
+\cm{SSP (,sp)}{subparagraph}
+\cm{EFI (,fi)}{figure}
+\cm{EMP (,mp)}{minipage}
+
+\sect{Font Macros}
+\cm{FBF (\bt{}bf)}{bfseries}
+\cm{FMD (\bt{}md)}{mdseries}
+\cm{FTT (\bt{}tt)}{ttfamily}
+\cm{FSF (\bt{}sf)}{sffamily}
+\cm{FRM (\bt{}rm)}{rmfamily}
+\cm{FUP (\bt{}up)}{upshape}
+\cm{FSL (\bt{}sl)}{slshape}
+\cm{FSC (\bt{}sc)}{scshape}
+\cm{FIT (\bt{}it)}{itshape}
+
+\sect{Greek and Auc-Tex Bindings}
+\cm{\bt{}a \dots \bt{}z  }
+   {lowercase greek letters $\alpha$ \dots $\zeta$}
+\cm{\bt{}D\bt{}F\bt{}G\bt{}Q\bt{}L\bt{}X\bt{}Y\bt{}S\bt{}U\bt{}W  }
+   {$\Delta$$\Phi$$\Gamma$$\Theta$$\Lambda$$\Xi$$\Psi$$\Sigma$$\Upsilon$$\Omega$}
+\cm{\bt{}\hat{}  }
+   {\tt\bs{}Hat\brplaceholder{}\placeholder{}}
+\cm{\bt{}\_  }
+   {\tt\bs{}bar\brplaceholder{}\placeholder{}}
+\cm{\bt{}6  }
+   {\tt\bs{}partial}
+\cm{\bt{}8  }
+   {\tt\bs{}infty}
+\cm{\bt{}/{}  }
+   {\tt\bs{}frac\brplaceholder{}\brplaceholder{}\placeholder{}}
+\cm{\bt{}\percent{}  }
+   {\tt\bs{}frac\brplaceholder{}\brplaceholder{}\placeholder{}}
+\cm{\bt{}\atsign{}  }
+   {\tt\bs{}circ}
+\cm{\bt{}0  }
+   {\tt\hat{}\bs{}circ}
+\cm{\bt{}$=$  }
+   {\tt\bs{}equiv}
+\cm{\bt{}\bs{}  }
+   {\tt\bs{}setminus}
+\cm{\bt{}.}
+   {\tt\bs{}cdot}
+\cm{\bt{}*{}  }
+   {\tt\bs{}times}
+\cm{\bt{}\andsign{}  }
+   {\tt\bs{}wedge}
+\cm{\bt{}$-$  }
+   {\tt\bs{}bigcap}
+\cm{\bt{}$+$  }
+   {\tt\bs{}bigcup}
+\cm{\bt{}$($  }
+   {\tt\bs{}subset}
+\cm{\bt{}$)$  }
+   {\tt\bs{}supset}
+\cm{\bt{}$<$  }
+   {\tt\bs{}le}
+\cm{\bt{}$>$  }
+   {\tt\bs{}ge}
+\cm{\bt{}$,$  }
+   {\tt\bs{}nonumber}
+\cm{\bt{}\tild{}  }
+   {\bs{}tilde\brplaceholder{}\placeholder{}}
+\cm{\bt{};{}  }
+   {\tt\bs{}dot\brplaceholder{}\placeholder{}}
+\cm{\bt{}:{}  }
+   {\tt\bs{}ddot\brplaceholder{}\placeholder{}}
+\cm{\bt{}2  }
+   {\tt\bs{}sqrt\brplaceholder{}\placeholder{}}
+\cm{\bt{}\vertbar  }
+   {\tt\bs{}Big\vertbar}
+\cm{\bt{}I  }
+   {\tt\bs{}int\_\brplaceholder{}\hat{}\brplaceholder{}\placeholder{}}
+\cm{\bt{}(  }
+   {\rm{}enclose selection in \tt{}()}
+\cm{\bt{}[  }
+   {\rm{}enclose selection in \tt{}[]}
+\cm{\bt{}\lbracket{}  }
+   {\rm{}enclose selection in \tt{}\lbracket\rbracket}
+
+\sect{Alt Key Macros}
+\cm{\key{Alt-L}}{\rm{}extend bracket constructs or insert label}
+\cm{\key{Alt-B}}{\rm{}enclose previous character in \tt{}\bs{}mathbf\lbracket\rbracket}
+\cm{\key{Alt-C}}{\rm{}enclose in \tt{}\bs{}mathcal\lbracket\rbracket \rm{} or insert citation}
+\cm{\key{Alt-I}}{\rm{}insert list item intelligently}
+
+\sect{Latex Completion}
+\cm{\key{F9}}{\rm{}do a completion (ref, cite, filename)}
+\cm{\bs{}ref\lbracket{}pre\key{F9}}{complete ref, label starting with 'pre'}
+\cm{\bs{}cite\lbracket{}pre\key{F9}}{complete cite}
+
+\sect{Compiling, Viewing, Searching}
+\cmlong{:set g:Tex\_CompileRule\_\lt{}fmt\gt{} = '\dots'\enter}{set compilation rule (\tt{}fmt\rm{} is \tt{}dvi\rm{}, \tt{}pdf\rm{}, etc.)}
+\cmlong{:let g:Tex\_FormatDependency\_pdf = 'dvi,pdf'\enter}{define dependency}
+
+\sect{Folding}
+\cm{\bs{}rf }{refresh folding}
+\cm{za }{fold/unfold}
+
+
+\sect{Multiple File Projects}
+
+\sect{Misc Settings and Tricks}
+\cm{\key{Ctrl-v}" }{Insert real quotation mark}
+\cmlong{:let g:Tex\_SmartQuoteOpen = "\bt{}\bt{}"\enter}{define opening quotation mark}
+\cmlong{:let g:Tex\_SmartQuoteClose = "'{}'{}"\enter}{define closing quotation mark}
+\cmlong{call IMAP('SSS', 'SSS', 'tex')}{disable mapping}
+\cmlong{:let g:Imap\_UsePlaceHolders = 0\enter}{disable placeholders}
+
+% Footer
+\vfill \hrule\smallskip
+{\smallrm This card may be freely distributed under
+the terms of the GNU general public licence ---
+Copyright \copyright\ {\oldstyle 2008} by Michael Goerz --- v0.9 ---
+{\smalltt http://www.physik.fu-berlin.de/\tild{}goerz/}}
+
+% Ending
+\supereject
+\if L\lr \else\null\vfill\eject\fi
+\if L\lr \else\null\vfill\eject\fi
+\bye
+
+% EOF
