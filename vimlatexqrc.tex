@@ -100,9 +100,9 @@
 
 \sect{Latex-Suite Macros}
 \cm{\key{Ctrl-J}}{jump to next place holder}
-\cm{call IMAP('\bt{}w', '\bs{}omega', 'tex')}{override macro}
+\cmlong{:call IMAP('\bt{}w', '\bs{}omega', 'tex')\enter}{override macro}
 \cm{\dots\bs\lt{}CR\gt{}\dots}{newline in macro}
-\cm{set g:Imap\_FreezeImap=1}{pause macro extension}
+\cm{:set g:Imap\_FreezeImap=1\enter}{pause macro extension}
 \cm{\key{F5}}{insert/wrap in environment}
 \cm{\key{Shift-F5}}{change environment}
 \cm{\key{F7}}{insert/enclose in/make word into command}
@@ -223,15 +223,38 @@
 \cm{\bs{}cite\lbracket{}pre\key{F9}}{complete cite}
 
 \sect{Compiling, Viewing, Searching}
-\cmlong{:set g:Tex\_CompileRule\_\lt{}fmt\gt{} = '\dots'\enter}{set compilation rule (\tt{}fmt\rm{} is \tt{}dvi\rm{}, \tt{}pdf\rm{}, etc.)}
-\cmlong{:let g:Tex\_FormatDependency\_pdf = 'dvi,pdf'\enter}{define dependency}
+\cm{\bs{}ll}{compile}
+\cm{\bs{}lv}{compile selected text}
+\cm{\bs{}ls}{forward searching in dvi}
+\cmlong{:set g:Tex\_CompileRule\_\lt{}fmt\gt{} = '\dots'\enter}
+{set compilation rule (\tt{}fmt\rm{} is \tt{}dvi\rm{}, \tt{}pdf\rm{}, etc.)}
+\cmlong{:let g:Tex\_FormatDependency\_pdf = 'dvi,pdf'\enter}
+{define dependency}
+\cmlong{:let g:Tex\_MultipleCompileFormats = 'dvi'\enter}
+{generate dvi target in multiple passes (intelligently)}
+\cmlong{:TCLevel 3\enter}
+{ignore warnings matching first 3 patterns in \\ \tt{}g:Tex\_IgnoredWarnings\rm{}}
+\cmlong{:TCLevel strict\enter}
+{display all errors and warnings}
+\cmlong{:let g:Tex\_DefaultTargetFormat = 'pdf'\enter}
+{set default target to pdf}
+\cmlong{:let g:Tex\_ViewRule\_dvi = 'yap -1'\enter}
+{set dvi viewer}
+
+
 
 \sect{Folding}
 \cm{\bs{}rf }{refresh folding}
 \cm{za }{fold/unfold}
-
+\cmlong{Tex\_FoldedSections Tex\_FoldedEnvironments \\ 
+        Tex\_FoldedCommands Tex\_FoldedMisc}
+{variables containing info on what to fold}
 
 \sect{Multiple File Projects}
+
+
+\sect{Latex-Suite Commands}
+
 
 \sect{Misc Settings and Tricks}
 \cm{\key{Ctrl-v}" }{Insert real quotation mark}
