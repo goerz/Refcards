@@ -28,6 +28,7 @@
 \def\sect#1{\vskip 0.7cm {\it#1\/}\par}
 
 % Characters definitions
+\def\\{\hfil\break}
 \def\bs{$\backslash$}
 \def\backspace{$\leftarrow$}
 \def\ctrl{{\rm\char94}\kern-1pt}
@@ -143,8 +144,7 @@
 \cm{]p [p}{like {\tt p}, {\tt P} with indent adjusted}
 \cm{gp gP}{like {\tt p}, {\tt P} leaving cursor after new text}
 
-\sect{Advanced insertion}
-\cm{g?$m$}{perform rot13 encoding on movement $m$}
+\sect{Advanced insertion/formatting}
 \cm{$n$\ctrl A $n$\ctrl X}{$+n$, $-n$ to number under cursor}
 \cm{gq$m$}{format lines of movement $m$ to fixed width}
 \cm{:$r$ce $w$\enter}{center lines in range $r$ to width $w$}
@@ -241,15 +241,6 @@
 \cm{$n$\ctrl O}{go to $n^{th}$ older position in jump list}
 \cm{$n$\ctrl I}{go to $n^{th}$ newer position in jump list}
 
-\sect{Key mapping \& abbreviations}
-\cm{:map $c$ $e$\enter}{map $c\mapsto e$ in normal \& visual mode}
-\cm{:map!\ $c$ $e$\enter}{map $c\mapsto e$ in insert \& cmd-line mode}
-\cm{:unmap $c$\enter\ :unmap!\ $c$\enter}{remove mapping $c$}
-\cm{:mk $f$\enter}{write current mappings, settings... to file $f$}
-\cm{:ab $c$ $e$\enter}{add abbreviation for $c\mapsto e$}
-\cm{:ab $c$\enter}{show abbreviations starting with $c$}
-\cm{:una $c$\enter}{remove abbreviation $c$}
-
 \sect{Tags}
 \cm{:ta $t$\enter}{jump to tag $t$}
 \cm{:$n$ta\enter}{jump to $n^{th}$ newer tag in list}
@@ -311,6 +302,14 @@
 \cm{[z ]z}{move to start, end of current open fold}
 \cm{zj zk}{move down, up to start, end of next fold}
 
+\sect{Spell checking}
+\cm{:setlocal spell spelllang=en\_us\enter}{activate spc.}
+\cm{$]$s}{next misspelled word}
+\cm{zg}{add good word}
+\cm{zw}{mark bad word}
+\cm{z=}{suggest corrections}
+
+
 \sect{Miscellaneous}
 \cm{:sh\enter\ :!$c$\enter}{start shell, execute command $c$ in shell}
 \cm{K}{lookup keyword under cursor with {\tt man}}
@@ -324,18 +323,14 @@
 \cm{:redir$>$$f$\enter}{redirect output to file $f$}
 \cm{:mkview $[f]$}{save view configuration [to file $f$]}
 \cm{:loadview $[f]$}{load view configuration [from file $f$]}
-\cm{\ctrl @ \ctrl K \ctrl \_\ \bs\ F$n$ \ctrl F$n$}{unmapped keys}
-\cm{gq}{rewrap}
 
 % Footer
 \vfill \hrule\smallskip
 {\smallrm This card may be freely distributed under
 the terms of the GNU general public licence ---
-Copyright \copyright\ {\oldstyle 2003} by Laurent Gr\'egoire
-$\langle${\smalltt laurent.gregoire@gmail.com}$\rangle$ --- v1.6 ---
-The author assumes no responsibility for any errors on this card.
-The latest version can be found at
-{\smalltt http://tnerual.eriogerg.free.fr/}}
+Copyright \copyright\ {\oldstyle 2008} by Michael Goerz. 
+{\smalltt http://www.physik.fu-berlin.de/\tild{goerz/}}. Based on original by 
+Laurent Gr\'egoire  ({\smalltt http://tnerual.eriogerg.free.fr/})}
 
 % Ending
 \supereject
