@@ -174,7 +174,7 @@
 \cm{:$r$g/$p$/$c$\enter}{execute {\it Ex\/} command $c$ on range $r$}
 \cn{where pattern $p$ matches}
 
-\vskip -0.2cm
+%\vskip -0.2cm
 \sect{Complex movement}
 \cm{- +}{line up, down on first non-blank character}
 \cm{B W}{space-separated word left, right}
@@ -206,7 +206,7 @@
 \cn{$x:$ {\tt g}---all occurrences, {\tt c}---confirm changes}
 \cm{:$r$s $x$\enter}{repeat substitution with new $r$ \& $x$}
 
-\vskip1cm
+%\vskip1cm
 \sect{Special characters in search patterns}
 \cm{.\thinspace\thinspace\thinspace\ctrl\ \$}{any single character, start, end of line}
 \cm{\bs$<$ \bs$>$}{start, end of word}
@@ -223,6 +223,7 @@
 \cm{\bs u \bs l}{next character made upper, lowercase}
 \cm{\bs c \bs C}{ignore, match case on next pattern}
 
+\vskip 0.3cm
 \sect{Offsets in search commands}
 \cm{$n$\or +$n$}{$n$ line downward in column 1}
 \cm{-$n$}{$n$ line upward in column 1}
@@ -230,6 +231,7 @@
 \cm{s+$n$ s-$n$}{$n$ characters right, left to start of match}
 \cm{;$sc$}{execute search command $sc$ next}
 
+\vskip 0.3cm
 \sect{Marks and motions}
 \cm{m$c$}{mark current position with mark $c\in[a..Z]$}
 \cm{`$c$ `$C$}{go to mark $c$ in current, $C$ in any file}
@@ -241,6 +243,7 @@
 \cm{$n$\ctrl O}{go to $n^{th}$ older position in jump list}
 \cm{$n$\ctrl I}{go to $n^{th}$ newer position in jump list}
 
+\vskip 0.3cm
 \sect{Tags}
 \cm{:ta $t$\enter}{jump to tag $t$}
 \cm{:$n$ta\enter}{jump to $n^{th}$ newer tag in list}
@@ -254,8 +257,15 @@
 \cm{\ctrl W]}{split window and show tag under cursor}
 \cm{\ctrl Wz\or :pc\enter}{close tag preview window}
 
+\sect{Buffers}
+\cm{:tab ball\enter}{show buffer tablist}
+\cm{:buffers\enter}{show list of buffers}
+\cm{:buffer n\enter}{switch to buffer n}
+\cm{:badd f.txt\enter}{load file into new buffer}
+\cm{:bdelete n\enter}{delete buffer n (also with filename)}
+
+
 \sect{Scrolling \& multi-windowing}
-\cm{\ctrl E \ctrl Y}{scroll line up, down}
 \cm{\ctrl D \ctrl U}{scroll half a page up, down}
 \cm{\ctrl F \ctrl B}{scroll page up, down}
 \cm{zt\or z\enter}{set current line at top of window}
@@ -279,7 +289,6 @@
 \cm{:$r$w$>$\kern-3pt$>$$f$}{append range $r$ to file $f$}
 \cm{:q :q!}{quit and confirm, quit and discard changes}
 \cm{:wq\or :x\or ZZ}{write to current file and exit}
-\cm{\key{up} \key{down}}{recall commands starting with current}
 \cm{:r $f$}{insert content of file $f$ below cursor}
 \cm{:r!\ $c$}{insert output of command $c$ below cursor}
 \cm{:args}{display the argument list}
@@ -303,7 +312,7 @@
 \cm{zj zk}{move down, up to start, end of next fold}
 
 \sect{Spell checking}
-\cm{:setlocal spell spelllang=en\_us\enter}{activate spc.}
+\cm{:setlocal spell spelllang=en\_us\enter}{activate}
 \cm{$]$s}{next misspelled word}
 \cm{zg}{add good word}
 \cm{zw}{mark bad word}
