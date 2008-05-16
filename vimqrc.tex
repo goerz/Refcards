@@ -1,16 +1,9 @@
 
 % VIM Quick Reference Card
-% Copyright (c) 2002 Laurent Gregoire.
+% Copyright (c) 2008 Michael Goerz.
 % TeX Format
 
-
-% Note:  Comment the following line (\input outopt.tex) if you want
-% to generate yourself the card, either in DVI or PDF format.
-% Uncomment the three next lines for PDF generation.
-% Command for DVI : tex vimqrc.tex
-% Command for PDF : pdftex vimqrc.tex
-
-% \input outopt.tex
+% compile as 'pdftex vimqrc.tex'
 
 % \pdfoutput=1
 \pdfpageheight=21cm
@@ -104,12 +97,6 @@
 \cm{c$m$}{change text of movement command $m$}
 \cm{cc\or S}{change current line}
 \cm{C}{change to the end of line}
-\cm{s}{change one character and insert}
-\cm{\tild}{switch case and advance cursor}
-\cm{g\tild{$m$}}{switch case of movement command $m$}
-\cm{gu$m$ gU$m$}{lowercase, uppercase text of movement $m$}
-\cm{$<$$m$ $>$$m$}{shift left, right text of movement $m$}
-\cm{$n$$<$\kern-3pt$<$ $n$$>$\kern-3pt$>$}{shift $n$ lines left, right}
 
 \sect{Deletion}
 \cm{x X}{delete character under, before cursor}
@@ -144,8 +131,7 @@
 \cm{]p [p}{like {\tt p}, {\tt P} with indent adjusted}
 \cm{gp gP}{like {\tt p}, {\tt P} leaving cursor after new text}
 
-\sect{Advanced insertion/formatting}
-\cm{$n$\ctrl A $n$\ctrl X}{$+n$, $-n$ to number under cursor}
+\sect{Standard mode formatting/filtering}
 \cm{gq$m$}{format lines of movement $m$ to fixed width}
 \cm{:$r$ce $w$\enter}{center lines in range $r$ to width $w$}
 \cm{:$r$le $i$\enter}{left align lines in range $r$ with indent $i$}
@@ -153,6 +139,12 @@
 \cm{!$m$$c$\enter}{filter lines of movement $m$ through command $c$}
 \cm{$n$!!$c$\enter}{filter $n$ lines through command $c$}
 \cm{:$r$!$c$\enter}{filter range $r$ lines through command $c$}
+\cm{\tild}{switch case and advance cursor}
+\cm{g\tild{$m$}}{switch case of movement command $m$}
+\cm{gu$m$ gU$m$}{lowercase, uppercase text of movement $m$}
+\cm{$<$$m$ $>$$m$}{shift left, right text of movement $m$}
+\cm{$n$$<$\kern-3pt$<$ $n$$>$\kern-3pt$>$}{shift $n$ lines left, right}
+
 
 \sect{Visual mode}
 \cm{v V \ctrl V}{start/stop highlighting characters, lines, block}
@@ -160,6 +152,7 @@
 \cm{gv}{start highlighting on previous visual area}
 \cm{aw as ap}{select a word, a sentence, a paragraph}
 \cm{ab aB}{select a block ( ), a block {\tt\lapos} {\tt\rapos}}
+\cm{$n\hskip -0.3em>$ $n\hskip -0.3em<$ $=$}{indent/unindent $n$ levels, reindent}
 
 \vskip 1cm
 \sect{Undoing, repeating \& registers}
@@ -257,12 +250,14 @@
 \cm{\ctrl W]}{split window and show tag under cursor}
 \cm{\ctrl Wz\or :pc\enter}{close tag preview window}
 
-\sect{Buffers}
-\cm{:tab ball\enter}{show buffer tablist}
-\cm{:buffers\enter}{show list of buffers}
-\cm{:buffer n\enter}{switch to buffer n}
-\cm{:badd f.txt\enter}{load file into new buffer}
-\cm{:bdelete n\enter}{delete buffer n (also with filename)}
+\sect{Multiple files / buffers (\enter)}
+\cm{:tab ball}{show buffer tablist}
+\cm{:buffers}{show list of buffers}
+\cm{:buffer n}{switch to buffer n}
+\cm{:badd f.txt}{load file into new buffer}
+\cm{:bdelete n}{delete buffer n (also with filename)}
+\cm{:next :prev :first :last}{move between buffers}
+\cm{:wn :wN}{write buffer and edit next, previous one}
 
 
 \sect{Scrolling \& multi-windowing}
@@ -279,11 +274,10 @@
 \cm{\ctrl Wj \ctrl Wk}{move to window below, above}
 \cm{\ctrl Ww \ctrl W\ctrl W}{move to window below, above (wrap)}
 
-\sect{Ex commands (\enter)}
+\sect{Misc Ex commands (\enter)}
+\cm{:help holy-grail}{show all Ex commands}
 \cm{:e $f$}{edit file $f$, unless changes have been made}
 \cm{:e!\ $f$}{edit file $f$ always (by default reload current)}
-\cm{:wn :wN}{write file and edit next, previous one}
-\cm{:n :N}{edit next, previous file in list}
 \cm{:$r$w}{write range $r$ to current file}
 \cm{:$r$w $f$}{write range $r$ to file $f$}
 \cm{:$r$w$>$\kern-3pt$>$$f$}{append range $r$ to file $f$}
@@ -312,7 +306,7 @@
 \cm{zj zk}{move down, up to start, end of next fold}
 
 \sect{Spell checking}
-\cm{:setlocal spell spelllang=en\_us\enter}{activate}
+\cm{:set spell spelllang=en\_us\enter}{activate spellcheck}
 \cm{$]$s}{next misspelled word}
 \cm{zg}{add good word}
 \cm{zw}{mark bad word}
@@ -321,12 +315,12 @@
 
 \sect{Miscellaneous}
 \cm{:sh\enter\ :!$c$\enter}{start shell, execute command $c$ in shell}
-\cm{K}{lookup keyword under cursor with {\tt man}}
+\cm{K}{run keywordprg (man) on word under cursor}
 \cm{:make\enter}{start {\tt make}, read errors and jump to first}
 \cm{:cn\enter\ :cp\enter}{display the next, previous error}
 \cm{:cl\enter\ :cf\enter}{list all errors, read errors from file}
-\cm{\ctrl L \ctrl G}{redraw screen, show filename and position}
-\cm{g\ctrl G}{show cursor column, line, and character position}
+\cm{\ctrl L}{redraw screen}
+\cm{\ctrl G}{show cursor column, line, and character position}
 \cm{ga}{show A{\smallrm SCII} value of character under cursor}
 \cm{gf}{open file which filename is under cursor}
 \cm{:redir$>$$f$\enter}{redirect output to file $f$}
