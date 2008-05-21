@@ -195,12 +195,12 @@ Leave out $m$ for visual mode commands \\
 
 \sect{Patterns (differences to Perl)}
 \cm{:help pattern} {show complete help on patterns}
-\cm{:help perl-patterns} {show comparison with perl}
 \cm{\bs$<$ \bs$>$}{start, end of word}
 \cm{\bs i \bs k \bs I \bs K}{an identifier, keyword; excl. digits}
 \cm{\bs f \bs p \bs F \bs P}{a file name, printable char.; excl. digits}
 \cm{\bs e \bs t \bs r \bs b}{\key{esc}, \key{tab}, \key{\enter}, \key{$\gets$}}
 \cm{\bs = * \bs +}{match $0..1$, $0..\infty$, $1..\infty$ of preceding atoms}
+\cm{\bs$\{n,m\}$}{match $n$ to $m$ occurrences}
 \cm{\bs$\{-\}$}{non-greedy match}
 \cm{\bs$|$}{separate two branches ($\equiv$ {\it or\/})}
 \cm{\bs( \bs)}{group patterns into an atom}
