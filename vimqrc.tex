@@ -131,15 +131,18 @@
 \cm{\key{esc}\or \ctrl[}{abandon edition $\to$ command mode}
 
 \vskip 0.4cm
-\sect{Copying}
-\cm{"$x$}{use register $x$ for next delete, yank, put}
-\cm{:reg\enter}{show the content of all registers}
-\cm{:reg $x$\enter}{show the content of registers $x$}
-\cm{y$m$}{yank the text of movement command $m$}
-\cm{yy\or Y}{yank current line into register}
-\cm{p P}{put register after, before cursor position}
-\cm{]p [p}{like {\tt p}, {\tt P} with indent adjusted}
-\cm{gp gP}{like {\tt p}, {\tt P} leaving cursor after new text}
+\sect{Search \& Substitution}
+\cm{/$s$\enter\ ?$s$\enter}{search forward, backward for $s$}
+\cm{/$s$/$o$\enter\ ?$s$?$o$\enter}{search fwd, bwd for $s$ with offset $o$}
+\cm{n\or /\enter}{repeat forward last search}
+\cm{N\or ?\enter}{repeat backward last search}
+\cm{\# *}{search backward, forward for word under cursor}
+\cm{g\# g*}{same, but also find partial matches}
+\cm{gd gD}{local, global definition of symbol under cursor}
+\cm{:$r$s/$f$/$t$/$x$\enter}{substitute $f$ by $t$ in range $r$}
+\cn{$x:$ {\tt g}---all occurrences, {\tt c}---confirm changes}
+\cm{:$r$s $x$\enter}{repeat substitution with new $r$ \& $x$}
+\cm{:$r$g/$p$/$c$\enter}{execute {\it Ex\/} $c$ on range $r$ where $p$ matches}
 
 \vskip 0.4cm
 \sect{Standard Mode Formatting/Filtering}
@@ -176,21 +179,19 @@ Leave out $m$ for visual mode commands \\
 \cm{@$c$}{execute the content of register $c$}
 \cm{@@}{repeat previous {\tt @} command}
 \cm{:@$c$\enter}{execute register $c$ as an {\it Ex\/} command}
-\cm{:$r$g/$p$/$c$\enter}{execute {\it Ex\/} command $c$ on range $r$}
-\cn{where pattern $p$ matches}
 
 
-\sect{Search \& Substitution}
-\cm{/$s$\enter\ ?$s$\enter}{search forward, backward for $s$}
-\cm{/$s$/$o$\enter\ ?$s$?$o$\enter}{search fwd, bwd for $s$ with offset $o$}
-\cm{n\or /\enter}{repeat forward last search}
-\cm{N\or ?\enter}{repeat backward last search}
-\cm{\# *}{search backward, forward for word under cursor}
-\cm{g\# g*}{same, but also find partial matches}
-\cm{gd gD}{local, global definition of symbol under cursor}
-\cm{:$r$s/$f$/$t$/$x$\enter}{substitute $f$ by $t$ in range $r$}
-\cn{$x:$ {\tt g}---all occurrences, {\tt c}---confirm changes}
-\cm{:$r$s $x$\enter}{repeat substitution with new $r$ \& $x$}
+\sect{Copying}
+\cm{"$x$}{use register $x$ for next delete, yank, put}
+\cm{:reg\enter}{show the content of all registers}
+\cm{:reg $x$\enter}{show the content of registers $x$}
+\cm{y$m$}{yank the text of movement command $m$}
+\cm{yy\or Y}{yank current line into register}
+\cm{p P}{put register after, before cursor position}
+\cm{]p [p}{like {\tt p}, {\tt P} with indent adjusted}
+\cm{gp gP}{like {\tt p}, {\tt P} leaving cursor after new text}
+
+
 
 \sect{Patterns (differences to Perl)}
 \cm{:help pattern\enter}{show complete help on patterns}
@@ -220,7 +221,13 @@ Leave out $m$ for visual mode commands \\
 \cm{\bs\_$[$ $]$}{collection with end-of-line included}
 \cm{\bs\%$[$ $]$}{sequence of optionally matched atoms}
 
-\vskip 0.4cm
+\sect{Spell Checking}
+\cm{:set spell spelllang=de\_20\enter}{activate spellcheck}
+\cm{$]$s}{next misspelled word}
+\cm{zg zG}{add good word (to internal word list)}
+\cm{zw zW}{mark bad word (to internal word list)}
+\cm{z=}{suggest corrections}
+
 \sect{Marks and Motions}
 \cm{m$c$}{mark current position with mark $c\in[a..Z]$}
 \cm{`$c$ `$C$}{go to mark $c$ in current, $C$ in any file}
@@ -232,7 +239,6 @@ Leave out $m$ for visual mode commands \\
 \cm{$n$\ctrl O}{go to $n^{th}$ older position in jump list}
 \cm{$n$\ctrl I}{go to $n^{th}$ newer position in jump list}
 
-\vskip 0.4cm
 \sect{Tags}
 \cm{:ta $t$\enter}{jump to tag $t$}
 \cm{:$n$ta\enter}{jump to $n^{th}$ newer tag in list}
@@ -253,6 +259,7 @@ Leave out $m$ for visual mode commands \\
 \cm{:badd f.txt}{load file into new buffer}
 \cm{:bdelete n}{delete buffer n (also with filename)}
 \cm{:bnext :bprev :bfirst :blast}{buffer movement}
+
 
 
 \sect{Scrolling \& Multi-Windowing}
@@ -302,12 +309,7 @@ Leave out $m$ for visual mode commands \\
 \cm{zn zN zi}{fold non, fold normal, invert folding}
 \cm{:set foldcolumn=4\enter}{show foldcolumn}
 
-\sect{Spell Checking}
-\cm{:set spell spelllang=de\_20\enter}{activate spellcheck}
-\cm{$]$s}{next misspelled word}
-\cm{zg zG}{add good word (to internal word list)}
-\cm{zw zW}{mark bad word (to internal word list)}
-\cm{z=}{suggest corrections}
+
 
 \sect{Compiling}
 \cm{:compiler $c$}{set/show compiler plugins}
