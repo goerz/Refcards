@@ -71,6 +71,9 @@
 %\hrule\vskip 3pt
 \title{VIM QUICK REFERENCE CARD}
 
+\vskip 0.5cm
+\cm{:viusage}{Show a summary of all commands}
+
 \sect{Movements}
 \cm{h l k j}{character left, right; line up, down}
 \cm{b w}{word/token left, right}
@@ -255,14 +258,12 @@ Leave out $m$ for visual mode commands \\
 \sect{Scrolling \& Multi-Windowing}
 \cm{\ctrl D \ctrl U}{scroll half a page up, down}
 \cm{\ctrl F \ctrl B}{scroll page up, down}
-\cm{zt\or z\enter}{set current line at top of window}
-\cm{zz\or z.\ }{set current line at center of window}
-\cm{zb\or z-}{set current line at bottom of window}
+\cm{zt zz zb}{current line to top, center, bottom of win.}
 \cm{zh zl}{scroll one character to the right, left}
 \cm{zH zL}{scroll half a screen to the right, left}
-\cm{\ctrl Ws\or :split\enter}{split window in two}
-\cm{\ctrl Wn\or :new\enter}{create new empty window}
-\cm{\ctrl Wo\or :on\enter}{make current window one on screen}
+\cm{:split\enter{} :vsplit\enter}{split window in two (vert.)}
+\cm{:new\enter{} :vnew\enter}{create new empty windowi (vert.)}
+\cm{:on\enter}{make current window one on screen}
 \cm{\ctrl Wj \ctrl Wk}{move to window below, above}
 \cm{\ctrl Ww \ctrl W\ctrl W}{move to window below, above (wrap)}
 \cm{\ctrl W$n$+ \ctrl W$n$-}{Increase/decrease window size by $n$ lines}
@@ -308,14 +309,17 @@ Leave out $m$ for visual mode commands \\
 \cm{zw zW}{mark bad word (to internal word list)}
 \cm{z=}{suggest corrections}
 
+\sect{Compiling}
+\cm{:compiler $c$}{set/show compiler plugins}
+\cm{:make\enter}{run {\tt makeprg}, jump to first error}
+\cm{:cope\enter}{navigate errors from make}
+\cm{:cn\enter\ :cp\enter}{display the next, previous error}
+\cm{:cl\enter\ :cf\enter}{list all errors, read errors from file}
+
 
 \sect{Miscellaneous}
 \cm{:sh\enter\ :!$c$\enter}{start shell, execute command $c$ in shell}
 \cm{K}{run {\tt keywordprg} (man) on word under cursor}
-\cm{:make\enter}{run compiler, jump to first error}
-\cm{:cope\enter}{navigate errors from make}
-\cm{:cn\enter\ :cp\enter}{display the next, previous error}
-\cm{:cl\enter\ :cf\enter}{list all errors, read errors from file}
 \cm{\ctrl L}{redraw screen}
 \cm{\ctrl G}{show cursor column, line, and character position}
 \cm{:set cuc\enter}{show cursor column visually}
@@ -325,6 +329,7 @@ Leave out $m$ for visual mode commands \\
 \cm{:loadview $[f]$}{load view configuration [from file $f$]}
 \cm{:set ff=dos\enter}{convert file to dos eol format} 
 \cm{:e ++ff=unix\enter}{reopen file in unix eol format}
+\cm{:set hlsearch\enter}{highlight searches}
 
 % Footer
 \vfill \hrule\smallskip
