@@ -111,8 +111,8 @@
 \cm{d$m$}{delete text of movement command $m$}
 \cm{dd D}{delete current line, to the end of line}
 \cm{J gJ}{join current line with next, without space}
-\cm{:$r$d\enter}{delete range $r$ lines}
-\cm{:$r$d$x$\enter}{delete range $r$ lines into register $x$}
+\cm{:$r$d} {delete range $r$ lines}
+\cm{:$r$d$x$} {delete range $r$ lines into register $x$}
 
 \vskip 1cm
 \sect{Insert Mode}
@@ -139,21 +139,21 @@
 \cm{\# *}{search backward, forward for word under cursor}
 \cm{g\# g*}{same, but also find partial matches}
 \cm{gd gD}{local, global definition of symbol under cursor}
-\cm{:$r$s/$f$/$t$/$x$\enter}{substitute $f$ by $t$ in range $r$}
+\cm{:$r$s/$f$/$t$/$x$} {substitute $f$ by $t$ in range $r$}
 \cn{$x:$ {\tt g}---all occurrences, {\tt c}---confirm changes}
-\cm{:$r$s $x$\enter}{repeat substitution with new $r$ \& $x$}
-\cm{:$r$g/$p$/$c$\enter}{execute {\it Ex\/} $c$ on range $r$ where $p$ matches}
+\cm{:$r$s $x$} {repeat substitution with new $r$ \& $x$}
+\cm{:$r$g/$p$/$c$} {execute {\it Ex\/} $c$ on range $r$ where $p$ matches}
 
 \vskip 0.4cm
 \sect{Standard Mode Formatting/Filtering}
 Leave out $m$ for visual mode commands \\
 \cm{gq$m$ gqgq}{format movement $m$/current paragraph}
-\cm{:$r$ce $w$\enter}{center lines in range $r$ to width $w$}
-\cm{:$r$le $i$\enter}{left align lines in range $r$ with indent $i$}
-\cm{:$r$ri $w$\enter}{right align lines in range $r$ to width $w$}
+\cm{:$r$ce $w$} {center lines in range $r$ to width $w$}
+\cm{:$r$le $i$} {left align lines in range $r$ with indent $i$}
+\cm{:$r$ri $w$} {right align lines in range $r$ to width $w$}
 \cm{!$m$$c$\enter}{filter lines of movement $m$ through command $c$}
 \cm{$n$!!$c$\enter}{filter $n$ lines through command $c$}
-\cm{:$r$!$c$\enter}{filter range $r$ lines through command $c$}
+\cm{:$r$!$c$} {filter range $r$ lines through command $c$}
 \cm{\tild}{switch case and advance cursor}
 \cm{g\tild{$m$}}{switch case of movement command $m$}
 \cm{gu$m$ gU$m$}{lowercase, uppercase text of movement $m$}
@@ -178,13 +178,13 @@ Leave out $m$ for visual mode commands \\
 \cm{q}{stop recording}
 \cm{@$c$}{execute the content of register $c$}
 \cm{@@}{repeat previous {\tt @} command}
-\cm{:@$c$\enter}{execute register $c$ as an {\it Ex\/} command}
+\cm{:@$c$} {execute register $c$ as an {\it Ex\/} command}
 
 
 \sect{Copying}
 \cm{"$x$}{use register $x$ for next delete, yank, put}
-\cm{:reg\enter}{show the content of all registers}
-\cm{:reg $x$\enter}{show the content of registers $x$}
+\cm{:reg} {show the content of all registers}
+\cm{:reg $x$} {show the content of registers $x$}
 \cm{y$m$}{yank the text of movement command $m$}
 \cm{yy\or Y}{yank current line into register}
 \cm{p P}{put register after, before cursor position}
@@ -194,8 +194,8 @@ Leave out $m$ for visual mode commands \\
 
 
 \sect{Patterns (differences to Perl)}
-\cm{:help pattern\enter}{show complete help on patterns}
-\cm{:help perl-patterns\enter}{show comparison with perl}
+\cm{:help pattern} {show complete help on patterns}
+\cm{:help perl-patterns} {show comparison with perl}
 \cm{\bs$<$ \bs$>$}{start, end of word}
 \cm{\bs i \bs k \bs I \bs K}{an identifier, keyword; excl. digits}
 \cm{\bs f \bs p \bs F \bs P}{a file name, printable char.; excl. digits}
@@ -222,7 +222,7 @@ Leave out $m$ for visual mode commands \\
 \cm{\bs\%$[$ $]$}{sequence of optionally matched atoms}
 
 \sect{Spell Checking}
-\cm{:set spell spelllang=de\_20\enter}{activate spellcheck}
+\cm{:set spell spelllang=de\_20} {activate spellcheck}
 \cm{$]$s}{next misspelled word}
 \cm{zg zG}{add good word (to internal word list)}
 \cm{zw zW}{mark bad word (to internal word list)}
@@ -234,23 +234,23 @@ Leave out $m$ for visual mode commands \\
 \cm{`$0..9$}{go to last exit position}
 \cm{`\/`  `\/"}{go to position before jump, at last edit}
 \cm{`[ `]}{go to start, end of previously operated text}
-\cm{:marks\enter}{print the active marks list}
-\cm{:jumps\enter}{print the jump list}
+\cm{:marks} {print the active marks list}
+\cm{:jumps} {print the jump list}
 \cm{$n$\ctrl O}{go to $n^{th}$ older position in jump list}
 \cm{$n$\ctrl I}{go to $n^{th}$ newer position in jump list}
 
 \sect{Tags}
-\cm{:ta $t$\enter}{jump to tag $t$}
-\cm{:$n$ta\enter}{jump to $n^{th}$ newer tag in list}
+\cm{:ta $t$} {jump to tag $t$}
+\cm{:$n$ta} {jump to $n^{th}$ newer tag in list}
 \cm{\ctrl ] \ctrl T}{jump to the tag under cursor, return from tag}
-\cm{:ts $t$\enter}{list matching tags and select one for jump}
-\cm{:tj $t$\enter}{jump to tag or select one if multiple matches}
-\cm{:tags\enter}{print tag list}
-\cm{:$n$po\enter\ :$n$\ctrl T\enter}{jump back from, to $n^{th}$ older tag}
-\cm{:tl\enter}{jump to last matching tag}
-\cm{\ctrl W\rapos\ :pt $t$\enter}{preview tag under cursor, tag $t$}
+\cm{:ts $t$} {list matching tags and select one for jump}
+\cm{:tj $t$} {jump to tag or select one if multiple matches}
+\cm{:tags} {print tag list}
+\cm{:$n$po :$n$\ctrl T} {jump back from, to $n^{th}$ older tag}
+\cm{:tl} {jump to last matching tag}
+\cm{\ctrl W\rapos\ :pt $t$}{preview tag under cursor, tag $t$}
 \cm{\ctrl W]}{split window and show tag under cursor}
-\cm{\ctrl Wz\or :pc\enter}{close tag preview window}
+\cm{\ctrl Wz\or :pc}{close tag preview window}
 
 \sect{Multiple Files / Buffers (\enter)}
 \cm{:tab ball}{show buffer tablist}
@@ -268,9 +268,9 @@ Leave out $m$ for visual mode commands \\
 \cm{zt zz zb}{current line to top, center, bottom of win.}
 \cm{zh zl}{scroll one character to the right, left}
 \cm{zH zL}{scroll half a screen to the right, left}
-\cm{:split\enter{} :vsplit\enter}{split window in two (vert.)}
-\cm{:new\enter{} :vnew\enter}{create new empty windowi (vert.)}
-\cm{:on\enter}{make current window one on screen}
+\cm{:split :vsplit} {split window in two (vert.)}
+\cm{:new :vnew} {create new empty windowi (vert.)}
+\cm{:on} {make current window one on screen}
 \cm{\ctrl Wj \ctrl Wk}{move to window below, above}
 \cm{\ctrl Ww \ctrl W\ctrl W}{move to window below, above (wrap)}
 \cm{\ctrl W$n$+ \ctrl W$n$-}{Increase/decrease window size by $n$ lines}
@@ -297,7 +297,7 @@ Leave out $m$ for visual mode commands \\
 \cm{+$n$ -$n$}{$+n$, $-n$ to the preceding line number}
 
 \sect{Folding}
-\cm{:set fmt=indent\enter}{indent-foldmethod}
+\cm{:set fmt=indent} {indent-foldmethod}
 \cm{zf$m$}{create fold of movement $m$}
 \cm{:$r$fo}{create fold for range $r$}
 \cm{zd zE}{delete fold at cursor, all in window}
@@ -307,31 +307,31 @@ Leave out $m$ for visual mode commands \\
 \cm{zm zM}{fold more, close all folds}
 \cm{zr zR}{fold less, open all folds}
 \cm{zn zN zi}{fold non, fold normal, invert folding}
-\cm{:set foldcolumn=4\enter}{show foldcolumn}
+\cm{:set foldcolumn=4} {show foldcolumn}
 
 
 
 \sect{Compiling}
 \cm{:compiler $c$}{set/show compiler plugins}
-\cm{:make\enter}{run {\tt makeprg}, jump to first error}
-\cm{:cope\enter}{navigate errors from make}
-\cm{:cn\enter\ :cp\enter}{display the next, previous error}
-\cm{:cl\enter\ :cf\enter}{list all errors, read errors from file}
+\cm{:make} {run {\tt makeprg}, jump to first error}
+\cm{:cope} {navigate errors from make}
+\cm{:cn :cp} {display the next, previous error}
+\cm{:cl :cf} {list all errors, read errors from file}
 
 
 \sect{Miscellaneous}
-\cm{:sh\enter\ :!$c$\enter}{start shell, execute command $c$ in shell}
+\cm{:sh :!$c$} {start shell, execute command $c$ in shell}
 \cm{K}{run {\tt keywordprg} (man) on word under cursor}
 \cm{\ctrl L}{redraw screen}
 \cm{\ctrl G}{show cursor column, line, and character position}
-\cm{:set cuc\enter}{show cursor column visually}
+\cm{:set cuc} {show cursor column visually}
 \cm{ga}{show A{\smallrm SCII} value of character under cursor}
 \cm{gf}{open file which filename is under cursor}
 \cm{:mkview $[f]$}{save view configuration [to file $f$]}
 \cm{:loadview $[f]$}{load view configuration [from file $f$]}
-\cm{:set ff=dos\enter}{convert file to dos eol format} 
-\cm{:e ++ff=unix\enter}{reopen file in unix eol format}
-\cm{:set hlsearch\enter}{highlight searches}
+\cm{:set ff=dos} {convert file to dos eol format} 
+\cm{:e ++ff=unix} {reopen file in unix eol format}
+\cm{:set hlsearch} {highlight searches}
 \cm{:$r$hardcopy > file.ps}{print range to ps file}
 
 
