@@ -18,7 +18,7 @@
 \def\title#1{\hfil{\bf #1}\hfil\par\vskip 2pt\hrule}
 \def\cm#1#2{{\tt#1}\dotfill#2\par}
 \def\cn#1{\hfill$\lfloor$ #1\par}
-\def\sect#1{\vskip 0.7cm {\it#1\/}\par}
+\def\section#1{\vskip 0.7cm {\it#1\/}\par}
 
 % Characters definitions
 \def\\{\hfil\break}
@@ -32,6 +32,8 @@
 \def\lapos{\char123}
 \def\bs{\char92}
 \def\tild{\char126}
+\def\lbracket{[}
+\def\rbracket{]}
 
 % Three columns definitions
 \parindent 0pt
@@ -74,7 +76,7 @@
 \vskip 0.5cm
 \cm{:viusage }{Show a summary of all commands }
 
-\sect{Movements}
+\section{Movements}
 \cm{h l k j }{character left, right; line up, down }
 \cm{b w }{word/token left, right }
 \cm{ge e }{end of word/token left, right}
@@ -93,7 +95,7 @@
 \cm{t$c$ T$c$ }{before next, previous occurence of $c$}
 
 
-\sect{Insertion \& Replace $\to$ insert mode}
+\section{Insertion \& Replace $\to$ insert mode}
 \cm{i a }{insert before, after cursor}
 \cm{I A }{insert at beginning, end of line}
 \cm{gI }{insert text in first column}
@@ -106,7 +108,7 @@
 \cm{cc\or S }{change current line}
 \cm{C }{change to the end of line}
 
-\sect{Deletion}
+\section{Deletion}
 \cm{x X }{delete character under, before cursor}
 \cm{d$m$ }{delete text of movement command $m$}
 \cm{dd D }{delete current line, to the end of line}
@@ -115,9 +117,9 @@
 \cm{:$r$d$x$ } {delete range $r$ lines into register $x$}
 
 \vskip 1cm
-\sect{Insert Mode}
+\section{Insert Mode}
 \cm{\ctrl V$c$ \ctrl V$n$ }{insert char $c$ literally, decimal value $n$}
-% \cm{\ctrl V$n$ }{insert decimal value of character}
+ \cm{\ctrl V$n$ }{insert decimal value of character}
 \cm{\ctrl A }{insert previously inserted text}
 \cm{\ctrl @ }{same as {\tt\ctrl A} and stop insert $\to$ command mode}
 \cm{\ctrl R$x$ \ctrl R\ctrl R$x$ }{insert content of register $x$, literally}
@@ -128,10 +130,10 @@
 \cm{\ctrl K$c_1$$c_2$\or $c_1$\kern-1pt\backspace$c_2$ }{enter digraph $\{c_1,c_2\}$}
 \cm{\ctrl O$c$ }{execute $c$ in temporary command mode}
 \cm{\ctrl X\ctrl E \ctrl X\ctrl Y }{scroll up, down}
-\cm{\key{esc }\or \ctrl[}{abandon edition $\to$ command mode}
+\cm{\key{esc}\or \ctrl\rbracket}{abandon edition $\to$ command mode}
 
 \vskip 0.4cm
-\sect{Search \& Substitution}
+\section{Search \& Substitution}
 \cm{/$s$\enter\ ?$s$\enter }{search forward, backward for $s$}
 \cm{/$s$/$o$\enter\ ?$s$?$o$\enter }{search fwd, bwd for $s$ with offset $o$}
 \cm{n\or /\enter }{repeat forward last search}
@@ -145,7 +147,7 @@
 \cm{:$r$g/$p$/$c$ } {execute {\it Ex\/} $c$ on range $r$ where $p$ matches}
 
 \vskip 0.4cm
-\sect{Standard Mode Formatting/Filtering}
+\section{Standard Mode Formatting/Filtering}
 Leave out $m$ for visual mode commands \\
 \cm{gq$m$ gqgq }{format movement $m$/current paragraph}
 \cm{:$r$ce $w$ } {center lines in range $r$ to width $w$}
@@ -162,7 +164,7 @@ Leave out $m$ for visual mode commands \\
 
 
 \vskip 0.8cm
-\sect{Visual Mode}
+\section{Visual Mode}
 \cm{v V \ctrl V }{start/stop highlighting characters, lines, block}
 \cm{o }{exchange cursor position with start of highlighting}
 \cm{gv }{start highlighting on previous visual area}
@@ -170,7 +172,7 @@ Leave out $m$ for visual mode commands \\
 \cm{ab aB }{select a block ( ), a block {\tt\lapos} {\tt\rapos}}
 \cm{$n\hskip -0.3em>$ $n\hskip -0.3em<$ $=$ }{indent/unindent $n$ levels, reindent}
 
-\sect{Undoing, Repeating \& Registers}
+\section{Undoing, Repeating \& Registers}
 \cm{u U }{undo last command, restore last changed line}
 \cm{.\thinspace\thinspace\ctrl R }{repeat last changes, redo last undo}
 \cm{$n$.\ }{repeat last changes with count replaced by $n$ }
@@ -181,19 +183,19 @@ Leave out $m$ for visual mode commands \\
 \cm{:@$c$ } {execute register $c$ as an {\it Ex\/} command}
 
 
-\sect{Copying}
+\section{Copying}
 \cm{"$x$ }{use register $x$ for next delete, yank, put}
 \cm{:reg } {show the content of all registers}
 \cm{:reg $x$ } {show the content of registers $x$}
 \cm{y$m$ }{yank the text of movement command $m$}
 \cm{yy\or Y }{yank current line into register}
 \cm{p P }{put register after, before cursor position}
-\cm{]p [p }{like {\tt p}, {\tt P} with indent adjusted}
+\cm{\rbracket p \lbracket p }{like {\tt p}, {\tt P} with indent adjusted}
 \cm{gp gP }{like {\tt p}, {\tt P} leaving cursor after new text}
 
 
 
-\sect{Patterns (differences to Perl)}
+\section{Patterns (differences to Perl)}
 \cm{:help pattern } {show complete help on patterns}
 \cm{\bs$<$ \bs$>$ }{start, end of word}
 \cm{\bs i \bs k \bs I \bs K }{an identifier, keyword; excl. digits}
@@ -221,14 +223,14 @@ Leave out $m$ for visual mode commands \\
 \cm{\bs\_$[$ $]$ }{collection with end-of-line included}
 \cm{\bs\%$[$ $]$ }{sequence of optionally matched atoms}
 
-\sect{Spell Checking}
+\section{Spell Checking}
 \cm{:set spell spelllang=de\_20 } {activate spellcheck}
 \cm{$]$s }{next misspelled word}
 \cm{zg zG }{add good word (to internal word list)}
 \cm{zw zW }{mark bad word (to internal word list)}
 \cm{z= }{suggest corrections}
 
-\sect{Marks and Motions}
+\section{Marks and Motions}
 \cm{m$c$ }{mark current position with mark $c\in[a..Z]$}
 \cm{`$c$ `$C$ }{go to mark $c$ in current, $C$ in any file}
 \cm{`$0..9$ }{go to last exit position}
@@ -239,7 +241,7 @@ Leave out $m$ for visual mode commands \\
 \cm{$n$\ctrl O }{go to $n^{th}$ older position in jump list}
 \cm{$n$\ctrl I }{go to $n^{th}$ newer position in jump list}
 
-\sect{Tags}
+\section{Tags}
 \cm{:ta $t$ } {jump to tag $t$}
 \cm{:$n$ta } {jump to $n^{th}$ newer tag in list}
 \cm{\ctrl ] \ctrl T }{jump to the tag under cursor, return from tag}
@@ -252,7 +254,7 @@ Leave out $m$ for visual mode commands \\
 \cm{\ctrl W] }{split window and show tag under cursor}
 \cm{\ctrl Wz\or :pc }{close tag preview window}
 
-\sect{Multiple Files / Buffers (\enter)}
+\section{Multiple Files / Buffers (\enter)}
 \cm{:tab ball }{show buffer tablist}
 \cm{:buffers }{show list of buffers}
 \cm{:buffer n }{switch to buffer n}
@@ -262,7 +264,7 @@ Leave out $m$ for visual mode commands \\
 
 
 
-\sect{Scrolling \& Multi-Windowing}
+\section{Scrolling \& Multi-Windowing}
 \cm{\ctrl D \ctrl U }{scroll half a page up, down}
 \cm{\ctrl F \ctrl B }{scroll page up, down}
 \cm{zt zz zb }{current line to top, center, bottom of win.}
@@ -276,7 +278,7 @@ Leave out $m$ for visual mode commands \\
 \cm{\ctrl W$n$+ \ctrl W$n$- }{Increase/decrease window size by $n$ lines}
 \cm{\ctrl W$n>$ \ctrl W$n<$ }{Increase/decrease window width}
 
-\sect{Misc Ex Commands (\enter)}
+\section{Misc Ex Commands (\enter)}
 \cm{:help holy-grail }{show all Ex commands}
 \cm{:e $f$ }{edit file $f$, reload current file if no $f$}
 \cm{:$r$w $f$ }{write range $r$ to file $f$ (current file if no $f$)}
@@ -287,7 +289,7 @@ Leave out $m$ for visual mode commands \\
 \cm{:r!\ $c$ }{insert output of command $c$ below cursor}
 \cm{:$r$c\ $a$ :$r$m\ $a$ }{copy, move range $r$ below line $a$}
 
-\sect{Ex Ranges}
+\section{Ex Ranges}
 \cm{, ;\ }{separates two lines numbers, set to first line }
 \cm{$n$ }{an absolute line number $n$}
 \cm{.\thinspace\thinspace\thinspace\$ }{the current line, the last line in file}
@@ -296,7 +298,7 @@ Leave out $m$ for visual mode commands \\
 \cm{/$p$/ ?$p$? }{the next, previous line where $p$ matches}
 \cm{+$n$ -$n$ }{$+n$, $-n$ to the preceding line number}
 
-\sect{Folding}
+\section{Folding}
 \cm{:set fmt=indent } {indent-foldmethod}
 \cm{zf$m$ }{create fold of movement $m$}
 \cm{:$r$fo }{create fold for range $r$}
@@ -311,7 +313,7 @@ Leave out $m$ for visual mode commands \\
 
 
 
-\sect{Compiling}
+\section{Compiling}
 \cm{:compiler $c$ }{set/show compiler plugins}
 \cm{:make } {run {\tt makeprg}, jump to first error}
 \cm{:cope } {navigate errors from make}
@@ -319,7 +321,7 @@ Leave out $m$ for visual mode commands \\
 \cm{:cl :cf } {list all errors, read errors from file}
 
 
-\sect{Miscellaneous}
+\section{Miscellaneous}
 \cm{:sh :!$c$ } {start shell, execute command $c$ in shell}
 \cm{K }{run {\tt keywordprg} (man) on word under cursor}
 \cm{\ctrl L }{redraw screen}
