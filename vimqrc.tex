@@ -116,10 +116,9 @@
 \cm{:$r$d } {delete range $r$ lines}
 \cm{:$r$d$x$ } {delete range $r$ lines into register $x$}
 
-\vskip 1cm
 \section{Insert Mode}
 \cm{\ctrl V$c$ \ctrl V$n$ }{insert char $c$ literally, decimal value $n$}
- \cm{\ctrl V$n$ }{insert decimal value of character}
+\cm{\ctrl V$n$ }{insert decimal value of character}
 \cm{\ctrl A }{insert previously inserted text}
 \cm{\ctrl @ }{same as {\tt\ctrl A} and stop insert $\to$ command mode}
 \cm{\ctrl R$x$ \ctrl R\ctrl R$x$ }{insert content of register $x$, literally}
@@ -132,7 +131,7 @@
 \cm{\ctrl X\ctrl E \ctrl X\ctrl Y }{scroll up, down}
 \cm{\key{esc}\or \ctrl\rbracket}{abandon edition $\to$ command mode}
 
-\vskip 0.4cm
+%\vskip 0.4cm
 \section{Search \& Substitution}
 \cm{/$s$\enter\ ?$s$\enter }{search forward, backward for $s$}
 \cm{/$s$/$o$\enter\ ?$s$?$o$\enter }{search fwd, bwd for $s$ with offset $o$}
@@ -146,7 +145,7 @@
 \cm{:$r$s $x$ } {repeat substitution with new $r$ \& $x$}
 \cm{:$r$g/$p$/$c$ } {execute {\it Ex\/} $c$ on range $r$ where $p$ matches}
 
-\vskip 0.4cm
+%\vskip 0.4cm
 \section{Standard Mode Formatting/Filtering}
 Leave out $m$ for visual mode commands \\
 \cm{gq$m$ gqgq }{format movement $m$/current paragraph}
@@ -163,7 +162,7 @@ Leave out $m$ for visual mode commands \\
 \cm{$n$$<$\kern-3pt$<$ $n$$>$\kern-3pt$>$ }{shift $n$ lines left, right}
 
 
-\vskip 0.8cm
+%\vskip 0.8cm
 \section{Visual Mode}
 \cm{v V \ctrl V }{start/stop highlighting characters, lines, block}
 \cm{o }{exchange cursor position with start of highlighting}
@@ -217,12 +216,15 @@ Leave out $m$ for visual mode commands \\
 \cm{\bs\_. }{any single char, including end-of-line}
 \cm{\bs zs \bs ze }{set start/end of pattern}
 \cm{\bs \%\^{} \bs\%\$ }{match start/end of file}
-\cm{\bs\% V }{match inside visual area}
+\cm{\bs\%{}V }{match inside visual area}
 \cm{\bs\tt'\rm m }{match with position of mark m}
 \cm{\bs\%(\bs) }{unnamed grouping}
 \cm{\bs\_$[$ $]$ }{collection with end-of-line included}
 \cm{\bs\%$[$ $]$ }{sequence of optionally matched atoms}
+\cm{\bs{}v }{very magic: patterns almost like perl}
 
+
+\vskip -0.2cm
 \section{Spell Checking}
 \cm{:set spell spelllang=de\_20 } {activate spellcheck}
 \cm{$]$s }{next misspelled word}
@@ -230,7 +232,7 @@ Leave out $m$ for visual mode commands \\
 \cm{zw zW }{mark bad word (to internal word list)}
 \cm{z= }{suggest corrections}
 
-\section{Marks and Motions}
+\section{Marks, Motions, and Tags}
 \cm{m$c$ }{mark current position with mark $c\in[a..Z]$}
 \cm{`$c$ `$C$ }{go to mark $c$ in current, $C$ in any file}
 \cm{`$0..9$ }{go to last exit position}
@@ -240,19 +242,10 @@ Leave out $m$ for visual mode commands \\
 \cm{:jumps } {print the jump list}
 \cm{$n$\ctrl O }{go to $n^{th}$ older position in jump list}
 \cm{$n$\ctrl I }{go to $n^{th}$ newer position in jump list}
-
-\section{Tags}
-\cm{:ta $t$ } {jump to tag $t$}
-\cm{:$n$ta } {jump to $n^{th}$ newer tag in list}
 \cm{\ctrl ] \ctrl T }{jump to the tag under cursor, return from tag}
 \cm{:ts $t$ } {list matching tags and select one for jump}
 \cm{:tj $t$ } {jump to tag or select one if multiple matches}
 \cm{:tags } {print tag list}
-\cm{:$n$po :$n$\ctrl T } {jump back from, to $n^{th}$ older tag}
-\cm{:tl } {jump to last matching tag}
-\cm{\ctrl W\rapos\ :pt $t$ }{preview tag under cursor, tag $t$}
-\cm{\ctrl W] }{split window and show tag under cursor}
-\cm{\ctrl Wz\or :pc }{close tag preview window}
 
 \section{Multiple Files / Buffers (\enter)}
 \cm{:tab ball }{show buffer tablist}
@@ -271,13 +264,14 @@ Leave out $m$ for visual mode commands \\
 \cm{zh zl }{scroll one character to the right, left}
 \cm{zH zL }{scroll half a screen to the right, left}
 \cm{:split :vsplit } {split window in two (vert.)}
-\cm{:new :vnew } {create new empty windowi (vert.)}
+\cm{:new :vnew } {create new empty window (vert.)}
 \cm{:on } {make current window one on screen}
 \cm{\ctrl Wj \ctrl Wk }{move to window below, above}
 \cm{\ctrl Ww \ctrl W\ctrl W }{move to window below, above (wrap)}
 \cm{\ctrl W$n$+ \ctrl W$n$- }{Increase/decrease window size by $n$ lines}
 \cm{\ctrl W$n>$ \ctrl W$n<$ }{Increase/decrease window width}
 
+\vskip -0.2cm
 \section{Misc Ex Commands (\enter)}
 \cm{:help holy-grail }{show all Ex commands}
 \cm{:e $f$ }{edit file $f$, reload current file if no $f$}
@@ -289,6 +283,9 @@ Leave out $m$ for visual mode commands \\
 \cm{:r!\ $c$ }{insert output of command $c$ below cursor}
 \cm{:$r$c\ $a$ :$r$m\ $a$ }{copy, move range $r$ below line $a$}
 
+
+
+\vskip -0.2cm
 \section{Ex Ranges}
 \cm{, ;\ }{separates two lines numbers, set to first line }
 \cm{$n$ }{an absolute line number $n$}
@@ -297,6 +294,21 @@ Leave out $m$ for visual mode commands \\
 \cm{'$t$ }{position of mark $t$}
 \cm{/$p$/ ?$p$? }{the next, previous line where $p$ matches}
 \cm{+$n$ -$n$ }{$+n$, $-n$ to the preceding line number}
+
+
+\vskip -0.2cm
+\section{Completion}
+\cm{\ctrl{}X\ctrl{}L}{whole lines}
+\cm{\ctrl{}X\ctrl{}N \ctrl{}X\ctrl{}I}{keywords in current file, plus included files}
+\cm{\ctrl{}X\ctrl{}K \ctrl{}X\ctrl{}N}{keywords in dictionary, thesaurus}
+\cm{\ctrl{}X\ctrl{}]}{tags}
+\cm{\ctrl{}X\ctrl{}F}{file names}
+\cm{\ctrl{}X\ctrl{}D}{definitions or macros}
+\cm{\ctrl{}X\ctrl{}V}{vim command line}
+\cm{\ctrl{}X\ctrl{}U}{user defined completion}
+\cm{\ctrl{}X\ctrl{}O}{omni completion}
+
+
 
 \section{Folding}
 \cm{:set fmt=indent } {indent-foldmethod}
@@ -311,14 +323,13 @@ Leave out $m$ for visual mode commands \\
 \cm{zn zN zi }{fold non, fold normal, invert folding}
 \cm{:set foldcolumn=4 } {show foldcolumn}
 
-
-
 \section{Compiling}
 \cm{:compiler $c$ }{set/show compiler plugins}
 \cm{:make } {run {\tt makeprg}, jump to first error}
 \cm{:cope } {navigate errors from make}
 \cm{:cn :cp } {display the next, previous error}
 \cm{:cl :cf } {list all errors, read errors from file}
+
 
 
 \section{Miscellaneous}
@@ -329,22 +340,20 @@ Leave out $m$ for visual mode commands \\
 \cm{:set cuc } {show cursor column visually}
 \cm{ga }{show A{\smallrm SCII} value of character under cursor}
 \cm{gf }{open file which filename is under cursor}
-\cm{:mkview $[f]$ }{save view configuration [to file $f$]}
-\cm{:loadview $[f]$ }{load view configuration [from file $f$]}
+\cm{:mkview $[f]$ :loadview $[f]$ }{save/load configuration}
 \cm{:set ff=dos } {convert file to dos eol format} 
 \cm{:e ++ff=unix } {reopen file in unix eol format}
 \cm{:set hlsearch } {highlight searches}
 \cm{:$r$hardcopy > file.ps }{print range to ps file}
-
+\cm{:set list }{show listchar characters (tabs etc.)}
 
 % Footer
 \vfill \hrule\smallskip
 {\smallrm This card may be freely distributed under
 the terms of the GNU general public licence ---
-Copyright \copyright\ {\oldstyle 2008} by Michael Goerz. 
-{\smalltt http://www.physik.fu-berlin.de/\tild{goerz/}}. Based on original by 
+Copyright \copyright\ {\oldstyle 2008} by Michael Goerz.
+{\smalltt http://www.physik.fu-berlin.de/\tild{goerz/}}. Based on original by
 Laurent Gr\'egoire  ({\smalltt http://tnerual.eriogerg.free.fr/})}
-
 % Ending
 \supereject
 \if L\lr \else\null\vfill\eject\fi
