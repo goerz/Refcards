@@ -1,0 +1,557 @@
+% pdflatex has a problem with the 'ascii' font that I'm using. It seems to work
+% with xetex:
+%  xelatex -output-driver="xdvipdfmx -q -E -p a4 -l" ascii.tex
+% for A4 paper, or
+%  xelatex -papersize=letter ascii.tex
+% for letter sized paper
+
+% Don't ask me why getting a page in landscape is so inconsistent and messy.
+
+\documentclass[a4paper, landscape, 10pt]{article} % for A4 size paper
+%\documentclass[letter, landscape, 10pt]{article} % for letter size paper
+
+% without using the hyperref package, the result is not in landscape for me
+\usepackage[
+      pdftitle={ASCII Table},
+      pdfauthor={Michael Goerz}
+]{hyperref}
+
+\usepackage[landscape]{geometry}
+\usepackage[absolute]{textpos}
+
+\usepackage{ascii}
+\usepackage{textcomp}
+\usepackage{eurosym}
+\usepackage{cclicenses}
+
+\usepackage[T1]{fontenc}
+
+\TPGrid[10mm,5mm]{26}{20} 
+
+\parindent=0pt
+\parskip=0.5\baselineskip
+
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{textblock}{26}(0,-0.2)
+  \center
+\textsc{Regular ASCII Chart} (character codes 0 -- 127)
+\end{textblock}
+
+%%%%  0: 000-015  %%%%
+\begin{textblock}{4}(0,1)
+{\tt
+  \begin{tabular*}{\textwidth}{|cccc}
+    \hline
+    000\textit{d} & 00\textit{h} & \NUL & (nul) \\ 
+    001\textit{d} & 01\textit{h} & \SOH & (soh) \\ 
+    002\textit{d} & 02\textit{h} & \STX & (stx) \\ 
+    003\textit{d} & 03\textit{h} & \ETX & (etx) \\ 
+    004\textit{d} & 04\textit{h} & \EOT & (eot) \\ 
+    005\textit{d} & 05\textit{h} & \ENQ & (enq) \\ 
+    006\textit{d} & 06\textit{h} & \ACK & (ack) \\ 
+    007\textit{d} & 07\textit{h} & \BEL & (bel) \\ 
+    008\textit{d} & 08\textit{h} & \BS  & (bs)  \\ 
+    009\textit{d} & 09\textit{h} & ~    & (tab) \\ 
+    010\textit{d} & 0A\textit{h} & \LF  & (lf)  \\ 
+    011\textit{d} & 0B\textit{h} & \VT  & (vt)  \\ 
+    012\textit{d} & 0C\textit{h} &  ~   & (np)  \\ 
+    013\textit{d} & 0D\textit{h} & \CR  & (cr)  \\ 
+    014\textit{d} & 0E\textit{h} & \SO  & (so)  \\ 
+    015\textit{d} & 0F\textit{h} & \SI  & (si)  \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%  1: 016-031  %%%%
+\begin{textblock}{4}(4,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|cccc}
+    \hline
+    016\textit{d} & 10\textit{h} & \DLE & (dle) \\ 
+    017\textit{d} & 11\textit{h} & \DCa & (dc1) \\ 
+    018\textit{d} & 12\textit{h} & \DCb & (dc2) \\ 
+    019\textit{d} & 13\textit{h} & \DCc & (dc3) \\ 
+    020\textit{d} & 14\textit{h} & \DCd & (dc4) \\ 
+    021\textit{d} & 15\textit{h} & \NAK & (nak) \\ 
+    022\textit{d} & 16\textit{h} & \SYN & (syn) \\ 
+    023\textit{d} & 17\textit{h} & \ETB & (etb) \\ 
+    024\textit{d} & 18\textit{h} & \CAN & (can) \\ 
+    025\textit{d} & 19\textit{h} & \EM  & (em)  \\ 
+    026\textit{d} & 1A\textit{h} & ~    & (eof) \\ 
+    027\textit{d} & 1B\textit{h} & \ESC & (esc) \\ 
+    028\textit{d} & 1C\textit{h} & \FS  & (fs)  \\ 
+    029\textit{d} & 1D\textit{h} & \GS  & (gs)  \\ 
+    030\textit{d} & 1E\textit{h} & \RS & (rs)  \\ 
+    031\textit{d} & 1F\textit{h} & \US & (us)  \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+
+%%%%  2: 032-047  %%%%
+\begin{textblock}{3}(8,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    032\textit{d} & 20\textit{h} & \textvisiblespace  \\
+    033\textit{d} & 21\textit{h} & ! \\
+    034\textit{d} & 22\textit{h} & " \\
+    035\textit{d} & 23\textit{h} & \# \\
+    036\textit{d} & 24\textit{h} & \$ \\
+    037\textit{d} & 25\textit{h} & \% \\
+    038\textit{d} & 26\textit{h} & \& \\
+    039\textit{d} & 27\textit{h} & \textquotesingle \\
+    040\textit{d} & 28\textit{h} & ( \\
+    041\textit{d} & 29\textit{h} & ) \\
+    042\textit{d} & 2A\textit{h} & * \\
+    043\textit{d} & 2B\textit{h} & + \\
+    044\textit{d} & 2C\textit{h} & \textquoteright \\
+    045\textit{d} & 2D\textit{h} & - \\
+    046\textit{d} & 2E\textit{h} & . \\
+    047\textit{d} & 2F\textit{h} & / \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%  3: 048-063  %%%%
+\begin{textblock}{3}(11,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    048\textit{d} & 30\textit{h} & 0 \\
+    049\textit{d} & 31\textit{h} & 1 \\
+    050\textit{d} & 32\textit{h} & 2 \\
+    051\textit{d} & 33\textit{h} & 3 \\
+    052\textit{d} & 34\textit{h} & 4 \\
+    053\textit{d} & 35\textit{h} & 5 \\
+    054\textit{d} & 36\textit{h} & 6 \\
+    055\textit{d} & 37\textit{h} & 7 \\
+    056\textit{d} & 38\textit{h} & 8 \\
+    057\textit{d} & 39\textit{h} & 9 \\
+    058\textit{d} & 3A\textit{h} & : \\
+    059\textit{d} & 3B\textit{h} & ; \\
+    060\textit{d} & 3C\textit{h} & < \\
+    061\textit{d} & 3D\textit{h} & = \\
+    062\textit{d} & 3E\textit{h} & > \\
+    063\textit{d} & 3F\textit{h} & ? \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%  4: 064-079  %%%%
+\begin{textblock}{3}(14,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    064\textit{d} & 40\textit{h} & @ \\
+    065\textit{d} & 41\textit{h} & A \\
+    066\textit{d} & 42\textit{h} & B \\
+    067\textit{d} & 43\textit{h} & C \\
+    068\textit{d} & 44\textit{h} & D \\
+    069\textit{d} & 45\textit{h} & E \\
+    070\textit{d} & 46\textit{h} & F \\
+    071\textit{d} & 47\textit{h} & G \\
+    072\textit{d} & 48\textit{h} & H \\
+    073\textit{d} & 49\textit{h} & I \\
+    074\textit{d} & 4A\textit{h} & J \\
+    075\textit{d} & 4B\textit{h} & K \\
+    076\textit{d} & 4C\textit{h} & L \\
+    077\textit{d} & 4D\textit{h} & M \\
+    078\textit{d} & 4E\textit{h} & N \\
+    079\textit{d} & 4F\textit{h} & O \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%  5: 080-095  %%%%
+\begin{textblock}{3}(17,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    080\textit{d} & 50\textit{h} & P \\
+    081\textit{d} & 51\textit{h} & Q \\
+    082\textit{d} & 52\textit{h} & R \\
+    083\textit{d} & 53\textit{h} & S \\
+    084\textit{d} & 54\textit{h} & T \\
+    085\textit{d} & 55\textit{h} & U \\
+    086\textit{d} & 56\textit{h} & V \\
+    087\textit{d} & 57\textit{h} & W \\
+    088\textit{d} & 58\textit{h} & X \\
+    089\textit{d} & 59\textit{h} & Y \\
+    090\textit{d} & 5A\textit{h} & Z \\
+    091\textit{d} & 5B\textit{h} & [ \\
+    092\textit{d} & 5C\textit{h} & \char`\\ \\
+    093\textit{d} & 5D\textit{h} & ] \\
+    094\textit{d} & 5E\textit{h} & \^{}\\
+    095\textit{d} & 5F\textit{h} & \char`\_ \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+
+%%%%  6: 096-111  %%%%
+\begin{textblock}{3}(20,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    096\textit{d} & 60\textit{h} & \textquoteleft \\
+    097\textit{d} & 61\textit{h} & a \\
+    098\textit{d} & 62\textit{h} & b \\
+    099\textit{d} & 63\textit{h} & c \\
+    100\textit{d} & 64\textit{h} & d \\
+    101\textit{d} & 65\textit{h} & e \\
+    102\textit{d} & 66\textit{h} & f \\
+    103\textit{d} & 67\textit{h} & g \\
+    104\textit{d} & 68\textit{h} & h \\
+    105\textit{d} & 69\textit{h} & i \\
+    106\textit{d} & 6A\textit{h} & j \\
+    107\textit{d} & 6B\textit{h} & k \\
+    108\textit{d} & 6C\textit{h} & l \\
+    109\textit{d} & 6D\textit{h} & m \\
+    110\textit{d} & 6E\textit{h} & n \\
+    111\textit{d} & 6F\textit{h} & o \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%  7: 112-127  %%%%
+\begin{textblock}{3}(23,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    112\textit{d} & 70\textit{h} & p \\
+    113\textit{d} & 71\textit{h} & q \\
+    114\textit{d} & 72\textit{h} & r \\
+    115\textit{d} & 73\textit{h} & s \\
+    116\textit{d} & 74\textit{h} & t \\
+    117\textit{d} & 75\textit{h} & u \\
+    118\textit{d} & 76\textit{h} & v \\
+    119\textit{d} & 77\textit{h} & w \\
+    120\textit{d} & 78\textit{h} & x \\
+    121\textit{d} & 79\textit{h} & y \\
+    122\textit{d} & 7A\textit{h} & z \\
+    123\textit{d} & 7B\textit{h} & \char`\{ \\
+    124\textit{d} & 7C\textit{h} & | \\
+    125\textit{d} & 7D\textit{h} & \char`\} \\
+    126\textit{d} & 7E\textit{h} & \~{} \\
+    127\textit{d} & 7F\textit{h} & \DEL \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+% use a dummy table to get the vertical line at the right edge
+\begin{textblock}{3}(26,1)
+{\tt 
+  \begin{tabular*}{\textwidth}{|c}
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ 
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ 
+  \end{tabular*}
+}
+\end{textblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{textblock}{26}(0,7.8)
+  \center
+\textsc{Extended ASCII Chart} (character codes 128 -- 255) \textsc{Latin1/CP1252}
+\end{textblock}
+
+%%%%  8: 128-143  %%%%
+\begin{textblock}{4}(0,9)
+{\tt
+  \begin{tabular*}{\textwidth}{|cccc}
+    \hline
+    128\textit{d} & 80\textit{h} & ~ & \euro \\
+    129\textit{d} & 81\textit{h} & ~ & ~ \\
+    130\textit{d} & 82\textit{h} & ~ & \quotesinglbase \\
+    131\textit{d} & 83\textit{h} & ~ & \textit{f} \\
+    132\textit{d} & 84\textit{h} & ~ & \quotedblbase \\
+    133\textit{d} & 85\textit{h} & ~ & \dots \\
+    134\textit{d} & 86\textit{h} & ~ & \dag \\
+    135\textit{d} & 87\textit{h} & ~ & \ddag \\
+    136\textit{d} & 88\textit{h} & ~ & \textasciicircum \\
+    137\textit{d} & 89\textit{h} & ~ & \textperthousand \\
+    138\textit{d} & 8A\textit{h} & ~ & \v{S} \\
+    139\textit{d} & 8B\textit{h} & ~ & \guilsinglleft \\
+    140\textit{d} & 8C\textit{h} & ~ & \OE \\
+    141\textit{d} & 8D\textit{h} & ~ & ~ \\
+    142\textit{d} & 8E\textit{h} & ~ & \v{Z} \\
+    143\textit{d} & 8F\textit{h} & ~ & ~ \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%  9: 144-143  %%%%
+\begin{textblock}{4}(4,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|cccc}
+    \hline
+    144\textit{d} & 90\textit{h} & ~ & ~ \\
+    145\textit{d} & 91\textit{h} & ~ & ` \\    
+    146\textit{d} & 92\textit{h} & ~ & ' \\
+    147\textit{d} & 93\textit{h} & ~ & `` \\
+    148\textit{d} & 94\textit{h} & ~ & '' \\
+    149\textit{d} & 95\textit{h} & ~ & \textbullet \\
+    150\textit{d} & 96\textit{h} & ~ & -- \\
+    151\textit{d} & 97\textit{h} & ~ & --- \\
+    152\textit{d} & 98\textit{h} & ~ & \textasciitilde \\
+    153\textit{d} & 99\textit{h} & ~ & \texttrademark \\
+    154\textit{d} & 9A\textit{h} & ~ & \v{s} \\
+    155\textit{d} & 9B\textit{h} & ~ & \guilsinglright \\
+    156\textit{d} & 9C\textit{h} & ~ & \oe \\
+    157\textit{d} & 9D\textit{h} & ~ & ~ \\
+    158\textit{d} & 9E\textit{h} & ~ & \v{z} \\
+    159\textit{d} & 9F\textit{h} & ~ & \"{Y} \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+
+%%%% 10: 160-175  %%%%
+\begin{textblock}{3}(8,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    160\textit{d} & A0\textit{h} & x \\
+    161\textit{d} & A1\textit{h} & !` \\
+    162\textit{d} & A2\textit{h} & \textcent \\
+    163\textit{d} & A3\textit{h} & \pounds \\
+    164\textit{d} & A4\textit{h} & \textcurrency \\
+    165\textit{d} & A5\textit{h} & \textyen \\
+    166\textit{d} & A6\textit{h} & \textbrokenbar \\
+    167\textit{d} & A7\textit{h} & \S \\
+    168\textit{d} & A8\textit{h} & \textasciidieresis \\
+    169\textit{d} & A9\textit{h} & \textrm{\small\textcopyright} \\
+    170\textit{d} & AA\textit{h} & \textordfeminine \\
+    171\textit{d} & AB\textit{h} & \guillemotleft \\
+    172\textit{d} & AC\textit{h} & \textlnot \\
+    173\textit{d} & AD\textit{h} & \- \\
+    174\textit{d} & AE\textit{h} & \textrm{\small\textregistered} \\
+    175\textit{d} & AF\textit{h} & \textasciimacron \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%% 11: 176-191  %%%%
+\begin{textblock}{3}(11,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    176\textit{d} & B0\textit{h} & \textdegree \\
+    177\textit{d} & B1\textit{h} & \textpm \\
+    178\textit{d} & B2\textit{h} & \texttwosuperior \\
+    179\textit{d} & B3\textit{h} & \textthreesuperior \\
+    180\textit{d} & B4\textit{h} & \textasciiacute \\
+    181\textit{d} & B5\textit{h} & \textmu \\
+    182\textit{d} & B6\textit{h} & \P \\
+    183\textit{d} & B7\textit{h} & \textperiodcentered \\
+    184\textit{d} & B8\textit{h} & \c{} \\
+    185\textit{d} & B9\textit{h} & \textonesuperior \\
+    186\textit{d} & BA\textit{h} & \textordmasculine \\
+    187\textit{d} & BB\textit{h} & \guillemotright \\
+    188\textit{d} & BC\textit{h} & \textonequarter \\
+    189\textit{d} & BD\textit{h} & \textonehalf \\
+    190\textit{d} & BE\textit{h} & \textthreequarters \\
+    191\textit{d} & BF\textit{h} & ?` \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%% 12: 192-207  %%%%
+\begin{textblock}{3}(14,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    192\textit{d} & C0\textit{h} & \`{A} \\
+    193\textit{d} & C1\textit{h} & \'{A} \\
+    194\textit{d} & C2\textit{h} & \^{A} \\
+    195\textit{d} & C3\textit{h} & \~{A} \\
+    196\textit{d} & C4\textit{h} & \"{A} \\
+    197\textit{d} & C5\textit{h} & \AA \\
+    198\textit{d} & C6\textit{h} & \AE \\
+    199\textit{d} & C7\textit{h} & \c{C} \\
+    200\textit{d} & C8\textit{h} & \`{E} \\
+    201\textit{d} & C9\textit{h} & \'{E} \\
+    202\textit{d} & CA\textit{h} & \^{E} \\
+    203\textit{d} & CB\textit{h} & \"{E} \\
+    204\textit{d} & CC\textit{h} & \`{I} \\
+    205\textit{d} & CD\textit{h} & \'{I} \\
+    206\textit{d} & CE\textit{h} & \^{I} \\
+    207\textit{d} & CF\textit{h} & \"{I} \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%% 13: 208-223  %%%%
+\begin{textblock}{3}(17,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    208\textit{d} & D0\textit{h} & \DH \\
+    209\textit{d} & D1\textit{h} & \~{N} \\
+    210\textit{d} & D2\textit{h} & \`{O} \\
+    211\textit{d} & D3\textit{h} & \'{O} \\
+    212\textit{d} & D4\textit{h} & \^{O} \\
+    213\textit{d} & D5\textit{h} & \~{O} \\
+    214\textit{d} & D6\textit{h} & \"{O} \\
+    215\textit{d} & D7\textit{h} & \texttimes \\
+    216\textit{d} & D8\textit{h} & \O \\
+    217\textit{d} & D9\textit{h} & \`{U} \\
+    218\textit{d} & DA\textit{h} & \'{U} \\
+    219\textit{d} & DB\textit{h} & \^{U} \\
+    220\textit{d} & DC\textit{h} & \"{U} \\
+    221\textit{d} & DD\textit{h} & \'{Y} \\
+    222\textit{d} & DE\textit{h} & \TH \\
+    223\textit{d} & DF\textit{h} & \ss \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+
+%%%% 14: 224-223  %%%%
+\begin{textblock}{3}(20,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    224\textit{d} & E0\textit{h} & \`{a} \\
+    225\textit{d} & E1\textit{h} & \'{a} \\
+    226\textit{d} & E2\textit{h} & \^{a} \\
+    227\textit{d} & E3\textit{h} & \~{a} \\
+    228\textit{d} & E4\textit{h} & \"{a} \\
+    229\textit{d} & E5\textit{h} & \aa \\
+    230\textit{d} & E6\textit{h} & \ae \\
+    231\textit{d} & E7\textit{h} & \c{c} \\
+    232\textit{d} & E8\textit{h} & \`{e} \\
+    233\textit{d} & E9\textit{h} & \'{e} \\
+    234\textit{d} & EA\textit{h} & \^{e} \\
+    235\textit{d} & EB\textit{h} & \"{e} \\
+    236\textit{d} & EC\textit{h} & \`{i} \\
+    237\textit{d} & ED\textit{h} & \'{i} \\
+    238\textit{d} & EE\textit{h} & \^{i} \\
+    239\textit{d} & EF\textit{h} & \"{i} \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%% 15: 240-255  %%%%
+\begin{textblock}{3}(23,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|ccc}
+    \hline
+    240\textit{d} & F0\textit{h} & \dh \\
+    241\textit{d} & F1\textit{h} & \~{n} \\
+    242\textit{d} & F2\textit{h} & \`{o} \\
+    243\textit{d} & F3\textit{h} & \'{o} \\
+    244\textit{d} & F4\textit{h} & \^{o} \\
+    245\textit{d} & F5\textit{h} & \~{o} \\
+    246\textit{d} & F6\textit{h} & \"{o} \\
+    247\textit{d} & F7\textit{h} & \textdiv \\
+    248\textit{d} & F8\textit{h} & \o \\
+    249\textit{d} & F9\textit{h} & \`{u} \\
+    250\textit{d} & FA\textit{h} & \'{u} \\
+    251\textit{d} & FB\textit{h} & \^{u} \\
+    252\textit{d} & FC\textit{h} & \"{u} \\
+    253\textit{d} & FD\textit{h} & \'{y} \\
+    254\textit{d} & FE\textit{h} & \th \\
+    255\textit{d} & FF\textit{h} & \"{y} \\
+    \hline
+  \end{tabular*}
+}
+\end{textblock}
+
+
+% use a dummy table to get the vertical line at the right edge
+\begin{textblock}{3}(26,9)
+{\tt 
+  \begin{tabular*}{\textwidth}{|c}
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ 
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ 
+  \end{tabular*}
+}
+\end{textblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock}{6}(0,16)
+  \center
+   Hexadecimal to Binary
+\end{textblock}
+\begin{textblock}{6}(0,17.6)
+{\tt
+    \begin{tabular}{|cc|cc||cc|cc|}
+      \hline
+      0 & 0000 & 4 & 0100 & 8 & 1000 & C & 1100 \\ 
+      1 & 0001 & 5 & 0101 & 9 & 1001 & D & 1101 \\ 
+      2 & 0010 & 6 & 0110 & A & 1010 & E & 1110 \\ 
+      3 & 0011 & 7 & 0111 & B & 1011 & F & 1111 \\
+      \hline
+    \end{tabular}
+}
+\end{textblock}
+
+
+\begin{textblock}{6}(8,16)
+  \center
+   Groups of ASCII-Code in Binary
+\end{textblock}
+\begin{textblock}{6}(8,17.2)
+{
+  \begin{tabular}{|c|c|l|}
+    \hline
+    Bit 6       & Bit 5       & Group \\
+    \hline
+    {\tt 0}     & {\tt 0}     & Control Characters     \\ 
+    {\tt 0}     & {\tt 1}     & Digits and Punctuation \\ 
+    {\tt 1}     & {\tt 0}     & Upper Case and Special \\ 
+    {\tt 1}     & {\tt 1}     & Lower Case and Special \\
+    \hline
+  \end{tabular}
+}
+\end{textblock}
+
+\begin{textblock}{8}(17,17)
+  \cc 2009 Michael Goerz \\
+  { \small
+  This work is licensed under the Creative Commons \\
+  Attribution-Noncommercial-Share Alike 3.0 License.\\
+  To view a copy of this license, visit\\
+  http://creativecommons.org/licenses/by-nc-sa/ 
+  }
+\end{textblock}
+
+\end{document}
