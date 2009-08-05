@@ -1,0 +1,208 @@
+
+% VIM Personal Keymappings
+% Copyright (c) 2009 Michael Goerz.
+% TeX Format
+
+% compile as 'pdftex vimqrc.tex'
+
+% \pdfoutput=1
+\pdfpageheight=21cm
+\pdfpagewidth=29.7cm
+
+% Font definitions
+\font\bigbf=cmbx12
+\font\smallrm=cmr8
+\font\smalltt=cmtt8
+\font\tinyit=cmmi5
+
+\def\title#1{\hfil{\bf #1}\hfil\par\vskip 2pt\hrule}
+\def\cm#1#2#3{{\it#1} {\tt#2 }\dotfill#3\par}
+\def\dcm#1#2#3#4#5{{\it#1} {\tt#2 } {\it#3} {\tt#4 }\dotfill#5\par}
+\def\cn#1{\hfill$\lfloor$ #1\par}
+\def\section#1{\vskip 0.7cm {\it#1\/}\par}
+
+% Characters definitions
+\def\\{\hfil\break}
+\def\bs{$\backslash$}
+\def\backspace{$\leftarrow$}
+\def\ctrl{{\rm\char94}\kern-1pt}
+\def\enter{$\hookleftarrow$}
+\def\or{\thinspace{\tinyit{or}}\thinspace}
+\def\key#1{$\langle${\rm{\it#1\/}}$\rangle$}
+\def\rapos{\char125}
+\def\lapos{\char123}
+\def\bs{\char92}
+\def\tilde{\char126}
+\def\lbracket{[}
+\def\rbracket{]}
+
+% Three columns definitions
+\parindent 0pt
+\nopagenumbers
+\hoffset=-1.56cm
+\voffset=-1.54cm
+\newdimen\fullhsize
+\fullhsize=27.9cm
+\hsize=8.5cm
+\vsize=19cm
+\def\fullline{\hbox to\fullhsize}
+\let\lr=L
+\newbox\leftcolumn
+\newbox\midcolumn
+\output={
+  \if L\lr
+    \global\setbox\leftcolumn=\columnbox
+    \global\let\lr=M
+  \else\if M\lr
+    \global\setbox\midcolumn=\columnbox
+    \global\let\lr=R
+  \else
+    \tripleformat
+    \global\let\lr=L
+  \fi\fi
+  \ifnum\outputpenalty>-20000
+  \else
+    \dosupereject
+  \fi}
+\def\tripleformat{
+  \shipout\vbox{\fullline{\box\leftcolumn\hfil\box\midcolumn\hfil\columnbox}}
+  \advancepageno}
+\def\columnbox{\leftline{\pagebody}}
+
+% Card content
+% Header
+%\hrule\vskip 3pt
+\title{VIM PERSONAL MAPPINGS}
+
+
+\section{Misc}
+\cm{n:}{\bs{}t}{Show or hide Taglist}
+\cm{n,v:}{\bs{}s}{Send to b:sendToProgramName}
+\cm{i:}{\ctrl J}{Jump to next placeholder}
+\cm{}{:lipsum 1 par 5 words}{add lorem ipsum text}
+\dcm{n:}{\bs{}ni}{v:}{\ctrl Lni}{{\tt :InsertSnippet}}
+\dcm{n:}{\bs{}na}{v:}{\ctrl Lna}{{\tt :AppendSnippet}}
+\cm{}{:ListSnippets}{List snippets for filetype}
+\cm{}{:SuperTabHelp}{Set behavior of Tab key}
+
+\section{NerdCommenter}
+\cm{n:}{,cc}{comment line or selection}
+\cm{n:}{,cn}{comment line or selection (nested)}
+\cm{n:}{,c\$}{comment to end of line}
+\cm{n,v:}{,c<space>}{toggle line or selection}
+\cm{n,v:}{,ci}{toggle individual lines} 
+\cm{n,v:}{,cs}{``sexy'' commenting}
+\cm{n,v:}{,cu}{uncomment line or selection}
+\cm{i:}{\ctrl{}c}{Insert comment}
+
+\section{Surround}
+\cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
+\cm{n:}{ysiw"}{Wrap current word in quotes}
+\cm{n:}{ys{\it m}l}{Wrap {\it m} in latex environment}
+\cm{n:}{ys{\it m}t}{Wrap {\it m} in html tag}
+\cm{n:}{ys{\it m}f}{Wrap {\it m} in function}
+\cm{n:}{ys\it{m}l}{Wrap {\it m} in latex environment}
+\cm{n:}{yS\it{m}\it{r}}{Wrap movement {\it m} in {\it r}, new lines, indent}
+\cm{n:}{yss\it{r}}{Wrap current line in {\it r}}
+\cm{n:}{ySS\it{r}}{Wrap current line in {\it r}, new lines, indent}
+\cm{n:}{cs\it{t}\it{r}}{Replace target surrounding {\it t} with{\it r}}
+\cm{n:}{cs"'}{Replace double quotes with single quotes}
+\cm{n:}{ds\it{t}}{Delete target surrounding}
+\cm{v:}{s\it{r}}{Wrap selection in {\it r}}
+\cm{v:}{s"}{Wrap selection in quotes}
+\cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
+
+\vskip 2cm
+\section{C}
+\cm{n,v:}{\bs{}cc}{Open C reference TOC}
+\cm{n,v:}{\bs{}cr}{View C reference for keyword}
+\cm{n,v:}{\bs{}cw}{Ask for keyword, view C reference}
+
+\section{\TeX}
+\cm{n:}{\bs{}lr}{Check References}
+\cm{n:}{\bs{}lc}{Check Citations}
+\cm{n:}{\bs{}lg}{Look at Log File}
+\dcm{n:}{\bs i}{i:}{\ctrl Li}{Insert environment or math function}
+\cm{}{:let b:leftquote = '"`'}{German left quotes}
+\cm{}{:let b:rightquote="\bs{}"'"}{German right quotes}
+\cm{}{:setlocal makeprg=\dots}{change compiler}
+\cm{i:}{`a \dots`o}{$\alpha \dots \omega$}
+\cm{i:}{`c}{$\chi$}
+\cm{i:}{`f}{$\phi$}
+\cm{i:}{`q}{$\theta$}
+\cm{i:}{`v}{$\vee$}
+\cm{i:}{`w\or '\&}{$\wedge$}
+\cm{i:}{`D`F`G`L`O`P`Q`U`X`Y`P`S}{$\Delta \Phi \Gamma \Lambda \Omega \Pi \Theta \Upsilon \Xi \Psi \Sigma$}
+\cm{i:}{`I}{$\int_{a}^{b}$}
+\cm{i:}{`N}{$\nabla$}
+\cm{i:}{`E}{$\varepsilon$ (var-$\epsilon$)}
+\cm{i:}{`H}{$\varphi$ (var-$\phi$)}
+\cm{i:}{`R}{$\varrho$ (var-$\rho$)}
+\cm{i:}{`T}{$\vartheta$ (var-$\theta$)}
+\cm{i:}{`Z}{$\sum_{a}^{b}$}
+\cm{i:}{`1}{{\tt \bs left}}
+\cm{i:}{`2}{{\tt \bs right}}
+\cm{i:}{`3}{{\tt \bs Big}}
+\cm{i:}{`6}{{\tt \bs difquo}}
+\cm{i:}{`8}{$\infty$}
+\cm{i:}{`/\or `\%}{{\tt $\backslash$frac\lapos\rapos\lapos\rapos}}
+\cm{i:}{`@}{$\circ$}
+\cm{i:}{`$|$}{\bs$|$}
+\cm{i:}{`$|$}{{\tt \bs Big\bs $|$}}
+\cm{i:}{`=}{$\equiv$}
+\cm{i:}{`\bs}{$\setminus$}
+\cm{i:}{`.}{{\tt \bs cdot}}
+\cm{i:}{`*}{$\times$}
+\cm{i:}{`-}{$\bigcap$}
+\cm{i:}{`+}{$\bigcup$}
+\cm{i:}{`(}{{\tt \bs left( \bs right)}}
+\cm{i:}{`$[$}{{\tt \bs left$[$ \bs right$]$}}
+\cm{i:}{`<}{$\leq$}
+\cm{i:}{`>}{$\geq$}
+\cm{i:}{`,}{{\tt \bs nonumber}}
+\cm{i:}{`:}{{\tt \bs cdots}}
+\cm{i:}{`\tilde}{{\tt \bs tilde\lapos\rapos}}
+\cm{i:}{`;}{{\tt \bs dot\lapos\rapos}}
+\cm{i:}{`$\hat{~}$}{{\tt \bs op\lapos\rapos}}
+\cm{i:}{`\_}{{\tt \bs bar\lapos\rapos}}
+\cm{i:}{\ctrl E}{{\tt \bs exp()}}
+\cm{i:}{\ctrl L}{{\tt \bs lim\_\lapos\rapos}}
+\cm{i:}{<Up>}{$\uparrow$}
+\cm{i:}{<Down>}{$\downarrow$}
+\cm{i:}{<Left>}{$\leftarrow$}
+\cm{i:}{<Right>}{$\longrightarrow$}
+\cm{i:}{\ctrl F}{$\to$}
+
+\section{XML/HTML}
+\dcm{n:}{\bs i}{i:}{\ctrl Li}{Insert Tag / Convert word to tag}
+\cm{}{:\%tidy -w 80}{Tidy html fragment with linewidth 80}
+
+\section{Fortran}
+\dcm{n:}{\bs i}{i:}{\ctrl Li}{Complete Fortran construct}
+\cm{}{:FortranFold}{Fold up Fortran code}
+
+\section{Python}
+\cm{n:}{\bs{}pw \bs{}pW}{View Python reference for keyword}
+\cm{n,v:}{K}{Look up documentation for word}
+\cm{}{:Pydoc {\it name}}{Look up name in documentation}
+\cm{}{:make}{Run through pylint}
+
+\section{Perl}
+\cm{n:}{K}{Look up 'perldoc -f' for word}
+\cm{}{:make}{Check for syntax errors}
+
+% Footer
+\vfill \hrule\smallskip
+{\smallrm This work is licensed under the Creative Commons
+  Attribution-Noncommercial-Share Alike 3.0 License.
+  To view a copy of this license, visit
+  http://creativecommons.org/licenses/by-nc-sa/ \\---
+  (CC) {\oldstyle 2009} by Michael Goerz.
+% Ending
+\supereject
+\if L\lr \else\null\vfill\eject\fi
+\if L\lr \else\null\vfill\eject\fi
+\bye
+
+
+% EOF
