@@ -1,6 +1,6 @@
 
 % VIM Quick Reference Card
-% Copyright (c) 2008 Michael Goerz.
+% Copyright (c) 2009 Michael Goerz.
 % TeX Format
 
 % compile as 'pdftex vimqrc.tex'
@@ -156,11 +156,10 @@ Leave out $m$ for visual mode commands \\
 \cm{$n$!!$c$\enter }{filter $n$ lines through command $c$}
 \cm{:$r$!$c$ } {filter range $r$ lines through command $c$}
 \cm{\tild }{switch case and advance cursor}
-\cm{g\tild{$m$ }}{switch case of movement command $m$}
-\cm{gu$m$ gU$m$ }{lowercase, uppercase text of movement $m$}
+\cm{g\tild{$m$} gu$m$ gU$m$ }{switch case, lc, uc on movement $m$}
 \cm{$<$$m$ $>$$m$ }{shift left, right text of movement $m$}
 \cm{$n$$<$\kern-3pt$<$ $n$$>$\kern-3pt$>$ }{shift $n$ lines left, right}
-
+\cm{\ctrl A \ctrl X}{increment/decrement number under cursor}
 
 %\vskip 0.8cm
 \section{Visual Mode}
@@ -351,7 +350,7 @@ Leave out $m$ for visual mode commands \\
 \vfill \hrule\smallskip
 {\smallrm This card may be freely distributed under
 the terms of the GNU general public licence ---
-Copyright \copyright\ {\oldstyle 2008} by Michael Goerz.
+Copyright \copyright\ {\oldstyle 2009} by Michael Goerz.
 {\smalltt http://www.physik.fu-berlin.de/\tild{goerz/}}. Based on original by
 Laurent Gr\'egoire  ({\smalltt http://tnerual.eriogerg.free.fr/})}
 % Ending
