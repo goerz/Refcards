@@ -23,7 +23,6 @@
 
 % Characters definitions
 \def\\{\hfil\break}
-\def\bs{$\backslash$}
 \def\backspace{$\leftarrow$}
 \def\ctrl{{\rm\char94}\kern-1pt}
 \def\enter{$\hookleftarrow$}
@@ -32,6 +31,8 @@
 \def\rapos{\char125}
 \def\lapos{\char123}
 \def\bs{\char92}
+\def\leader{\char92}
+\def\ileader{\ctrl L}
 \def\tilde{\char126}
 \def\lbracket{[}
 \def\rbracket{]}
@@ -76,14 +77,38 @@
 
 
 \section{Misc}
-\cm{n:}{\bs{}t}{Show or hide Taglist}
-\cm{n,v:}{\bs{}s}{Send to b:sendToProgramName}
+\cm{n:}{\leader{}t}{Show or hide Taglist}
+\cm{n,v:}{\leader{}s}{Send to b:sendToProgramName}
 \cm{i:}{\ctrl J}{Jump to next placeholder}
 \cm{}{:lipsum 1 par 5 words}{add lorem ipsum text}
-\dcm{n:}{\bs{}ni}{v:}{\ctrl Lni}{{\tt :InsertSnippet}}
-\dcm{n:}{\bs{}na}{v:}{\ctrl Lna}{{\tt :AppendSnippet}}
+\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
+\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
 \cm{}{:ListSnippets}{List snippets for filetype}
 \cm{}{:SuperTabHelp}{Set behavior of Tab key}
+
+
+\section{Git}
+\cm{}{:Git [args]}{Run git}
+\cm{}{:GitAdd [afile]}{Stage changes}
+\cm{}{:GitBlame}{Show blame}
+\cm{}{:GitCheckout [args]}{Checkout branch}
+\cm{}{:GitCommit [args]}{Commit}
+\cm{}{:GitDiff [args]}{Show diff}
+\cm{}{:GitLog [args]}{Show commit logs}
+\cm{}{:GitPull [args]}{Fetch and merge}
+\cm{}{:GitPullRebase [args]}{GitPull --rebase}
+\cm{}{:GitPush [args]}{Push to remote}
+\cm{}{:GitStatus}{Working tree status}
+\cm{}{:GitVimDiffMerge [args]}{vimdiff for merge}
+\cm{}{:GitVimDiffMergeDone}{Mark conflicts resolved}
+\cm{n:}{\leader gd}{GitDiff}
+\cm{n:}{\leader gD}{GitDiff --cached}
+\cm{n:}{\leader gs}{GitStatus}
+\cm{n:}{\leader gl}{GitLog}
+\cm{n:}{\leader ga \or \leader gA}{GitAdd}
+\cm{n:}{\leader gc}{GitCommit}
+\cm{n:}{\leader gp}{GitPullRebase}
+
 
 \section{NerdCommenter}
 \cm{n:}{,cc}{comment line or selection}
@@ -94,6 +119,7 @@
 \cm{n,v:}{,cs}{``sexy'' commenting}
 \cm{n,v:}{,cu}{uncomment line or selection}
 \cm{i:}{\ctrl{}c}{Insert comment}
+
 
 \section{Surround}
 \cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
@@ -112,19 +138,20 @@
 \cm{v:}{s"}{Wrap selection in quotes}
 \cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
 
-\vskip 2cm
+\vskip 0.2cm
 \section{C}
-\cm{n,v:}{\bs{}cc}{Open C reference TOC}
-\cm{n,v:}{\bs{}cr}{View C reference for keyword}
-\cm{n,v:}{\bs{}cw}{Ask for keyword, view C reference}
+\cm{n,v:}{\leader{}cc}{Open C reference TOC}
+\cm{n,v:}{\leader{}cr}{View C reference for keyword}
+\cm{n,v:}{\leader{}cw}{Ask for keyword, view C reference}
 
+\vskip 0.2cm
 \section{\TeX}
-\cm{n:}{\bs{}lr}{Check References}
-\cm{n:}{\bs{}lc}{Check Citations}
-\cm{n:}{\bs{}lg}{Look at Log File}
-\dcm{n:}{\bs i}{i:}{\ctrl Li}{Insert environment or math function}
+\cm{n:}{\leader{}lr}{Check References}
+\cm{n:}{\leader{}lc}{Check Citations}
+\cm{n:}{\leader{}lg}{Look at Log File}
+\dcm{n:}{\leader i}{i:}{\ileader i}{Insert environment or math function}
 \cm{}{:let b:leftquote = '"`'}{German left quotes}
-\cm{}{:let b:rightquote="\bs{}"'"}{German right quotes}
+\cm{}{:let b:rightquote="\leader{}"'"}{German right quotes}
 \cm{}{:setlocal makeprg=\dots}{change compiler}
 \cm{i:}{`a \dots`o}{$\alpha \dots \omega$}
 \cm{i:}{`c}{$\chi$}
@@ -173,20 +200,24 @@
 \cm{i:}{<Right>}{$\longrightarrow$}
 \cm{i:}{\ctrl F}{$\to$}
 
+\vskip 0.2cm
 \section{XML/HTML}
-\dcm{n:}{\bs i}{i:}{\ctrl Li}{Insert Tag / Convert word to tag}
+\dcm{n:}{\bs i}{i:}{\ileader i}{Insert Tag / Convert word to tag}
 \cm{}{:\%tidy -w 80}{Tidy html fragment with linewidth 80}
 
+\vskip 0.2cm
 \section{Fortran}
-\dcm{n:}{\bs i}{i:}{\ctrl Li}{Complete Fortran construct}
+\dcm{n:}{\leader i}{i:}{\ileader i}{Complete Fortran construct}
 \cm{}{:FortranFold}{Fold up Fortran code}
 
+\vskip 0.2cm
 \section{Python}
-\cm{n:}{\bs{}pw \bs{}pW}{View Python reference for keyword}
+\cm{n:}{\leader{}pw leaderbs{}pW}{View Python reference for keyword}
 \cm{n,v:}{K}{Look up documentation for word}
 \cm{}{:Pydoc {\it name}}{Look up name in documentation}
 \cm{}{:make}{Run through pylint}
 
+\vskip 0.2cm
 \section{Perl}
 \cm{n:}{K}{Look up 'perldoc -f' for word}
 \cm{}{:make}{Check for syntax errors}
