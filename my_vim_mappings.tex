@@ -138,13 +138,19 @@
 \cm{v:}{s"}{Wrap selection in quotes}
 \cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
 
-\vskip 0.2cm
+\vskip 0.1cm
+\section{Sudo}
+\cm{}{:e sudo:/etc/passwd}{Edit file with sudo perms}
+\cm{}{:w sudo:/etc/passwd}{Write file with sudo perms}
+\cm{}{:w sudo:\%}{Write current file with sudo permissions}
+
+\vskip 0.1cm
 \section{C}
 \cm{n,v:}{\leader{}cc}{Open C reference TOC}
 \cm{n,v:}{\leader{}cr}{View C reference for keyword}
 \cm{n,v:}{\leader{}cw}{Ask for keyword, view C reference}
 
-\vskip 0.2cm
+\vskip 0.1cm
 \section{\TeX}
 \cm{n:}{\leader{}lr}{Check References}
 \cm{n:}{\leader{}lc}{Check Citations}
@@ -200,24 +206,24 @@
 \cm{i:}{<Right>}{$\longrightarrow$}
 \cm{i:}{\ctrl F}{$\to$}
 
-\vskip 0.2cm
+\vskip 0.1cm
 \section{XML/HTML}
 \dcm{n:}{\bs i}{i:}{\ileader i}{Insert Tag / Convert word to tag}
 \cm{}{:\%tidy -w 80}{Tidy html fragment with linewidth 80}
 
-\vskip 0.2cm
+\vskip 0.1cm
 \section{Fortran}
 \dcm{n:}{\leader i}{i:}{\ileader i}{Complete Fortran construct}
 \cm{}{:FortranFold}{Fold up Fortran code}
 
-\vskip 0.2cm
+\vskip 0.1cm
 \section{Python}
 \cm{n:}{\leader{}pw leaderbs{}pW}{View Python reference for keyword}
 \cm{n,v:}{K}{Look up documentation for word}
 \cm{}{:Pydoc {\it name}}{Look up name in documentation}
 \cm{}{:make}{Run through pylint}
 
-\vskip 0.2cm
+\vskip 0.1cm
 \section{Perl}
 \cm{n:}{K}{Look up 'perldoc -f' for word}
 \cm{}{:make}{Check for syntax errors}
