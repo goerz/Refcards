@@ -75,9 +75,13 @@
 %\hrule\vskip 3pt
 \title{VIM PERSONAL MAPPINGS}
 
+\vskip 0.4cm
+(CC) 2009 Michael Goerz ({\tt www.michaelgoerz.net})
+\vskip -0.2cm
 
 \section{Misc}
 \cm{n:}{\leader{}t}{Show or hide Taglist}
+\dcm{n:}{\leader d}{i:}{\ileader d}{Insert date stamp}
 \cm{n,v:}{\leader{}s}{Send to b:sendToProgramName}
 \cm{i:}{\ctrl J}{Jump to next placeholder}
 \cm{}{:lipsum 1 par 5 words}{add lorem ipsum text}
@@ -85,6 +89,37 @@
 \dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
 \cm{}{:ListSnippets}{List snippets for filetype}
 \cm{}{:SuperTabHelp}{Set behavior of Tab key}
+
+
+\vskip 0.1cm
+\section{Surround}
+\cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
+\cm{n:}{ysiw"}{Wrap current word in quotes}
+\cm{n:}{ys{\it m}l}{Wrap {\it m} in latex environment}
+\cm{n:}{ys{\it m}t}{Wrap {\it m} in html tag}
+\cm{n:}{ys{\it m}f}{Wrap {\it m} in function}
+\cm{n:}{ys\it{m}l}{Wrap {\it m} in latex environment}
+\cm{n:}{yS\it{m}\it{r}}{Wrap movement {\it m} in {\it r}, new lines, indent}
+\cm{n:}{yss\it{r}}{Wrap current line in {\it r}}
+\cm{n:}{ySS\it{r}}{Wrap current line in {\it r}, new lines, indent}
+\cm{n:}{cs\it{t}\it{r}}{Replace target surrounding {\it t} with{\it r}}
+\cm{n:}{cs"'}{Replace double quotes with single quotes}
+\cm{n:}{ds\it{t}}{Delete target surrounding}
+\cm{v:}{s\it{r}}{Wrap selection in {\it r}}
+\cm{v:}{s"}{Wrap selection in quotes}
+\cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
+
+
+\vskip 0.1cm
+\section{NerdCommenter}
+\cm{n:}{,cc}{comment line or selection}
+\cm{n:}{,cn}{comment line or selection (nested)}
+\cm{n:}{,c\$}{comment to end of line}
+\cm{n,v:}{,c<space>}{toggle line or selection}
+\cm{n,v:}{,ci}{toggle individual lines} 
+\cm{n,v:}{,cs}{``sexy'' commenting}
+\cm{n,v:}{,cu}{uncomment line or selection}
+\cm{i:}{\ctrl{}c}{Insert comment}
 
 
 \section{Git}
@@ -109,34 +144,6 @@
 \cm{n:}{\leader gc}{GitCommit}
 \cm{n:}{\leader gp}{GitPullRebase}
 
-
-\section{NerdCommenter}
-\cm{n:}{,cc}{comment line or selection}
-\cm{n:}{,cn}{comment line or selection (nested)}
-\cm{n:}{,c\$}{comment to end of line}
-\cm{n,v:}{,c<space>}{toggle line or selection}
-\cm{n,v:}{,ci}{toggle individual lines} 
-\cm{n,v:}{,cs}{``sexy'' commenting}
-\cm{n,v:}{,cu}{uncomment line or selection}
-\cm{i:}{\ctrl{}c}{Insert comment}
-
-
-\section{Surround}
-\cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
-\cm{n:}{ysiw"}{Wrap current word in quotes}
-\cm{n:}{ys{\it m}l}{Wrap {\it m} in latex environment}
-\cm{n:}{ys{\it m}t}{Wrap {\it m} in html tag}
-\cm{n:}{ys{\it m}f}{Wrap {\it m} in function}
-\cm{n:}{ys\it{m}l}{Wrap {\it m} in latex environment}
-\cm{n:}{yS\it{m}\it{r}}{Wrap movement {\it m} in {\it r}, new lines, indent}
-\cm{n:}{yss\it{r}}{Wrap current line in {\it r}}
-\cm{n:}{ySS\it{r}}{Wrap current line in {\it r}, new lines, indent}
-\cm{n:}{cs\it{t}\it{r}}{Replace target surrounding {\it t} with{\it r}}
-\cm{n:}{cs"'}{Replace double quotes with single quotes}
-\cm{n:}{ds\it{t}}{Delete target surrounding}
-\cm{v:}{s\it{r}}{Wrap selection in {\it r}}
-\cm{v:}{s"}{Wrap selection in quotes}
-\cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
 
 \vskip 0.1cm
 \section{Sudo}
