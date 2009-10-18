@@ -134,34 +134,33 @@
 \cm{}{:GitPullRebase [args]}{GitPull --rebase}
 \cm{}{:GitPush [args]}{Push to remote}
 \cm{}{:GitStatus}{Working tree status}
+\cm{}{:GitGrep [args]}{Perform git grep}
 \cm{}{:GitVimDiffMerge [args]}{vimdiff for merge}
 \cm{}{:GitVimDiffMergeDone}{Mark conflicts resolved}
 \cm{n:}{\leader gd}{GitDiff}
 \cm{n:}{\leader gD}{GitDiff --cached}
 \cm{n:}{\leader gs}{GitStatus}
 \cm{n:}{\leader gl}{GitLog}
-\cm{n:}{\leader ga \or \leader gA}{GitAdd}
+\cm{n:}{\leader ga}{GitAdd}
 \cm{n:}{\leader gc}{GitCommit}
-\cm{n:}{\leader gp}{GitPullRebase}
+\cm{n:}{\leader gC}{GitCommit -a}
+\cm{n:}{\leader gA}{GitCommit --amend}
 
 
-\vskip 0.1cm
 \section{Sudo}
 \cm{}{:e sudo:/etc/passwd}{Edit file with sudo perms}
 \cm{}{:w sudo:/etc/passwd}{Write file with sudo perms}
 \cm{}{:w sudo:\%}{Write current file with sudo permissions}
 
-\vskip 0.1cm
 \section{C}
 \cm{n,v:}{\leader{}cc}{Open C reference TOC}
 \cm{n,v:}{\leader{}cr}{View C reference for keyword}
 \cm{n,v:}{\leader{}cw}{Ask for keyword, view C reference}
 
-\vskip 0.1cm
 \section{\TeX}
-\cm{n:}{\leader{}lr}{Check References}
-\cm{n:}{\leader{}lc}{Check Citations}
-\cm{n:}{\leader{}lg}{Look at Log File}
+\cm{}{:LatexFold}{Fold up LaTeX (fmt=manual)}
+\dcm{n,v:}{\leader e}{i:}{\ileader e}{wrap in {\tt \bs{}emph}}
+\dcm{n,v:}{\leader o}{i:}{\ileader o}{wrap in {\tt \bs{}op}}
 \dcm{n:}{\leader i}{i:}{\ileader i}{Insert environment or math function}
 \cm{}{:let b:leftquote = '"`'}{German left quotes}
 \cm{}{:let b:rightquote="\leader{}"'"}{German right quotes}
@@ -205,8 +204,8 @@
 \cm{i:}{`;}{{\tt \bs dot\lapos\rapos}}
 \cm{i:}{`$\hat{~}$}{{\tt \bs op\lapos\rapos}}
 \cm{i:}{`\_}{{\tt \bs bar\lapos\rapos}}
-\cm{i:}{\ctrl E}{{\tt \bs exp()}}
-\cm{i:}{\ctrl L}{{\tt \bs lim\_\lapos\rapos}}
+\cm{i:}{`\ctrl E}{{\tt \bs exp()}}
+\cm{i:}{`\ctrl L}{{\tt \bs lim\_\lapos\rapos}}
 \cm{i:}{<Up>}{$\uparrow$}
 \cm{i:}{<Down>}{$\downarrow$}
 \cm{i:}{<Left>}{$\leftarrow$}
@@ -221,7 +220,7 @@
 \vskip 0.1cm
 \section{Fortran}
 \dcm{n:}{\leader i}{i:}{\ileader i}{Complete Fortran construct}
-\cm{}{:FortranFold}{Fold up Fortran code}
+\cm{}{:FortranFold}{Fold up Fortran code (fmt=manual)}
 
 \vskip 0.1cm
 \section{Python}
