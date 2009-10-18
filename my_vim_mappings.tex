@@ -1,4 +1,3 @@
-
 % VIM Personal Keymappings
 % Copyright (c) 2009 Michael Goerz.
 % TeX Format
@@ -85,13 +84,21 @@
 \cm{n,v:}{\leader{}s}{Send to b:sendToProgramName}
 \cm{i:}{\ctrl J}{Jump to next placeholder}
 \cm{}{:lipsum 1 par 5 words}{add lorem ipsum text}
-\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
-\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
-\cm{}{:ListSnippets}{List snippets for filetype}
 \cm{}{:SuperTabHelp}{Set behavior of Tab key}
 
+\section{Snippets}
+\cm{}{:ListSnippets}{List snippets for filetype}
+\cm{}{:ApppendSnippets}{Append snippet below line}
+\cm{}{:InsertSnippets}{Insert snippet before line}
+\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
+\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
 
-\vskip 0.1cm
+\section{Filters}
+\cm{}{:ListFilters}{List filters for filetype}
+\cm{}{:'a,'b Filter}{Filter range}
+\cm{}{:Filter}{Filter entire file}
+\dcm{n:}{\leader{}f}{v:}{\ileader f}{{Filter entire file}}
+
 \section{Surround}
 \cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
 \cm{n:}{ysiw"}{Wrap current word in quotes}
@@ -122,6 +129,7 @@
 \cm{i:}{\ctrl{}c}{Insert comment}
 
 
+\vskip 0.2cm
 \section{Git}
 \cm{}{:Git [args]}{Run git}
 \cm{}{:GitAdd [afile]}{Stage changes}
@@ -141,9 +149,12 @@
 \cm{n:}{\leader gD}{GitDiff --cached}
 \cm{n:}{\leader gs}{GitStatus}
 \cm{n:}{\leader gl}{GitLog}
+\cm{n:}{\leader gL}{Git log --all --graph --decorate}
 \cm{n:}{\leader ga}{GitAdd}
 \cm{n:}{\leader gc}{GitCommit}
 \cm{n:}{\leader gC}{GitCommit -a}
+\cm{n:}{\leader gp}{GitPull}
+\cm{n:}{\leader gb}{GitBlame}
 \cm{n:}{\leader gA}{GitCommit --amend}
 
 
@@ -152,10 +163,6 @@
 \cm{}{:w sudo:/etc/passwd}{Write file with sudo perms}
 \cm{}{:w sudo:\%}{Write current file with sudo permissions}
 
-\section{C}
-\cm{n,v:}{\leader{}cc}{Open C reference TOC}
-\cm{n,v:}{\leader{}cr}{View C reference for keyword}
-\cm{n,v:}{\leader{}cw}{Ask for keyword, view C reference}
 
 \section{\TeX}
 \cm{}{:LatexFold}{Fold up LaTeX (fmt=manual)}
@@ -211,6 +218,11 @@
 \cm{i:}{<Left>}{$\leftarrow$}
 \cm{i:}{<Right>}{$\longrightarrow$}
 \cm{i:}{\ctrl F}{$\to$}
+
+\section{C}
+\cm{n,v:}{\leader{}cc}{Open C reference TOC}
+\cm{n,v:}{\leader{}cr}{View C reference for keyword}
+\cm{n,v:}{\leader{}cw}{Ask for keyword, view C reference}
 
 \vskip 0.1cm
 \section{XML/HTML}
