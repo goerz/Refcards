@@ -1,5 +1,5 @@
 % VIM Personal Keymappings
-% Copyright (c) 2009 Michael Goerz.
+% Copyright (c) 2010 Michael Goerz.
 % TeX Format
 
 % compile as 'pdftex vimqrc.tex'
@@ -75,7 +75,7 @@
 \title{VIM PERSONAL MAPPINGS}
 
 \vskip 0.4cm
-(CC) 2009 Michael Goerz ({\tt www.michaelgoerz.net})
+(CC) 2010 Michael Goerz ({\tt www.michaelgoerz.net})
 \vskip -0.2cm
 
 \section{Misc}
@@ -166,9 +166,11 @@
 
 \section{\TeX}
 \cm{}{:LatexFold}{Fold up LaTeX (fmt=manual)}
-\dcm{n,v:}{\leader e}{i:}{\ileader e}{wrap in {\tt \bs{}emph}}
-\dcm{n,v:}{\leader o}{i:}{\ileader o}{wrap in {\tt \bs{}op}}
-\dcm{n:}{\leader i}{i:}{\ileader i}{Insert environment or math function}
+\dcm{n,v:}{\leader e}{i:}{\ileader e}{insert or wrap in {\tt \bs{}emph}}
+\dcm{n,v:}{\leader o}{i:}{\ileader o}{insert or wrap in {\tt \bs{}op}}
+\cm{i:}{\ileader k}{insert {\tt \bs{}ket}}
+\dcm{n:}{\leader i}{i:}{\ileader i}{insert environment or math function}
+\cm{i:}{\ileader e}{{\tt \bs{}text}}
 \cm{}{:let b:leftquote = '"`'}{German left quotes}
 \cm{}{:let b:rightquote="\leader{}"'"}{German right quotes}
 \cm{}{:setlocal makeprg=\dots}{change compiler}
@@ -253,7 +255,7 @@
   Attribution-Noncommercial-Share Alike 3.0 License.
   To view a copy of this license, visit
   http://creativecommons.org/licenses/by-nc-sa/ \\---
-  (CC) {\oldstyle 2009} by Michael Goerz.
+  (CC) {\oldstyle 2010} by Michael Goerz.
 % Ending
 \supereject
 \if L\lr \else\null\vfill\eject\fi
