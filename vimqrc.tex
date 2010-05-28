@@ -5,9 +5,20 @@
 
 % compile as 'pdftex vimqrc.tex'
 
-% \pdfoutput=1
+ \pdfoutput=1
 \pdfpageheight=21cm
 \pdfpagewidth=29.7cm
+
+\pdfinfo { 
+/Title    (Vim Quick Reference Card)
+/Author   (Michael Goerz)
+/Subject  (Vim Text Editor)
+/Keywords (Movements, Insertion, Replace and Deletion, Insert Mode, Search and
+Substitution, Formatting, Filtering, Visual Mode, Undoing and Repeating,
+Registers, Copying, Patterns, Spell Checking, Marks, Motions and Tags, Multiple
+Files and Buffers, Scrolling, Multi-Windowing, Ex Commands and Ranges,
+Completion, Folding, Compiling)
+}
 
 % Font definitions
 \font\bigbf=cmbx12
@@ -234,7 +245,6 @@ Leave out $m$ for visual mode commands \\
 \section{Marks, Motions, and Tags}
 \cm{m$c$ }{mark current position with mark $c\in[a..Z]$}
 \cm{`$c$ `$C$ }{go to mark $c$ in current, $C$ in any file}
-\cm{`$0..9$ }{go to last exit position}
 \cm{`\/`  `\/" }{go to position before jump, at last edit}
 \cm{`[ `] }{go to start, end of previously operated text}
 \cm{:marks } {print the active marks list}
@@ -244,6 +254,7 @@ Leave out $m$ for visual mode commands \\
 \cm{\ctrl ] \ctrl T }{jump to the tag under cursor, return from tag}
 \cm{:ts $t$ } {list matching tags and select one for jump}
 \cm{:tj $t$ } {jump to tag or select one if multiple matches}
+\cm{gf }{open file which filename is under cursor}
 \cm{:tags } {print tag list}
 
 \section{Multiple Files / Buffers (\enter)}
@@ -257,25 +268,27 @@ Leave out $m$ for visual mode commands \\
 
 
 \section{Scrolling \& Multi-Windowing}
-\cm{\ctrl D \ctrl U }{scroll half a page up, down}
-\cm{\ctrl F \ctrl B }{scroll page up, down}
+\cm{\ctrl D \ctrl U \ctrl F \ctrl B}{scroll half / full page page down, up}
 \cm{zt zz zb }{current line to top, center, bottom of win.}
-\cm{zh zl }{scroll one character to the right, left}
-\cm{zH zL }{scroll half a screen to the right, left}
-\cm{:split :vsplit } {split window in two (vert.)}
-\cm{:new :vnew } {create new empty window (vert.)}
-\cm{:on } {make current window one on screen}
-\cm{\ctrl Wj \ctrl Wk }{move to window below, above}
-\cm{\ctrl Ww \ctrl W\ctrl W }{move to window below, above (wrap)}
-\cm{\ctrl W$n$+ \ctrl W$n$- }{Increase/decrease window size by $n$ lines}
-\cm{\ctrl W$n>$ \ctrl W$n<$ }{Increase/decrease window width}
+\cm{:[v]split \ctrl Ws \ctrl Wv} {split window (horiz., vert.)}
+\cm{:vert help}{open help vertically}
+\cm{\ctrl Wf \ctrl W]}{open file, tag in split}
+\cm{:[v]new \ctrl W\ctrl n } {new empty window (horiz., vert.)}
+\cm{:on \ctrl Wo} {make current win the only one}
+\cm{\ctrl Wj \ctrl Wk \ctrl Wh \ctrl Wl }{move down, up, left, right to win}
+\cm{\ctrl W$n$+ \ctrl W$n$- }{increase/decrease win size by $n$ lines}
+\cm{\ctrl W$n>$ \ctrl W$n<$ }{increase/decrease window width}
+\cm{\ctrl W$n$\_ \ctrl W$n$|}{set height/width (max if no $n$)}
+\cm{\ctrl W=}{Make win size equal}
+\cm{\ctrl Wr \ctrl Wx}{Rotate, exchange windows}
+\cm{\ctrl Wc}{close window}
 
 \vskip -0.2cm
-\section{Misc Ex Commands (\enter)}
-\cm{:help holy-grail }{show all Ex commands}
+\section{Misc Ex Commands (\enter) ~~ \tt{:help holy-grail}}
 \cm{:e $f$ }{edit file $f$, reload current file if no $f$}
-\cm{:$r$w $f$ }{write range $r$ to file $f$ (current file if no $f$)}
-\cm{:$r$w$>$\kern-3pt$>$$f$ }{append range $r$ to file $f$}
+\cm{:$r$~w $f$ }{write range $r$ to file $f$ (current file if no $f$)}
+\cm{:$r$~w$>$\kern-3pt$>$$f$ }{append range $r$ to file $f$}
+\cm{:$r$~g[!]/$p$/$cmd$ }{ex $cmd$ on range $r$ [not] matching $p$}
 \cm{:q :q! }{quit and confirm, quit and discard changes}
 \cm{:wq\or :x\or ZZ }{write to current file and exit}
 \cm{:r $f$ }{insert content of file $f$ below cursor}
@@ -300,12 +313,9 @@ Leave out $m$ for visual mode commands \\
 \cm{\ctrl{}X\ctrl{}L}{whole lines}
 \cm{\ctrl{}X\ctrl{}N \ctrl{}X\ctrl{}I}{keywords in current file, plus included files}
 \cm{\ctrl{}X\ctrl{}K \ctrl{}X\ctrl{}N}{keywords in dictionary, thesaurus}
-\cm{\ctrl{}X\ctrl{}]}{tags}
-\cm{\ctrl{}X\ctrl{}F}{file names}
-\cm{\ctrl{}X\ctrl{}D}{definitions or macros}
+\cm{\ctrl{}X\ctrl{}]  \ctrl{}X\ctrl{}F  \ctrl{}X\ctrl{}D}{tags, filenames, defs/macros}
 \cm{\ctrl{}X\ctrl{}V}{vim command line}
-\cm{\ctrl{}X\ctrl{}U}{user defined completion}
-\cm{\ctrl{}X\ctrl{}O}{omni completion}
+\cm{\ctrl{}X\ctrl{}U  \ctrl{}X\ctrl{}O}{user defined, omni- completion}
 
 
 
@@ -338,10 +348,10 @@ Leave out $m$ for visual mode commands \\
 \cm{\ctrl G }{show cursor column, line, and character position}
 \cm{:set cuc } {show cursor column visually}
 \cm{ga }{show A{\smallrm SCII} value of character under cursor}
-\cm{gf }{open file which filename is under cursor}
 \cm{:mkview $[f]$ :loadview $[f]$ }{save/load configuration}
 \cm{:set ff=dos } {convert file to dos eol format} 
 \cm{:e ++ff=unix } {reopen file in unix eol format}
+\cm{:write ++enc=utf-8}{Write file in utf-8}
 \cm{:set hlsearch } {highlight searches}
 \cm{:$r$hardcopy > file.ps }{print range to ps file}
 \cm{:set list }{show listchar characters (tabs etc.)}
@@ -350,7 +360,7 @@ Leave out $m$ for visual mode commands \\
 \vfill \hrule\smallskip
 {\smallrm This card may be freely distributed under
 the terms of the GNU general public licence ---
-Copyright \copyright\ {\oldstyle 2009} by Michael Goerz.
+Copyright \copyright\ {\oldstyle 2010} by Michael Goerz.
 {\smalltt http://www.physik.fu-berlin.de/\tild{goerz/}}. Based on original by
 Laurent Gr\'egoire  ({\smalltt http://tnerual.eriogerg.free.fr/})}
 % Ending
