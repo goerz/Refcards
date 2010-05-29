@@ -154,12 +154,13 @@ Completion, Folding, Compiling)
 \cm{:$r$s/$f$/$t$/$x$ } {substitute $f$ by $t$ in range $r$}
 \cn{$x:$ {\tt g}---all occurrences, {\tt c}---confirm changes}
 \cm{:$r$s $x$ } {repeat substitution with new $r$ \& $x$}
-\cm{:$r$g/$p$/$c$ } {execute {\it Ex\/} $c$ on range $r$ where $p$ matches}
 
 %\vskip 0.4cm
-\section{Standard Mode Formatting/Filtering}
-Leave out $m$ for visual mode commands \\
-\cm{gq$m$ gqgq }{format movement $m$/current paragraph}
+\section{Formatting/Filtering}
+$m$ is movement; leave out for visual mode commands \\
+\cm{gq$m$}{format $m$ ({\it formatprg})}
+\cm{gqgq \or gqip}{format current paragraph}
+\cm{$=m$}{reindent movement $m$ ({\it equalprg})}
 \cm{:$r$ce $w$ } {center lines in range $r$ to width $w$}
 \cm{:$r$le $i$ } {left align lines in range $r$ with indent $i$}
 \cm{:$r$ri $w$ } {right align lines in range $r$ to width $w$}
@@ -173,14 +174,18 @@ Leave out $m$ for visual mode commands \\
 \cm{\ctrl A \ctrl X}{increment/decrement number under cursor}
 
 %\vskip 0.8cm
-\section{Visual Mode}
-\cm{v V \ctrl V }{start/stop highlighting characters, lines, block}
-\cm{o }{exchange cursor position with start of highlighting}
+\section{Visual Mode \& Text Objects}
+\cm{v V \ctrl V }{highlight characters, lines, block}
+\cm{o }{exchange cursor pos with start of highlighting}
 \cm{gv }{start highlighting on previous visual area}
 \cm{aw as ap }{select a word, a sentence, a paragraph}
-\cm{ab aB }{select a block ( ), a block {\tt\lapos} {\tt\rapos}}
+\cm{ab aB a] a$>$}{select a block ( ), {\tt\lapos} {\tt\rapos}, [~] $<$~$>$}
+\cm{at}{select an html tag}
+\cm{a" a' a`}{select a quotet string}
+\cm{iw is ip ib iB i] i$>$ it i" i' i`}{select ``inner''}
 \cm{$n\hskip -0.3em>$ $n\hskip -0.3em<$ $=$ }{indent/unindent $n$ levels, reindent}
 
+\vskip -0.2cm
 \section{Undoing, Repeating \& Registers}
 \cm{u U }{undo last command, restore last changed line}
 \cm{.\thinspace\thinspace\ctrl R }{repeat last changes, redo last undo}
@@ -192,10 +197,10 @@ Leave out $m$ for visual mode commands \\
 \cm{:@$c$ } {execute register $c$ as an {\it Ex\/} command}
 
 
-\section{Copying}
+\vskip -0.2cm
+\section{Copying (Yanking)}
 \cm{"$x$ }{use register $x$ for next delete, yank, put}
-\cm{:reg } {show the content of all registers}
-\cm{:reg $x$ } {show the content of registers $x$}
+\cm{:reg [$x$] } {show content registers/$x$ reg}
 \cm{y$m$ }{yank the text of movement command $m$}
 \cm{yy\or Y }{yank current line into register}
 \cm{p P }{put register after, before cursor position}
@@ -204,8 +209,7 @@ Leave out $m$ for visual mode commands \\
 
 
 
-\section{Patterns (differences to Perl)}
-\cm{:help pattern } {show complete help on patterns}
+\section{Patterns (differences to Perl) ~~ {\tt :help pattern}}
 \cm{\bs$<$ \bs$>$ }{start, end of word}
 \cm{\bs i \bs k \bs I \bs K }{an identifier, keyword; excl. digits}
 \cm{\bs f \bs p \bs F \bs P }{a file name, printable char.; excl. digits}
@@ -269,13 +273,14 @@ Leave out $m$ for visual mode commands \\
 
 \section{Scrolling \& Multi-Windowing}
 \cm{\ctrl D \ctrl U \ctrl F \ctrl B}{scroll half / full page page down, up}
-\cm{zt zz zb }{current line to top, center, bottom of win.}
+\cm{zt zz zb }{current line to top, center, bottom of win}
 \cm{:[v]split \ctrl Ws \ctrl Wv} {split window (horiz., vert.)}
 \cm{:vert help}{open help vertically}
 \cm{\ctrl Wf \ctrl W]}{open file, tag in split}
 \cm{:[v]new \ctrl W\ctrl n } {new empty window (horiz., vert.)}
 \cm{:on \ctrl Wo} {make current win the only one}
 \cm{\ctrl Wj \ctrl Wk \ctrl Wh \ctrl Wl }{move down, up, left, right to win}
+\cm{\ctrl WJ \ctrl WK \ctrl WH \ctrl WL }{move win down, up, left, right}
 \cm{\ctrl W$n$+ \ctrl W$n$- }{increase/decrease win size by $n$ lines}
 \cm{\ctrl W$n>$ \ctrl W$n<$ }{increase/decrease window width}
 \cm{\ctrl W$n$\_ \ctrl W$n$|}{set height/width (max if no $n$)}
