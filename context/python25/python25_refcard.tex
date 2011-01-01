@@ -1,0 +1,463 @@
+\startproduct python25/python25_refcard
+\project project
+
+\startcolumns[nothyphenated,n=3]
+
+\RefcardTitle{Python 2.5 Reference Card}
+
+\useurl[mail][mailto:goerz@physik.fu-berlin.de][][<goerz@physik.fu-berlin.de>] 
+\useurl[homepage][http://michaelgoerz.net][][http://michaelgoerz.net] 
+\useurl[creativecommons][http://creativecommons.org/license][][http://creativecommons.org/license] 
+
+\copyright 2011 Michael Goerz \from[mail]\\
+Web: \from[homepage] \\
+This work is licensed under the Creative Commons
+Attribution-Noncommercial-Share Alike 3.0 License. To view a copy of this
+license, visit \from[creativecommons].
+
+
+\section{Variable Types}
+
+\subsection{Numbers}
+\CM {\tt 42 052 0x2A 42L 052L 0x2AL}  \\ 42 (dec, oct, hex, short/long)    \\
+\CM {\tt 0.2  .8  4.  1.e10  1.0e-7 } \\ floating point value              \\
+\CM {\tt z = 5.0 – 2.0J; }            \\ complex number                    \\
+\CM {\tt z = complex(real, imag)}     \\ complex number                    \\
+\CM {\tt z.real; z.imag}              \\ real and imag part of z           \\
+\CM {\tt True; False}                 \\ constants for boolean values      \\
+\CM {\tt abs(n)}                      \\ absolute value of n               \\
+\CM {\tt divmod(x, y)}                \\ {\tt (x/y, x\%y})                 \\
+\CM {\tt hex(n)}                      \\ create hex string                 \\
+\CM {\tt oct(n)}                      \\ create octal string               \\
+\CM {\tt ord(c)}                      \\ unicode code point of char        \\
+\CM {\tt round(x,n)}                  \\ round x to n decimal places       \\
+\CM {\tt cmp(x,y)}                    \\ {\tt x<y: -1,  x==y: 0,  x>y: 1}  \\
+\CM {\tt coerce(x, y)}                \\ {\tt (x,y)}, make same type       \\
+\CM {\tt pow(x,y,z)}                  \\ {\tt (x**y) \% z}                 \\
+\CM {\tt float("3.14")}               \\ float from string                 \\
+\CM {\tt int("42", base)}             \\ int from string                   \\
+\CM {\tt import math; import cmath}   \\ more math functions               \\
+\CM {\tt import random;}              \\ random number generators          \\
+
+
+\subsection{Sequences}
+\CM {\tt s=l=[1,"bla",[1+2J,1.4],4]}       \\ list creation                            \\
+\CM {\tt s=t=(1,"bla",[1+2J,1.4],4)}       \\ tuple creation                           \\
+\CM {\tt l=list(t); t=tuple(l)}            \\ list/tuple conversion                    \\
+\CM {\tt l=range(1000)}                    \\ list of integers (0-999)                 \\
+\CM {\tt s=xrange(1000)}                   \\ immut. xrange-sequence                   \\
+\CM {\tt i=iter(s); i.next()}              \\ iterator from sequence                   \\
+\CM {\tt s[2][0]}                          \\ get list element {\tt (1+2J)}            \\
+\CM {\tt s[-2][-1]}                        \\ get list element {\tt (1.4)}             \\
+\CM {\tt s1+s1}                            \\ sequence concat                          \\
+\CM {\tt n*s1}                             \\ repeat {\tt s1} {\tt n} times            \\
+\CM {\tt s[i:j]; s[i:]; s[:j]}             \\ slicing ({\tt i} incl., {\tt j} excl.)   \\
+\CM {\tt s[i:j:k]}                         \\ slice with stride {\tt k}                \\
+\CM {\tt s[::2]; s[::-1]}                  \\ every 2nd Element/reverse {\tt s}      \\
+\CM {\tt x in s; x not in s}               \\ is {\tt x} a member of {\tt s}?          \\
+\CM {\tt len(s)}                           \\ number of elements                       \\
+\CM {\tt min(s); max(s)}                   \\ min/max                                  \\
+\CM {\tt l[i:j]=['a','b','c','d']}         \\ replace slice                            \\
+\CM {\tt l[i:i]=['a','b']}                 \\ insert before position {\tt i}           \\
+\CM {\tt l.count(x)}                       \\ number of occurances of {\tt x}          \\
+\CM {\tt l.index(x)}                       \\ first index of {\tt x}, or error         \\
+\CM {\tt l.append(x)}                      \\ append {\tt x} at end of {\tt l}         \\
+\CM {\tt x=l.pop()}                        \\ pop off last element                     \\
+\CM {\tt l.extend(l2)}                     \\ append {\tt l2} at end of {\tt l}        \\
+\CM {\tt l.insert(i,x)}                    \\ instert {\tt x} at pos. {\tt i}          \\
+\CM {\tt l.remove(x)}                      \\ delete first {\tt x}                     \\
+\CM {\tt l.reverse()}                      \\ reverse {\tt l}                          \\
+\CM {\tt l.sort(f)}                        \\ sort using {\tt f} (default {\tt f=cmp}) \\
+\CM {\tt zip(s,t,...)}                     \\ {\tt [(s[0],t[0],...),..]}               \\
+
+\subsection{Dictionary (Mappings)}
+\CM {\tt d={'x':42,'y':3.14,'z':7}}        \\ dict creation                            \\
+\CM {\tt d['x']}                           \\ get entry for {\tt x}                    \\
+\CM {\tt len(d)}                           \\ number of keys                           \\
+\CM {\tt del(d['x'])}                      \\ delete entry from dict                   \\
+\CM {\tt d.copy()}                         \\ create shallow copy                      \\
+\CM {\tt d.has\_key(k)}                    \\ does key exist?                          \\
+\CM {\tt d.items()}                        \\ list of all items                        \\
+\CM {\tt d.keys()}                         \\ list of all keys                         \\
+\CM {\tt d.values()}                       \\ list of all values                       \\
+\CM {\tt i=d.iteritems(); i.next()}        \\ iterator over items                      \\
+\CM {\tt i=d.iterkeys(); i.next()}         \\ iterator over keys                       \\
+\CM {\tt i=d.itervalues(); i.next()}       \\ iterator over values                     \\
+\CM {\tt d.get(k,x)}                       \\ get entry for {\tt k}, or return {\tt x} \\
+\CM {\tt d.clear()}                        \\ remove all items                         \\
+\CM {\tt d.setdefault(k,x)}                \\ return {\tt d[k]} or set {\tt d[k]=x}    \\
+\CM {\tt d.popitem()}                      \\ return and delete an item                \\
+
+
+\subsection{Sets}
+\CM {\tt s=set(s); fs=frozenset(s)}        \\ create set                               \\
+\CM {\tt fs.issubset(t); s<=t}             \\ all {\tt s} in {\tt t}?                  \\
+\CM {\tt fs.issuperset(t); s>=t}           \\ all {\tt t} in {\tt s}?                  \\
+\CM {\tt fs.union(t); s\textbar{}t}        \\ all elements from {\tt s} and {\tt t}    \\
+\CM {\tt fs.intersection(t); s\&t}         \\ elements both in {\tt s} and {\tt t}     \\
+\CM {\tt fs.difference(t); s-t}            \\ all {\tt s} not in {\tt t}               \\
+\CM {\tt fs.symmetric\_difference(t);s\^t} \\ all either {\tt s} or {\tt t}            \\
+\CM {\tt fs.copy()}                        \\ shallow copy of {\tt s}                  \\
+\CM {\tt s.update(t); s\textbar{}=t}       \\ add elements of {\tt t}                  \\
+\CM {\tt s.intersection\_update(t); s\&=t} \\ keep only what is also in {\tt t}        \\
+\CM {\tt s.difference\_update(t); s-=t}    \\ remove elements of {\tt t}               \\
+\CM {\tt s.symmetric\_differ...(t); s\^=t} \\ keep only symm. difference               \\
+\CM {\tt s.add(x)}                         \\ add {\tt x} to {\tt fs}                  \\
+\CM {\tt s.remove(x); fs.discard(x);}      \\ remove {\tt x} (/ with exception)        \\
+\CM {\tt s.pop();}                         \\ return and remove any elem.              \\
+\CM {\tt s.clear();}                       \\ remove all elements                      \\
+
+
+
+\subsection{Strings and Regular Expressions}
+\CM {\tt "bla"; 'hello "world"'}           \\ string (of bytes)                      \\
+\CM {\tt """bla""", '''bla'''}             \\ triple quotes for multiline            \\
+\CM {\tt \bs ~~~ \bs\bs ~~~ \bs{}0}        \\ cont., backslash, null char            \\
+\CM {\tt \bs{}N{id} \bs{}uhhhh \bs{}Uhhhhhhhh}  \\ unicode char                      \\
+\CM {\tt \bs{}xhh \bs{}ooo}                \\ hex, octal byte                        \\
+\CM {\tt u"Ünic\bs{}u00F8de"; u"\bs{}xF8"} \\ unicode string (of chars)         \\
+\CM {\tt r"C:\bs{}new\bs{}text.dat"; ur"\bs\bs{}Ü"}  \\ raw string (unicode)         \\
+\CM {\tt str(3.14); str(42)}               \\ string conversion                      \\
+\CM {\tt "\bs{}\%s-\bs{}\%s-\bs{}\%s" \% (42,3.14,[1,2,3])}   \\ string formatting   \\
+\CM {\tt '\bs{}t'.join(seq)}               \\ join seq.\ with separator          \\
+\CM {\tt s.decode('utf-8')}                \\ latin-1 string to  unicode string      \\
+\CM {\tt u.encode('utf-8')}                \\ unicode string to utf-8  string        \\
+\CM {\tt chr(i), unichr(i)}                \\ char from code point                   \\
+\CM {\tt str(x)}                           \\ string from number/object              \\
+
+{\bf Other String Methods:}
+%=========================
+
+{\it search and replace:} {\tt find(s,b,e), rfind(s,b,e), index(s,b,e), rindex(s,b,e), count(s,b,e), endswith(s,b,e), startswith(s,b,e), replace(o,n,m)};
+{\it formatting:} {\tt capitalize, lower, upper, swapcase, title};
+{\it splitting:} {\tt partition(s), rpartition(s), split(s,m), rsplit(s,m), splitlines(ke)};
+{\it padding:} {\tt center(w,c), ljust(w,c), lstrip(cs), rjust(w,c), rstrip(cs), strip(cs), zfill(w), expandtabs(ts)};
+{\it checking:} {\tt isalnum, isalpha, isdigit, islower, isspace, istitle, isupper};
+{\it String Constants} ({\tt import string}):
+{\tt digits, hexdigits, letters, lowercase, octdigits, printable,
+punctuation, uppercase, whitespace}
+
+{Regexes:} {\tt import re}
+
+\CM {\tt r=re.compile(r'rx',re.ILMSUX)}  \\ comile {\tt 'rx'} as regex                     \\
+\CM {\tt (?P<id>...)}                    \\ named group                                    \\
+\CM {\tt m=r.match(s,b,e)}               \\ full match                                     \\
+\CM {\tt re.match(r'(?iLmsux)rx',s)}     \\ direct regex usage                             \\
+\CM {\tt m=r.search(s,b,e)}              \\ partial match                                  \\
+\CM {\tt l=r.split(s,ms)}                \\ split and return list                          \\
+\CM {\tt l=r.findall(string)}            \\ list of all matched groups                     \\
+\CM {\tt s=r.sub(s,r,c)}                 \\ replace {\tt c} counts of {\tt s} with {\tt r} \\
+\CM {\tt (s,n)=r.subn(s,r,c)}            \\ {\tt n} is number of replacements              \\
+\CM {\tt s=re.escape(s)}                 \\ escape all nonalphanumerics                   \\
+\CM {\tt m.start(g);m.span(g);m.end(g)}  \\ group-match delimiters                         \\
+\CM {\tt m.expand(s)}                    \\ replace {\tt \bs{}1} etc. with matches         \\
+\CM {\tt m.group(g); m.group("name")}    \\ matched group no.~{\tt g}                      \\
+\CM {\tt m.groups()}                     \\ list of groups                                 \\
+\CM {\tt m.groupdict()}                  \\ dict of named groups                           \\
+
+
+
+\section{Basic Syntax}
+
+\CM
+\starttyping
+if expr: statements
+elif expr: statements
+else: statements
+\stoptyping \\
+conditional \\
+
+\CM {\tt if a is b : ...}                \\ object identity \\
+\CM {\tt if a == 1}                      \\ value identity \\
+
+\CM
+\starttyping
+while expr: statements
+else: statements} 
+\stoptyping \\
+while loop \crlf
+run else on normal exit \\
+
+\CM {\tt while True: ... if cond: break} \\ do... while equivalent \\
+
+\CM
+\starttyping
+for target in iter: statements
+else: statements
+\stoptyping \\
+for loop  \\
+
+\CM {\tt for key,value in d.items():...} \\ multiple identifiers \\
+\CM {\tt break, continue}                \\ end loop/jump to next \\
+\CM {\tt print "hello world",}           \\ print without newline \\
+
+\CM
+\starttyping
+[ expr for x in seq lc ]
+lc = for x in seq / if expr
+\stoptyping \\
+list comprehension \crlf
+with lc-clauses \\
+
+\CM {\tt pass}                           \\ empty statement \\
+\CM {\tt def f(params): statements}      \\ function definition \\
+\CM {\tt def f(x, y=0): return x+y}      \\ optional parameter \\
+\CM {\tt def f(*a1, **a2): statements}   \\ additional list of unnamed, dict of named paramters \\
+\CM {\tt def f(): f.variable = 1 ...}    \\ function attribute \\
+\CM {\tt return expression}              \\ return from function \\
+\CM {\tt yield expression}               \\ make function a generator \\
+\CM {\tt f(1,1), f(2), f(y=3, x=4)}      \\ function calls \\
+\CM {\tt global v}                       \\ bind to global variable \\
+
+\CM
+\starttyping
+def make_adder_2(a):
+    def add(b): return a+b
+    return add
+\stoptyping \\
+closure \\
+
+\CM {\tt lambda x: x+a}                  \\ lambda expression               \\
+\CM {\tt compile(str,filename,kind)}     \\ compile {\tt str} into code object \\
+\CM {\tt eval(expr,globals,locals)}      \\ evaluate expression             \\
+\CM {\tt exec code in gldict, lcdict}    \\ compile and execute code        \\
+\CM {\tt execfile(file,globals,locals)}  \\ execute file                    \\
+\CM {\tt raw\_input(prompt)}             \\ input from stdin                \\
+\CM {\tt input(prompt)}                  \\ input and evaluate              \\
+
+
+\section{Object Orientation and Modules}
+\CM {\tt import module as alias}             \\ import module                 \\
+\CM {\tt from module import name1,name2}     \\ load into own namespace \\
+\CM {\tt from \_\_future\_\_ import *}       \\ activate all new features     \\
+\CM {\tt reload module}                      \\ reinitialize module           \\
+\CM {\tt module.\_\_all\_\_}                 \\ exported attributes           \\
+\CM {\tt module.\_\_name\_\_}                \\ module name / {\tt \_\_main\_\_} \\
+\CM {\tt module.\_\_dict\_\_}                \\ module namespace              \\
+\CM {\tt \_\_import\_\_("name",glb,loc,fl)}  \\ import module by name         \\
+
+\CM
+\starttyping
+class name (superclass,...):
+    data = value
+    def method(self,...): ...
+    def \_\_init\_\_(self, x):
+        Super.\_\_init\_\_(self)
+        self.member = x
+    def \_\_del\_\_(self): ...
+\stoptyping \\
+class definition               \crlf
+shared class data              \crlf
+methods                        \crlf
+constructor                    \crlf
+call superclass constructor    \crlf
+per-instance data              \crlf
+destructor \\
+
+\CM {\tt \_\_str\_\_, \_\_len\_\_, \_\_cmp\_\_,\_\_}   \\ some operator overloaders  \\
+\CM {\tt \_\_iter\_\_(self): return self}    \\ use next method for iterator         \\
+\CM {\tt \_\_call\_\_}                       \\ call interceptor                     \\
+\CM {\tt \_\_dict\_\_}                       \\ instance-attribute dictionary        \\
+\CM {\tt \_\_getattr\_\_(self, name), }      \\ get an unknown attribute             \\
+\CM {\tt \_\_setattr\_\_(self, name, value)} \\ set any attribute                    \\
+\CM {\tt callable(object)}                   \\ 1 if callable, 0 otherwise           \\
+\CM {\tt delattr(object, "name")}            \\ delete {\tt name} from object        \\
+\CM {\tt del(object)}                        \\ unreference object/var               \\
+\CM {\tt dir(object)}                        \\ list of attr. in object     \\
+\CM {\tt getattr(object, "name", def)}       \\ get name-attr. from object           \\
+\CM {\tt hasattr(object, "name")}            \\ check if object has attr.            \\
+\CM {\tt hash(object)}                       \\ return hash for object               \\
+\CM {\tt id(object)}                         \\ unique int (mem address)         \\
+\CM {\tt isinstance(object, classOrType)}    \\ check for type                       \\
+\CM {\tt issubclass(class1, class2)}         \\ class2 subclass of class1?           \\
+\CM {\tt iter(object, sentinel)}             \\ return iterator for object           \\
+\CM {\tt locals()}                           \\ dict of local vars of caller         \\
+\CM {\tt repr(object), str(object)}          \\ return string-representation         \\
+\CM {\tt vars(object)}                       \\ return {\tt \_\_dict\_\_}            \\
+\CM {\tt None}                               \\ the NULL  object                     \\
+\CM {\tt if \_\_name\_\_ == "\_\_main\_\_":} \\ make modul executable                \\
+
+
+
+\section{Exception Handling}
+\CM {\tt try: ...}                         \\ Try-block                     \\
+\CM {\tt except ExceptionName:}            \\ catch exception               \\
+\CM
+\starttyping
+except (Ex1, ...), dat:
+    print data
+    raise
+\stoptyping \\
+                                             multiple, with data  \crlf
+                                             exception handling   \crlf
+                                             pass up (re-raise) exception \\
+\CM {\tt else: ...}                      \\ if no exception occured      \\
+\CM {\tt finally: ...}                   \\ in any case                  \\
+\CM {\tt assert expression}              \\ debug assertion \\
+\CM {\tt class MyExcept(Exception): ...} \\ define user exception \\
+\CM {\tt raise MyExcept(data)}           \\ raise user exception \\
+
+
+
+\section{System Interaction}
+
+\CM {\tt sys.path}                         \\ module search path            \\
+\CM {\tt sys.platform}                     \\ operating system              \\
+\CM {\tt sys.stdout, stdin, stderr}        \\ standard input/output/error   \\
+\CM {\tt sys.argv[1:]}                     \\ command line parameters       \\
+\CM {\tt os.system(cmd)}                   \\ system call                   \\
+\CM {\tt os.startfile(f)}                  \\ open file with assoc. program \\
+\CM {\tt os.popen(cmd, r\textbar{}w, bufsize)}  \\ open pipe (file object)  \\
+\CM {\tt os.popen2(cmd, bufsize, b\textbar{}t)} \\ (stdin, stdout) fileobjects   \\
+\CM {\tt os.popen3(cmd, bufsize, b\textbar{}t)} \\ (stdin, stdout,stderr)   \\
+\CM {\tt os.environ['VAR']; os.putenv[]}   \\ read/write environment vars   \\
+\CM {\tt glob.glob('*.txt')}               \\ wildcard search               \\
+
+{\bf Filesystem Operations}
+
+{\it os module:} {\tt access, chdir, chmod, chroot, getcwd, getenv, listdir,
+mkdir, remove, unlink, removedirs, rename, rmdir, pipe, ...}
+
+{\it shutil module:}  {\tt copy, copy2, copyfile, copyfileobj, copymode,
+copystat, copytree, rmtree}
+
+{\it os.path module:} {\tt abspath, altsep, basename, commonprefix, curdir,
+defpath, dirname, exists, expanduser, expandvar, extsep, get[acm]time,
+getsize, isabs, isdir, isfile, islink, ismout, join, lexists, normcase,
+normpath, pardir, pathsep, realpath, samefile, sameopenfile, samestat, sep,
+split, splitdrive, splitext, stat, walk}
+
+{\it command line argument parsing:}
+\starttyping
+restlist, opts = \
+  getopt.getopt(sys.argv[l:],\
+    "s:oh",\
+    ["spam=", "other", "help"])
+for o, a in opts:
+    if o in ("-s", "--lol"): spam = a
+    if o in ("-h", "--help"): show_help()
+\stoptyping
+
+\section{Input/Output}
+\CM {\tt f=codecs.open(if,"rb","utf-8")} \\ open file with encoding \\
+\CM {\tt file=open(infilename, "wb")}    \\ open file without encoding \\
+\CM {\tt codecs.EncodedFile(...)}        \\ wrap file into encoding \\
+\CM {\tt r, w, a, r+}                    \\ read/write/append/random \\
+\CM {\tt rb, wb, ab, r+b}                \\ modes w/o eol conversion \\
+\CM {\tt file.read(N)}                   \\ {\tt N} bytes ( entire file if no {\tt N} ) \\
+\CM {\tt file.readline()}                \\ the next linestring \\
+\CM {\tt file.readlines()}               \\ list of linestring \\
+\CM {\tt file.write(string)}             \\ write string to file \\
+\CM {\tt file.writelines(list)}          \\ write list of linestrings \\
+\CM {\tt file.close()}                   \\ close file \\
+\CM {\tt file.tell()}                    \\ current file position \\
+\CM {\tt file.seek(offset, whence)}      \\ jump to file position \\
+\CM {\tt os.truncate(size)}              \\ limit output to size \\
+\CM {\tt os.tmpfile()}                   \\ open anon temporary file \\
+\CM {\tt pickle.dump(x, file)}           \\ make object persistent \\
+\CM {\tt x = pickle.load(file)}          \\ load object from file \\
+
+\section{Standard Library (almost complete)}
+
+\setupalign[nothyphenated,stretch,tolerant]
+
+{\bf String Services:}
+{\tt string, re, struct, difflib, StringIO, cStringIO, textwrap, codecs,
+unicodedata, stringprep, fpformat}
+
+{\bf File/Directory Access:}
+{\tt os.path, fileinput, stat, statvfs, filecmp, tempfile, glob, fnmatch,
+linecache, shutil, dircache}
+
+{\bf Generic OS services:}
+{\tt os, time, optparse, getopt, logging, getpass, curses, platform, errno,
+ctypes}
+
+{\bf Optional OS services:}
+{\tt select, thread, threading, dummy\_thread, dummy\_threading, mmap, readline,
+rlcompleter}
+
+{\bf Data Types:}
+{\tt datetime, calendar, collections, heapq, bisect, array, sets, sched, mutex,
+Queue, weakref, UserDict, UserList, UserString, types, new, copy, pprint, repr}
+
+{\bf Numeric and Math Modules:}
+{\tt math, cmath, decimal, random, itertools, functools, operator}
+
+{\bf Internet Data Handling:}
+{\tt email, mailcap, mailbox, mhlib, mimetools, mimetypes, MimeWriter, mimify,
+multifile, rfc822, base64, binhex, binascii, quopri, uu}
+
+{\bf Structured Markup Processing Tools:}
+{\tt HTMLParser, sgmllib, htmllib, htmlentitydefs, xml.parsers.expat,
+xml.dom.*, xml.sax.*, xml.etree.ElementTree}
+
+{\bf File Formats:}
+{\tt csv, ConfigParser, robotparser, netrc, xdrlib}
+
+{\bf Crypto Services:}
+{\tt hashlib, hmac, md5, sha}
+
+{\bf Compression:}
+{\tt zlib, gzip, bz2, zipfile, tarfile}
+
+{\bf Persistence:}
+{\tt pickle, cPickle, copy\_reg, shelve, marshal, anydbm, whichdb, dbm, gdbm,
+dbhash, bsddb, dumbdbm, sqlite3}
+
+{\bf Unix specific:}
+{\tt posix, pwd, spwd, grp, crypt, dl, termios, tty, pty, fcntl, posixfile,
+resource, nis, syslog, commands}
+
+{\bf IPC/Networking:}
+{\tt subprocess, socket, signal, popen2, asyncore, asynchat}
+
+{\bf Internet:}
+{\tt webbrowser, cgi, scitb, wsgiref, urllib, httplib, ftplib, imaplib,
+nntplib, ...lib, smtpd, uuid, urlparse, SocketServer, ...Server,, cookielib,
+Cookie, xmlrpclib}
+
+{\bf Multimedia:}
+{\tt audioop, imageop, aifc, sunau, wave, chunk, colorsys, rgbimg, imghdr,
+sndhdr, ossaudiodev}
+
+{\bf Tk:}
+{\tt Tkinter, Tix, ScrolledText, turtle}
+
+{\bf Internationalization:}
+{\tt gettext, locale}
+
+{\bf Program Frameworks:}
+{\tt cmd, shlex}
+
+{\bf Development:}
+{\tt pydoc, doctest, unittest, test}
+
+{\bf Runtime:}
+{\tt sys, warnings, contextlib, atexit, traceback, qc, inspect, site, user,
+fpectl}
+
+{\bf Custom Interpreters:}
+{\tt code, codeop}
+
+{\bf Restricted Execution:}
+{\tt rexec, Bastion}
+
+{\bf Importing:}
+{\tt imp, zipimport, pkgutil, modulefinder, runpy}
+
+{\bf Language:}
+{\tt parser, symbol, token, keyword, tokenize, tabnanny, pyclbr, py\_compile,
+compileall, dis, pickletools, distutils}
+
+{\bf Windows:}
+{\tt msilib, msvcrt, \_winreq, winsound}
+
+{\bf Misc:}
+{\tt formatter}
+
+
+
+\stopcolumns
+
+\stopproduct
