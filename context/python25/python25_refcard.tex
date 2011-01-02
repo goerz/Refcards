@@ -37,7 +37,7 @@ license, visit \from[creativecommons].
 \CM {\tt float("3.14")}               \\ float from string                 \\
 \CM {\tt int("42", base)}             \\ int from string                   \\
 \CM {\tt import math; import cmath}   \\ more math functions               \\
-\CM {\tt import random;}              \\ random number generators          \\
+\CM {\tt import random}               \\ random number generators          \\
 
 
 \subsection{Sequences}
@@ -45,7 +45,7 @@ license, visit \from[creativecommons].
 \CM {\tt s=t=(1,"bla",[1+2J,1.4],4)}       \\ tuple creation                           \\
 \CM {\tt l=list(t); t=tuple(l)}            \\ list/tuple conversion                    \\
 \CM {\tt l=range(1000)}                    \\ list of integers (0-999)                 \\
-\CM {\tt s=xrange(1000)}                   \\ immut. xrange-sequence                   \\
+\CM {\tt s2=xrange(1000)}                  \\ immut. xrange-sequence                   \\
 \CM {\tt i=iter(s); i.next()}              \\ iterator from sequence                   \\
 \CM {\tt s[2][0]}                          \\ get list element {\tt (1+2J)}            \\
 \CM {\tt s[-2][-1]}                        \\ get list element {\tt (1.4)}             \\
@@ -159,55 +159,30 @@ punctuation, uppercase, whitespace}
 
 \section{Basic Syntax}
 
-\CM
-\starttyping
-if expr: statements
-elif expr: statements
-else: statements
-\stoptyping \\
-conditional \\
-
-\CM {\tt if a is b : ...}                \\ object identity \\
-\CM {\tt if a == 1}                      \\ value identity \\
-
-\CM
-\starttyping
-while expr: statements
-else: statements} 
-\stoptyping \\
-while loop \crlf
-run else on normal exit \\
-
-\CM {\tt while True: ... if cond: break} \\ do... while equivalent \\
-
-\CM
-\starttyping
-for target in iter: statements
-else: statements
-\stoptyping \\
-for loop  \\
-
-\CM {\tt for key,value in d.items():...} \\ multiple identifiers \\
-\CM {\tt break, continue}                \\ end loop/jump to next \\
-\CM {\tt print "hello world",}           \\ print without newline \\
-
-\CM
-\starttyping
-[ expr for x in seq lc ]
-lc = for x in seq / if expr
-\stoptyping \\
-list comprehension \crlf
-with lc-clauses \\
-
-\CM {\tt pass}                           \\ empty statement \\
-\CM {\tt def f(params): statements}      \\ function definition \\
-\CM {\tt def f(x, y=0): return x+y}      \\ optional parameter \\
-\CM {\tt def f(*a1, **a2): statements}   \\ additional list of unnamed, dict of named paramters \\
-\CM {\tt def f(): f.variable = 1 ...}    \\ function attribute \\
-\CM {\tt return expression}              \\ return from function \\
-\CM {\tt yield expression}               \\ make function a generator \\
-\CM {\tt f(1,1), f(2), f(y=3, x=4)}      \\ function calls \\
-\CM {\tt global v}                       \\ bind to global variable \\
+\CM {\tt if {\it expr}: {\it statements}}          \\ conditional                 \\
+\CM {\tt elif {\it expr}: {\it statements}}        \\ else if                     \\
+\CM {\tt else: {\it statements}}                   \\ conditional else            \\
+\CM {\tt if a is b : ...}                          \\ object identity             \\
+\CM {\tt if a == 1}                                \\ value identity              \\
+\CM {\tt while {\it expr}: {\it statements}}       \\ while loop                  \\
+\CM {\tt else: {\it statements}}                   \\ while-else (on normal exit) \\
+\CM {\tt while True: ... if {\it cond}: break}     \\ do\dots while equivalent    \\
+\CM {\tt for item in {\it iter}: {\it statements}} \\ for-loop                    \\
+\CM {\tt else: {\it statements}}                   \\ for-else (when items exhausted) \\
+\CM {\tt for key,value in d.items():...}           \\ multiple identifiers        \\
+\CM {\tt break, continue}                          \\ end loop/jump to next       \\
+\CM {\tt print "hello world",}                     \\ print without newline       \\
+\CM {\tt [ {\it expr} for x in {\it seq} {\it lc} ]}           \\ list comprehension \\
+\CM {\tt {\it lc}: for x in {\it seq}} or {\tt if {\it expr}}  \\ with lc-clauses    \\
+\CM {\tt pass}                                     \\ empty statement \\
+\CM {\tt def f(params): {\it statements}}          \\ function definition \\
+\CM {\tt def f(x, y=0): return x+y}                \\ optional parameter \\
+\CM {\tt def f(*a1, **a2): {\it statements}}       \\ additional list of unnamed, dict of named paramters \\
+\CM {\tt def f(): f.variable = 1 ...}              \\ function attribute \\
+\CM {\tt return {\it expression}}                  \\ return from function \\
+\CM {\tt yield {\it expression}}                   \\ make function a generator \\
+\CM {\tt f(1,1), f(2), f(y=3, x=4)}                \\ function calls \\
+\CM {\tt global v}                                 \\ bind to global variable \\
 
 \CM
 \starttyping
@@ -241,10 +216,10 @@ closure \\
 class name (superclass,...):
     data = value
     def method(self,...): ...
-    def \_\_init\_\_(self, x):
-        Super.\_\_init\_\_(self)
+    def __init__(self, x):
+        Super.__init__(self)
         self.member = x
-    def \_\_del\_\_(self): ...
+    def __del__(self): ...
 \stoptyping \\
 class definition               \crlf
 shared class data              \crlf
