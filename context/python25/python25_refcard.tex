@@ -290,6 +290,7 @@ except (Ex1, ...), dat:
 
 {\bf Filesystem Operations}
 
+\startalignment[flushleft, nothyphenated]
 {\it os module:} {\tt access, chdir, chmod, chroot, getcwd, getenv, listdir,
 mkdir, remove, unlink, removedirs, rename, rmdir, pipe, ...}
 
@@ -301,6 +302,7 @@ defpath, dirname, exists, expanduser, expandvar, extsep, get[acm]time,
 getsize, isabs, isdir, isfile, islink, ismout, join, lexists, normcase,
 normpath, pardir, pathsep, realpath, samefile, sameopenfile, samestat, sep,
 split, splitdrive, splitext, stat, walk}
+\stopalignment
 
 {\it command line argument parsing:}
 \starttyping
@@ -332,10 +334,10 @@ for o, a in opts:
 \CM {\tt pickle.dump(x, file)}           \\ make object persistent \\
 \CM {\tt x = pickle.load(file)}          \\ load object from file \\
 
+
 \section{Standard Library (almost complete)}
 
-\setupalign[nothyphenated,stretch,tolerant]
-
+\startalignment[flushleft, nothyphenated]
 {\bf String Services:}
 {\tt string, re, struct, difflib, StringIO, cStringIO, textwrap, codecs,
 unicodedata, stringprep, fpformat}
@@ -430,6 +432,7 @@ compileall, dis, pickletools, distutils}
 
 {\bf Misc:}
 {\tt formatter}
+\stopalignment
 
 
 
