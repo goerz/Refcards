@@ -30,7 +30,9 @@
 \def\rapos{\char125}
 \def\lapos{\char123}
 \def\bs{\char92}
-\def\leader{\char92}
+%\def\leader{\char92}
+\def\leader{<Leader>}
+\def\locleader{<LocalLeader>}
 \def\ileader{\ctrl L}
 \def\tilde{\char126}
 \def\lbracket{[}
@@ -75,17 +77,27 @@
 \title{VIM PERSONAL MAPPINGS}
 
 \vskip 0.4cm
-(CC) 2010 Michael Goerz ({\tt www.michaelgoerz.net})
-\vskip -0.2cm
+(CC) 2012 Michael Goerz ({\tt www.michaelgoerz.net})
+\vskip 0.4cm
+
+{\tt \leader}: {\tt ,} \hskip1cm {\tt \locleader}: {\tt \bs{}}
+
+\vskip -0.3cm
 
 \section{Misc}
 \cm{n:}{\leader{}t}{Show or hide Taglist}
 \dcm{n:}{\leader d}{i:}{\ileader d}{Insert date stamp}
+\dcm{n,v:}{\leader p}{i:}{\ileader p}{toggle paste}
 \cm{n,v:}{\leader{}s}{Send to b:sendToProgramName}
 \cm{i:}{\ctrl J}{Jump to next placeholder}
-\cm{}{:lipsum 1 par 5 words}{add lorem ipsum text}
+\cm{n:}{\leader{}w}{Write current file}
 \cm{}{:SuperTabHelp}{Set behavior of Tab key}
 \cm{}{:Bclose}{Delete current buffer w/o closing window}
+\cm{}{:German}{activate spell checking in German}
+\cm{}{:English}{activate spell checking in English}
+\cm{}{:ManalFolding}{Activate folding, {\tt fdm=manual}}
+\cm{}{:Errors}{Open syntastic list of errors}
+\cm{}{:SyntasticCheck}{Manyally cause syntastic check}
 
 \section{Snippets}
 \cm{}{:ListSnippets}{List snippets for filetype}
@@ -94,12 +106,14 @@
 \dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
 \dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
 
+\vskip -0.1cm
 \section{Filters}
 \cm{}{:ListFilters}{List filters for filetype}
 \cm{}{:'a,'b Filter}{Filter range}
 \cm{}{:Filter}{Filter entire file}
-\dcm{n:}{\leader{}f}{v:}{\ileader f}{{Filter entire file}}
+\dcm{n:}{\leader{}f}{v:}{\ileader f}{{Filter entire file/selection}}
 
+\vskip -0.1cm
 \section{Surround}
 \cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
 \cm{n:}{ysiw"}{Wrap current word in quotes}
@@ -118,19 +132,17 @@
 \cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
 
 
-\vskip 0.1cm
 \section{NerdCommenter}
-\cm{n:}{,cc}{comment line or selection}
-\cm{n:}{,cn}{comment line or selection (nested)}
-\cm{n:}{,c\$}{comment to end of line}
-\cm{n,v:}{,c<space>}{toggle line or selection}
-\cm{n,v:}{,ci}{toggle individual lines} 
-\cm{n,v:}{,cs}{``sexy'' commenting}
-\cm{n,v:}{,cu}{uncomment line or selection}
+\cm{n:}{\leader{}cc}{comment line or selection}
+\cm{n:}{\leader{}cn}{comment line or selection (nested)}
+\cm{n:}{\leader{}c\$}{comment to end of line}
+\cm{n,v:}{\leader{}c<space>}{toggle line or selection}
+\cm{n,v:}{\leader{}ci}{toggle individual lines} 
+\cm{n,v:}{\leader{}cs}{``sexy'' commenting}
+\cm{n,v:}{\leader{}cu}{uncomment line or selection}
 \cm{i:}{\ctrl{}c}{Insert comment}
 
 
-\vskip 0.2cm
 \section{Git}
 \cm{}{:Git [args]}{Run git}
 \cm{}{:GitAdd [afile]}{Stage changes}
@@ -166,16 +178,17 @@
 
 
 \section{\TeX}
-\cm{}{:LatexFold}{Fold up LaTeX (fmt=manual)}
-\dcm{n,v:}{\leader e}{i:}{\ileader e}{insert or wrap in {\tt \bs{}emph}}
-\dcm{n,v:}{\leader o}{i:}{\ileader o}{insert or wrap in {\tt \bs{}op}}
-\cm{i:}{\ileader k}{insert {\tt \bs{}ket}}
+\cm{}{:LatexFold}{Fold up LaTeX (fdm=manual)}
+\dcm{n,v:}{\locleader e}{i:}{\ileader e}{insert or wrap in {\tt \bs{}emph}}
+\dcm{n,v:}{\locleader o}{i:}{\ileader o}{insert or wrap in {\tt \bs{}Op}}
+\cm{i:}{\ileader k}{insert {\tt \bs{}Ket}}
 \cm{i:}{\ileader 2}{insert {\tt \bs{}sqrt}}
 \cm{i:}{\ileader v}{insert {\tt \bs{}vec}}
-\dcm{n:}{\leader i}{i:}{\ileader i}{insert environment or math function}
-\cm{i:}{\ileader e}{{\tt \bs{}text}}
+\cm{i:}{\ileader h}{insert {\tt \bs{}hat}}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{insert env/math function}
+\cm{i:}{\ileader t}{{\tt \bs{}text}}
 \cm{}{:let b:leftquote = '"`'}{German left quotes}
-\cm{}{:let b:rightquote="\leader{}"'"}{German right quotes}
+\cm{}{:let b:rightquote="\bs{}"'"}{German right quotes}
 \cm{}{:setlocal makeprg=\dots}{change compiler}
 \cm{i:}{`a \dots`o}{$\alpha \dots \omega$}
 \cm{i:}{`c}{$\chi$}
@@ -224,31 +237,33 @@
 \cm{i:}{\ctrl F}{$\to$}
 
 \section{C}
-\cm{n,v:}{\leader{}cc}{Open C reference TOC}
-\cm{n,v:}{\leader{}cr}{View C reference for keyword}
-\cm{n,v:}{\leader{}cw}{Ask for keyword, view C reference}
+\cm{n,v:}{\locleader{}cc}{Open reference TOC}
+\cm{n,v:}{\locleader{}cr}{View reference for keyword}
+\cm{n,v:}{\locleader{}cw}{View reference (ask keyword)}
 
-\vskip 0.1cm
-\section{XML/HTML}
-\dcm{n:}{\bs i}{i:}{\ileader i}{Insert Tag / Convert word to tag}
-\cm{}{:\%tidy -w 80}{Tidy html fragment with linewidth 80}
-
-\vskip 0.1cm
-\section{Fortran}
-\dcm{n:}{\leader i}{i:}{\ileader i}{Complete Fortran construct}
-\cm{}{:FortranFold}{Fold up Fortran code (fmt=manual)}
-
-\vskip 0.1cm
-\section{Python}
-\cm{n:}{\leader{}pw \or \leader\bs{}pW}{View Python reference for keyword}
-\cm{n,v:}{K}{Look up documentation for word}
-\cm{}{:Pydoc {\it name}}{Look up name in documentation}
-\cm{}{:make}{Run through pylint}
 
 \vskip 0.1cm
 \section{Perl}
 \cm{n:}{K}{Look up 'perldoc -f' for word}
 \cm{}{:make}{Check for syntax errors}
+
+
+\vskip 0.1cm
+\section{Python}
+\cm{n:}{\locleader{}pw}{View reference for keyword}
+\cm{n,v:}{K}{Look up documentation for word}
+\cm{}{:Pydoc {\it name}}{Look up name in documentation}
+\cm{}{:make}{Run through pylint}
+
+
+\vskip 0.1cm
+\section{Fortran}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{Complete Fortran construct}
+\cm{}{:FortranFold}{Fold up Fortran code (fdm=manual)}
+
+\vskip 0.1cm
+\section{XML/HTML}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{Insert/convert to tag}
 
 % Footer
 \vfill \hrule\smallskip
@@ -256,7 +271,7 @@
   Attribution-Noncommercial-Share Alike 3.0 License.
   To view a copy of this license, visit
   http://creativecommons.org/licenses/by-nc-sa/ \\---
-  (CC) {\oldstyle 2010} by Michael Goerz.
+  (CC) {\oldstyle 2012} by Michael Goerz.
 % Ending
 \supereject
 \if L\lr \else\null\vfill\eject\fi
