@@ -95,16 +95,18 @@
 \cm{}{:Bclose}{Delete current buffer w/o closing window}
 \cm{}{:German}{activate spell checking in German}
 \cm{}{:English}{activate spell checking in English}
-\cm{}{:ManalFolding}{Activate folding, {\tt fdm=manual}}
+\cm{}{:ManualFolding}{Activate folding, {\tt fdm=manual}}
 \cm{}{:Errors}{Open syntastic list of errors}
-\cm{}{:SyntasticCheck}{Manyally cause syntastic check}
+\cm{}{:SyntasticCheck}{Manually cause syntastic check}
+\cm{n:}{\leader{}u}{Toggle Gundo window}
+\cm{}{:GundoToggle}{Toggle Gundo window}
 
-\section{Snippets}
-\cm{}{:ListSnippets}{List snippets for filetype}
-\cm{}{:ApppendSnippets}{Append snippet after cursor}
-\cm{}{:InsertSnippets}{Insert snippet before cursor}
-\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
-\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
+
+\section{Sudo}
+\cm{}{:e sudo:/etc/passwd}{Edit file with sudo perms}
+\cm{}{:w sudo:/etc/passwd}{Write file with sudo perms}
+\cm{}{:w sudo:\%}{Write current file with sudo permissions}
+
 
 \vskip -0.1cm
 \section{Filters}
@@ -112,6 +114,18 @@
 \cm{}{:'a,'b Filter}{Filter range}
 \cm{}{:Filter}{Filter entire file}
 \dcm{n:}{\leader{}f}{v:}{\ileader f}{{Filter entire file/selection}}
+
+
+\section{NerdCommenter}
+\cm{n:}{\leader{}cc}{comment line or selection}
+\cm{n:}{\leader{}cn}{comment line or selection (nested)}
+\cm{n:}{\leader{}c\$}{comment to end of line}
+\cm{n,v:}{\leader{}c<space>}{toggle line or selection}
+\cm{n,v:}{\leader{}ci}{toggle individual lines} 
+\cm{n,v:}{\leader{}cs}{``sexy'' commenting}
+\cm{n,v:}{\leader{}cu}{uncomment line or selection}
+\cm{i:}{\ctrl{}c}{Insert comment}
+
 
 \vskip -0.1cm
 \section{Surround}
@@ -130,17 +144,6 @@
 \cm{v:}{s\it{r}}{Wrap selection in {\it r}}
 \cm{v:}{s"}{Wrap selection in quotes}
 \cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
-
-
-\section{NerdCommenter}
-\cm{n:}{\leader{}cc}{comment line or selection}
-\cm{n:}{\leader{}cn}{comment line or selection (nested)}
-\cm{n:}{\leader{}c\$}{comment to end of line}
-\cm{n,v:}{\leader{}c<space>}{toggle line or selection}
-\cm{n,v:}{\leader{}ci}{toggle individual lines} 
-\cm{n,v:}{\leader{}cs}{``sexy'' commenting}
-\cm{n,v:}{\leader{}cu}{uncomment line or selection}
-\cm{i:}{\ctrl{}c}{Insert comment}
 
 
 \section{Git}
@@ -171,10 +174,12 @@
 \cm{n:}{\leader gA}{GitCommit --amend}
 
 
-\section{Sudo}
-\cm{}{:e sudo:/etc/passwd}{Edit file with sudo perms}
-\cm{}{:w sudo:/etc/passwd}{Write file with sudo perms}
-\cm{}{:w sudo:\%}{Write current file with sudo permissions}
+\section{Snippets}
+\cm{}{:ListSnippets}{List snippets for filetype}
+\cm{}{:ApppendSnippets}{Append snippet after cursor}
+\cm{}{:InsertSnippets}{Insert snippet before cursor}
+\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
+\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
 
 
 \section{\TeX}
@@ -226,7 +231,6 @@
 \cm{i:}{`:}{{\tt \bs cdots}}
 \cm{i:}{`\tilde}{{\tt \bs tilde\lapos\rapos}}
 \cm{i:}{`;}{{\tt \bs dot\lapos\rapos}}
-\cm{i:}{`$\hat{~}$}{{\tt \bs op\lapos\rapos}}
 \cm{i:}{`\_}{{\tt \bs bar\lapos\rapos}}
 \cm{i:}{`\ctrl E}{{\tt \bs exp()}}
 \cm{i:}{`\ctrl L}{{\tt \bs lim\_\lapos\rapos}}
@@ -236,19 +240,20 @@
 \cm{i:}{<Right>}{$\longrightarrow$}
 \cm{i:}{\ctrl F}{$\to$}
 
+\vskip0.2cm
 \section{C}
 \cm{n,v:}{\locleader{}cc}{Open reference TOC}
 \cm{n,v:}{\locleader{}cr}{View reference for keyword}
 \cm{n,v:}{\locleader{}cw}{View reference (ask keyword)}
 
 
-\vskip 0.1cm
+\vskip0.1cm
 \section{Perl}
 \cm{n:}{K}{Look up 'perldoc -f' for word}
 \cm{}{:make}{Check for syntax errors}
 
 
-\vskip 0.1cm
+\vskip0.2cm
 \section{Python}
 \cm{n:}{\locleader{}pw}{View reference for keyword}
 \cm{n,v:}{K}{Look up documentation for word}
@@ -256,12 +261,10 @@
 \cm{}{:make}{Run through pylint}
 
 
-\vskip 0.1cm
 \section{Fortran}
-\dcm{n:}{\locleader i}{i:}{\ileader i}{Complete Fortran construct}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{Complete construct}
 \cm{}{:FortranFold}{Fold up Fortran code (fdm=manual)}
 
-\vskip 0.1cm
 \section{XML/HTML}
 \dcm{n:}{\locleader i}{i:}{\ileader i}{Insert/convert to tag}
 
