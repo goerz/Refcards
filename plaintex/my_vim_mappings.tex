@@ -121,65 +121,30 @@
 \cm{n:}{\leader{}cn}{comment line or selection (nested)}
 \cm{n:}{\leader{}c\$}{comment to end of line}
 \cm{n,v:}{\leader{}c<space>}{toggle line or selection}
-\cm{n,v:}{\leader{}ci}{toggle individual lines} 
+\cm{n,v:}{\leader{}ci}{toggle individual lines}
 \cm{n,v:}{\leader{}cs}{``sexy'' commenting}
 \cm{n,v:}{\leader{}cu}{uncomment line or selection}
 \cm{i:}{\ctrl{}c}{Insert comment}
 
 
-\vskip -0.1cm
-\section{Surround}
-\cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
-\cm{n:}{ysiw"}{Wrap current word in quotes}
-\cm{n:}{ys{\it m}l}{Wrap {\it m} in latex environment}
-\cm{n:}{ys{\it m}t}{Wrap {\it m} in html tag}
-\cm{n:}{ys{\it m}f}{Wrap {\it m} in function}
-\cm{n:}{ys\it{m}l}{Wrap {\it m} in latex environment}
-\cm{n:}{yS\it{m}\it{r}}{Wrap movement {\it m} in {\it r}, new lines, indent}
-\cm{n:}{yss\it{r}}{Wrap current line in {\it r}}
-\cm{n:}{ySS\it{r}}{Wrap current line in {\it r}, new lines, indent}
-\cm{n:}{cs\it{t}\it{r}}{Replace target surrounding {\it t} with{\it r}}
-\cm{n:}{cs"'}{Replace double quotes with single quotes}
-\cm{n:}{ds\it{t}}{Delete target surrounding}
-\cm{v:}{s\it{r}}{Wrap selection in {\it r}}
-\cm{v:}{s"}{Wrap selection in quotes}
-\cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
-
-
 \section{Git}
 \cm{}{:Git [args]}{Run git}
-\cm{}{:GitAdd [afile]}{Stage changes}
-\cm{}{:GitBlame}{Show blame}
-\cm{}{:GitCheckout [args]}{Checkout branch}
-\cm{}{:GitCommit [args]}{Commit}
-\cm{}{:GitDiff [args]}{Show diff}
-\cm{}{:GitLog [args]}{Show commit logs}
-\cm{}{:GitPull [args]}{Fetch and merge}
-\cm{}{:GitPullRebase [args]}{GitPull --rebase}
-\cm{}{:GitPush [args]}{Push to remote}
-\cm{}{:GitStatus}{Working tree status}
-\cm{}{:GitGrep [args]}{Perform git grep}
-\cm{}{:GitVimDiffMerge [args]}{vimdiff for merge}
-\cm{}{:GitVimDiffMergeDone}{Mark conflicts resolved}
-\cm{n:}{\leader gd}{GitDiff}
-\cm{n:}{\leader gD}{GitDiff --cached}
-\cm{n:}{\leader gs}{GitStatus}
-\cm{n:}{\leader gl}{GitLog}
-\cm{n:}{\leader gL}{Git log --all --graph --decorate}
-\cm{n:}{\leader ga}{GitAdd}
-\cm{n:}{\leader gc}{GitCommit}
-\cm{n:}{\leader gC}{GitCommit -a}
-\cm{n:}{\leader gp}{GitPull}
-\cm{n:}{\leader gb}{GitBlame}
-\cm{n:}{\leader gA}{GitCommit --amend}
+\cm{n:}{\leader gd}{git diff}
+\cm{n:}{\leader gD}{git diff --cached}
+\cm{n:}{\leader gs}{git status}
+\cm{n:}{\leader gl}{git log}
+\cm{n:}{\leader gL}{git log --all --graph --decorate}
+\cm{n:}{\leader ga}{git add}
+\cm{n:}{\leader gc}{git commit}
+\cm{n:}{\leader gb}{git blame}
 
 
 \section{Snippets}
 \cm{}{:ListSnippets}{List snippets for filetype}
-\cm{}{:ApppendSnippets}{Append snippet after cursor}
-\cm{}{:InsertSnippets}{Insert snippet before cursor}
-\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
-\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
+\cm{}{:ApppendSnippet}{Append snippet after cursor}
+\cm{}{:InsertSnippet}{Insert snippet before cursor}
+\dcm{n:}{\leader{}ni}{i:}{\ileader ni}{{\tt :InsertSnippet}}
+\dcm{n:}{\leader{}na}{i:}{\ileader na}{{\tt :AppendSnippet}}
 
 
 \section{\TeX}
@@ -267,6 +232,9 @@
 
 \section{XML/HTML}
 \dcm{n:}{\locleader i}{i:}{\ileader i}{Insert/convert to tag}
+
+\section{Misc}
+\cm{n,v:}{++}{sum/avg numbers ({\tt:set nosmd})}
 
 % Footer
 \vfill \hrule\smallskip
