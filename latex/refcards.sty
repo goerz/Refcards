@@ -1,0 +1,70 @@
+\ProvidesPackage{refcards}[2014/04/01 Refcards]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General font definitions
+% font definition from 2009/10/30 v1.6 Latin Modern Fonts
+
+\renewcommand{\rmdefault}{lmr}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+
+% use lighttt
+\let\lmtt@use@light@as@normal\@empty
+
+\SetSymbolFont{operators}   {normal}{OT1}{lmr} {m}{n}
+\SetSymbolFont{letters}     {normal}{OML}{lmm} {m}{it}
+\SetSymbolFont{symbols}     {normal}{OMS}{lmsy}{m}{n}
+\SetSymbolFont{largesymbols}{normal}{OMX}{lmex}{m}{n}
+\SetSymbolFont{operators}   {bold}  {OT1}{lmr} {bx}{n}
+\SetSymbolFont{letters}     {bold}  {OML}{lmm} {b}{it}
+\SetSymbolFont{symbols}     {bold}  {OMS}{lmsy}{b}{n}
+\SetSymbolFont{largesymbols}{bold}  {OMX}{lmex}{m}{n}
+
+\SetMathAlphabet{\mathbf}{normal}{OT1}{lmr}{bx}{n}
+\SetMathAlphabet{\mathsf}{normal}{OT1}{lmss}{m}{n}
+\SetMathAlphabet{\mathit}{normal}{OT1}{lmr}{m}{it}
+\SetMathAlphabet{\mathtt}{normal}{OT1}{lmtt}{m}{n}
+\SetMathAlphabet{\mathbf}{bold}  {OT1}{lmr}{bx}{n}
+\SetMathAlphabet{\mathsf}{bold}  {OT1}{lmss}{bx}{n}
+\SetMathAlphabet{\mathit}{bold}  {OT1}{lmr}{bx}{it}
+\SetMathAlphabet{\mathtt}{bold}  {OT1}{lmtt}{m}{n}
+
+\def\mathsterling{\mathit{\mathchar"70BF}}
+
+\newcommand{\itt}[1]{{\fontshape{sl}\selectfont{}#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tabular with fixed tabcolumn width
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting (font for sections, etc.)
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1ex}{0pt}
+\titleformat{\section}
+  {\normalfont\sffamily\large\bfseries}
+  {\thesection}{1em}{}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titleformat{\subsection}
+  {\normalfont\sffamily\bfseries}
+  {\thesubsection}{1em}{}
+
+\renewcommand{\title}[1]{{\normalfont\sffamily\huge\bfseries #1}\vspace{1ex}}
+
+\parindent=0pt
+\parskip=0pt
+\topsep=0pt
+\partopsep=0pt
+\pagestyle{empty} % no page number
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tight multicol formatting
+\usepackage{multicol}
+\setlength{\tabcolsep}{0pt} % horizontal padding in tables
+
+\usepackage[none]{hyphenat}
+
+\endinput
