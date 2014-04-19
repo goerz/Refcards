@@ -1,0 +1,499 @@
+\documentclass[8pt]{extarticle} % extarticle: font sizes < 10
+
+\usepackage[
+      pdftitle={Modern Fortran Reference Card},
+      pdfauthor={Michael Goerz},
+      pdfkeywords={Fortran 90, Fortran 95, Fortran 2003, Fortran 2008, Quick Reference, Refcard, Cheat Sheet},
+      pdfsubject={Quick Reference Card for Fortran 90/95/2003/2008}
+]{hyperref}
+
+\usepackage{refcards}
+
+\usepackage{vmargin}
+% A4
+\setpapersize[landscape]{A4}
+\setmarginsrb%
+{1.5cm}  % left
+{1.0cm}  % top
+{1.5cm}  % right
+{1.0cm}  % bottom
+{0ex}    % header height
+{0ex}    % header separation
+{0ex}    % footer height
+{0ex}    % footser separation
+\setlength\columnsep{7mm}
+
+% Letter
+%\setpapersize[landscape]{USletter}
+%\setmarginsrb%
+%{1.1cm}  % left
+%{1.1cm}  % top
+%{0.9cm}  % right
+%{0.9cm}  % bottom
+%{0ex}    % header height
+%{0ex}    % header separation
+%{0ex}    % footer height
+%{0ex}    % footser separation
+%\setlength\columnsep{4mm}
+
+\begin{document}
+\raggedright
+
+\begin{multicols}{3}
+
+\title{Modern Fortran Reference Card}
+
+{\small
+(c) 2014 Michael Goerz \url{<goerz@physik.uni-kassel.de>}\\
+\url{http://www.michaelgoerz.net}
+
+This work is licensed under the Creative Commons Attribution-Noncommercial-Share
+Alike 3.0 License. To view a copy of this license, visit
+\url{http://creativecommons.org/licenses/by-nc-sa/}
+}
+
+\vspace*{1pt}
+
+\section{Data Types}
+
+  \vspace{1ex}
+  \subsection{Simple Data Types}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt integer(\itt{specs})\itt{[,attrs]}~::~i         & integer                      \\
+  \end{tabular}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt real(\itt{specs})\itt{[,attrs]}~::~r           & real number                   \\
+  \tt complex(\itt{specs})\itt{[,attrs]}~::~z        & complex number                \\
+  \tt logical(\itt{specs})\itt{[,attrs]}~::~b        & boolean variable              \\
+  \tt character(\itt{specs})\itt{[,attrs]}~::~s      & string                        \\
+  \tt real, parameter~::\ c = 2.9e1                  & constant declaration          \\
+  \tt real(idp)~::~d;~d~=~1.0d0                      & double precision real         \\
+  \tt s2=s(2:5);~s2=s(:5);~s2=s(5:)                  & substring extraction
+  \end{tabular}
+
+  \textbf{attributes:} {\tt parameter, pointer, target, allocatable, \\
+  dimension, public, private, intent, optional, save, external, intrinsic}
+
+  \textbf{specs:}  {\tt kind=\dots}, \textbf{for character:} {\tt len=\dots}
+
+  \vspace*{1ex}
+  double precision: {\tt integer,~parameter~::~idp~=~kind(1.0d0)}
+
+  \vspace*{1ex}
+  \subsection{Derived Data Types}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt type person\_t                       & define  derived data type \\
+  \tt ~~character(len=10)~::~name          & \\
+  \tt ~~integer~::~age                     & \\
+  \tt end~type~person\_t                   & \\
+  \tt type group\_t                        & \\
+  \tt ~~type(person),~allocatable~\&       & \textit{F2008}: allocatable \dots  \\
+  \tt ~~\&~::~members(:)                   & \dots components             \\
+  \tt end type group\_t                    & \\
+  \tt name~=~group\%members(1)\%name       & access structure component
+  \end{tabular}
+
+  \vspace*{1ex}
+  \subsection{Arrays and Matrices}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt real~::~v(5)                  & explicit array, index 1..5 \\
+  \tt real~::~a(-1:1,3)             & 2D array, index -1..1, 1..3 \\
+  \tt real,~allocatable~::~a(:)     & ``deferred shape'' array \\
+  \tt a=(/1.2,b(2:6,:),3.5/)        & array constructor \\
+  \tt v~=~1/v~+~a(1:5,5)            & array expression \\
+  \tt allocate(a(5),b(2:4),stat=e)  & array allocation \\
+  \tt dealloate(a,b)                & array de-allocation
+  \end{tabular}
+
+  \vspace*{1ex}
+  \subsection{Pointers}
+  \vspace*{-10pt}\hspace{2cm} (avoid!)
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt real,~pointer~::~p              & declare pointer \\
+  \tt real,~pointer~::~a(:)           & ``deferred shape'' array \\
+  \tt real,~target~::~r               & define target \\
+  \tt p~=>~r                          & set pointer p to r \\
+  \tt associated(p,~\itt{[target]})   & pointer assoc.\ with target? \\
+  \tt nullify(p)                      & associate pointer with NUL
+  \end{tabular}
+
+  \vspace*{1ex}
+  \subsection{Operators}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt .lt.~.le.~.eq.~.ne.~.gt.~.ge.  & relational operators \\
+  \tt ~<~~~~<=~~~==~~~/=~~~>~~~~>=   & relational op aliases \\
+  \tt .not.\ .and.\ .or.\ .eqv.\ .neqv.   & logical operators \\
+  \tt x**(-y)                             & exponentiation \\
+  \tt 'AB'//'CD'                          & string concatenation
+  \end{tabular}
+
+  \section{Control Constructs}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{if}~(\dots)~\itt{action}             & if statement                \\
+  \tt \textbf{if}~(\dots)~then                     & if-construct                \\
+  \tt ~~\itt{block}                                &                             \\
+  \tt else~if~(\dots)~then;~\itt{block}            &                             \\
+  \tt else;~\itt{block}                            &                             \\
+  \tt end~if                                       &                             \\
+  \tt \textbf{select case}~(number)                & select-construct            \\
+  \tt ~~case~(:0)                                  & everything up to 0 (incl.)  \\
+  \tt ~~~~\itt{block}                              &                             \\
+  \tt ~~case~(1:2); \itt{block}                    & number is 1 or 2            \\
+  \tt ~~case~(3); \itt{block}                      & number is 3                 \\
+  \tt ~~case~(4:); \itt{block}                     & everything up from 4 (incl.)\\
+  \tt ~~case~default; \itt{block}                  & fall-through case           \\
+  \tt end~select                                   &                             \\
+  \tt outer:~\textbf{do}                           & controlled do-loop          \\
+  \tt ~~inner:~do~i=from,to,step                   & counter do-loop             \\
+  \tt ~~~~if~(\dots)~cycle inner                   & next iteration              \\
+  \tt ~~~~if~(\dots)~exit outer                    & exit from named loop        \\
+  \tt ~~end~do~inner                               &                             \\
+  \tt end~do~outer                                 &                             \\
+  \tt \textbf{do while}~(\dots);\itt{block};end do     & do-while loop           \\
+  \end{tabular}
+
+  \section{Program Structure}
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{program}~myprog             &  main program                      \\
+  \tt ~~use~foo,~lname~=>~usename         &  used module, with rename          \\
+  \tt ~~use~foo2,~only:~\itt{[only-list]} &  selective use                     \\
+  \tt ~~implicit~none                     &  require variable declaration      \\
+  \tt ~~interface;\dots;end interface     &  explicit interfaces               \\
+  \tt ~~\itt{specification-statements}    &  var/type declarations etc.        \\
+  \tt ~~\itt{exec-statements}             &  statements                        \\
+  \tt ~~stop~'message'                    &  terminate program                 \\
+  \tt contains                            &                                    \\
+  \tt ~~\itt{internal-subprograms}        &  subroutines, functions            \\
+  \tt end~program~myprog                  &
+  \end{tabular}
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{module}~foo               &     module                        \\
+  \tt ~~use~bar                         &     used module                   \\
+  \tt ~~public~::~f1,~f2,~\dots         &     list public subroutines       \\
+  \tt ~~private                         &     make private by default       \\
+  \tt ~~interface;\dots;end interface   &     explicit interfaces           \\
+  \tt ~~\itt{specification~statements}  &     var/type declarations, etc.   \\
+  \tt contains                          &                                   \\
+  \tt ~~\itt{internal-subprograms}      &     ``module subprograms''           \\
+  \tt end~module~foo                    &
+  \end{tabular}
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{function}~f(a,g) result r     & function definition            \\
+  \tt ~~integer,~intent(in)~::~a            & input parameter                \\
+  \tt ~~real~::~r                           & return type                    \\
+  \tt ~~interface                           & explicit interface block       \\
+  \tt ~~~~real~function~g(x)                & dummy var {\tt g} is function  \\
+  \tt ~~~~~~real,~intent(in)~::~x           &                                \\
+  \tt ~~~~end~function~g                    &                                \\
+  \tt ~~end~interface                       &                                \\
+  \tt ~~r = g(a)                            & function call                  \\
+  \tt end~function~f                        &
+  \end{tabular}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt recursive~function f(x)~\dots & allow~recursion \\
+  \tt elemental~function f(x)~\dots & work on args of any rank
+  \end{tabular}
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{subroutine}~s(n,i,j,a,b,c,d,r,e)   &  subroutine definition        \\
+  \tt ~~integer,~intent(in)~::~n                 &  read-only dummy variable     \\
+  \tt ~~integer,~intent(inout)~::~i              &  read-write dummy variable    \\
+  \tt ~~integer,~intent(out)~::~j                &  write-only dummy variable    \\
+  \tt ~~real(idp)~::~a(n)                        &  explicit shape dummy array   \\
+  \tt ~~real(idp) ::~b(2:,:)                     &  assumed shape dummy array    \\
+  \tt ~~real(idp) ::~c(10,*)                     &  assumed size dummy array     \\
+  \tt ~~real,~allocatable~::~d(:)                &  deferred shape (\textit{F2008}) \\
+  \tt ~~character(len=*)~::~r                    &  assumed length string        \\
+  \tt ~~integer,~optional~::~e                   &  optional named argument      \\
+  \tt ~~integer~::~m~=~1                         &  same as {\tt integer,save::m=1} \\
+  \tt ~~if~(present(e))~...                      &  presence check               \\
+  \tt ~~return                                   &  forced exit                  \\
+  \tt end~subroutine~s                           &
+  \end{tabular}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt call~s(1,i,j,a,b,c,d,e=1,r="s")     & subroutine call
+  \end{tabular}
+  Notes:\\
+  \textbullet{} explicit shape allows for reshaping trick (no copies!):\\
+  \hspace*{1em}you can pass array of any dim/shape, but matching size.\\
+  \textbullet{} assumed shape ignores lbounds/ubounds of actual argument \\
+  \textbullet{} deferred shape keeps lbounds/ubounds of actual argument \\
+  \textbullet{} subroutines/functions may be declared as {\tt pure} (no side effects)
+
+  \vspace{1ex}
+  \textbf{Use of interfaces:} \\
+  \textbullet{} \textit{explicit interface} for external or dummy procedures\\
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt interface                      &  \\
+  \tt ~~\itt{interface~body}         &  sub/function specs                 \\
+  \tt end~interface                  &                                     \\
+  \end{tabular}
+  \textbullet{} \textit{generic/operator/conversion interface} \\
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt interface~\itt{generic-spec}   &  \\
+  \tt ~~module~procedure~\itt{list}  &  internal subs/functions            \\
+  \tt end~interface                  &                                     \\
+  \end{tabular}\vspace*{0.5ex}
+
+  \itt{generic-spec} can be any of the following:\vspace*{0.5ex}
+
+  1. ``generic name'', for overloading routines \\
+  2. operator name ({\tt + -}, etc) for defining ops on derived types \\
+  \hspace*{1em} You can also define new operators names, e.g.\ {\tt .cross.}\\
+  \hspace*{1em} Procedures must be one- or two-argument functions.\\
+  3. {\tt assignment (=)} for defining assignments for derived types. \\
+  \hspace*{1em} Procedures must be two-argument subroutines.
+
+  \vspace{1ex}
+  The \itt{generic-spec} interfaces should be used inside of a module;
+  otherwise, use full sub/function specs instead of module procedure list.
+
+\section{Intrinsic Procedures}
+
+  \subsection{Transfer and Conversion Functions}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt abs(a)                                      & absolute value \\
+  \tt aimag(z)                                    & imag.\ part of complex z \\
+  \tt aint(x,~kind),~anint(x,~kind)               & to whole number real  \\
+  \tt dble(a)                                     & to double precision \\
+  \tt cmplx(x,~y,~kind)                           & create {\tt x +} $i$ {\tt y} \\
+  \tt cmplx(x,~kind=idp)                          & real to dp complex\\
+  \tt int(a,~kind),~nint(a,~kind)                 & to int (truncated/rounded) \\
+  \tt real(x,~kind)                               & to real (i.e.\ real part) \\
+  \tt char(i,~kind),~achar(i)                     & char of ASCII code \\
+  \tt ichar(c),~iachar(c)                         & ASCII code of character \\
+  \tt logical(l,~kind)                            & change kind of logical {\tt l}  \\
+  \tt ibits(i,~pos,~len)                          & extract sequence of bits \\
+  \tt transfer(source,~mold,~size)                & reinterpret data
+  \end{tabular}
+
+  \subsection{Arrays and Matrices}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt allocated(a)                              & check if array is allocated \\
+  \tt lbound(a,dim)                             & lowest index in array \\
+  \tt ubound(a,dim)                             & highest index in array \\
+  \tt shape(a)                                  & shape (dimensions) of array \\
+  \tt size(array,dim)                           & extent of array along dim \\
+  \tt all(mask,dim)                             & all {\tt .true.} in logical array?\\
+  \tt any(mask,dim)                             & any {\tt .true.} in logical array?\\
+  \tt count(mask,dim)                           & number of true elements \\
+  \tt maxval(a,d,m)                             & max value in masked array \\
+  \tt minval(a,d,m)                             & min value in masked array \\
+  \tt product(a,dim,mask)                       & product along masked dim \\
+  \tt sum(array,dim,mask)                       & sum along masked dim \\
+  \tt merge(tsrc,fsrc,mask)                     & combine arrays as mask says \\
+  \tt pack(array,mask,vector)                   & packs masked array into vect. \\
+  \tt unpack(vect,mask,field)                   & unpack {\tt vect} into masked field \\
+  \tt spread(source,dim,n)                      & extend source array into dim. \\
+  \tt reshape(src,shp,pad,ord)                  & make array of shape from src \\
+  \tt cshift(a,s,d)                             & circular shift \\
+  \tt eoshift(a,s,b,d)                          & ``end-off'' shift \\
+  \tt transpose(matrix)                         & transpose a matrix \\
+  \tt maxloc(a,mask)                            & find pos of max in array \\
+  \tt minloc(a,mask)                            & find pos of min in array
+  \end{tabular}
+
+  \vspace{1ex}
+  \subsection{Computation Functions}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt ceiling(a),~floor(a)                        & to next higher/lower int \\
+  \tt conjg(z)                                    & complex conjugate \\
+  \tt dim(x,y)                                    & max(x-y, 0) \\
+  \tt max(a1,a2,..),~min(a1,..)              & maximum/minimum \\
+  \tt dprod(a,b)                                  & dp product of  sp a, b \\
+  \tt mod(a,p)                                    & a mod p \\
+  \tt modulo(a,p)                                 & modulo with sign of a/p \\
+  \tt sign(a,b)                                   & make sign of a = sign of b \\
+  \tt matmul(m1,m2)                              & matrix multiplication \\
+  \tt dot\_product(a,b)                           & dot product of vectors
+  \end{tabular}
+  \textbf{more:} {\tt sin, cos, tan, acos, asin, atan, atan2, \\
+  sinh, cosh, tanh, exp, log, log10, sqrt}
+
+  \vspace{1ex}
+  \subsection{Numeric Inquiry and Manipulation Functions}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt kind(x)                                     & kind-parameter of variable {\tt x} \\
+  \tt digits(x)                                   & significant digits in model \\
+  \tt bit\_size(i)                                & no.\ of bits for int in model \\
+  \tt epsilon(x)                                  & small pos. number in model \\
+  \tt huge(x)                                     & largest number in model \\
+  \tt minexponent(x)                              & smallest exponent in model \\
+  \tt maxexponent(x)                              & largest exponent in model \\
+  \tt precision(x)                                & decimal precision for reals in \\
+  \tt radix(x)                                    & base of the model \\
+  \tt range(x)                                    & dec. exponent range in model \\
+  \tt tiny(x)                                     & smallest positive number \\
+  \tt exponent(x)                                 & exponent part  of x in model \\
+  \tt fraction(x)                                 & fractional part of x in model \\
+  \tt nearest(x)                                  & nearest machine number \\
+  \tt rrspacing(x)                                & reciprocal of relative spacing \\
+  \tt scale(x,i)                                  & \tt x b**i \\
+  \tt set\_exponent(x,i)                          & \tt x b**(i-e) \\
+  \tt spacing(x)                                  & absolute spacing of model
+  \end{tabular}
+
+
+
+  \subsection{String Functions}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt lge(s1,s2),~lgt,~lle,~llt                   & string comparison \\
+  \tt adjustl(s), adjustr(s)                      & left- or right-justify string \\
+  \tt index(s,sub,from\_back)                     & find substr. in string (or 0) \\
+  \tt trim(s)                                     & s without trailing blanks \\
+  \tt len\_trim(s)                                & length of {\tt trim(s)} \\
+  \tt scan(s,setd,from\_back)                     & search for any char in set \\
+  \tt verify(s,set,from\_back)                    & check for presence of set-chars  \\
+  \tt len(string)                                 & length of string \\
+  \tt repeat(string,n)                            & concat  n copies of string
+  \end{tabular}
+
+
+  \subsection{Bit Functions}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt btest(i,pos)                              & test bit of integer value \\
+  \tt iand(i,j),ieor(i,j),ior(i,j)              & and, xor, or of bit in 2 integers \\
+  \tt ibclr(i,pos),ibset(i,pos)                 & set bit of integer to 0 / 1 \\
+  \tt ishft(i,sh),ishftc(i,sh,s)                & shift bits in i \\
+  \tt not(i)                                    & bit-reverse integer
+  \end{tabular}
+
+  \subsection{Misc Intrinsic Subroutines}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt date\_and\_time(d,t,z,v)                 & put current time in {\tt d,t,z,v} \\
+  \tt mvbits(f,fpos,len,t,tpos)                & copy bits between int vars \\
+  \tt random\_number(harvest)                  & fill harvest randomly \\
+  \tt random\_seed(size,put,get)               & restart/query random generator \\
+  \tt system\_clock(c,cr,cm)                   & get processor clock info
+  \end{tabular}
+
+
+\section{Input/Output}
+
+  \subsection{Format Statements}
+  \begin{tabular}{L{0.5\linewidth} L{0.5\linewidth}}
+  \tt fmt~=~"(F10.3,A,ES14.7)"                           & format string \\
+  \tt I\itt{w}~I\itt{w}.\itt{m}                          & integer form \\
+  \tt B\itt{w}.\itt{m} O\itt{w}.\itt{m} Z\itt{w}.\itt{m} & binary, octal, hex integer form \\
+  \tt F\itt{w}.\itt{d}                                   & decimal form real format \\
+  \tt E\itt{w}.\itt{d}                                   & exponential form ({\tt 0.12E-11}) \\
+  \tt E\itt{w}.\itt{d}E\itt{e}                           & specified exponent length \\
+  \tt ES\itt{w}.\itt{d}~ES\itt{w}.\itt{d}E\itt{e}        & scientific form ({\tt 1.2E-10}) \\
+  \tt EN\itt{w}.\itt{d}~EN\itt{w}.\itt{d}E\itt{e}        & engineer. form ({\tt 123.4E-12}) \\
+  \tt G\itt{w}.\itt{d}                                   & generalized form \\
+  \tt G\itt{w}.\itt{d}E\itt{e}                           & generalized exponent form \\
+  \tt L\itt{w}                                           & logical format ({\tt T, F}) \\
+  \tt A~A\itt{w}                                         & characters format \\
+  \tt nX                                                 & horizontal positioning (skip) \\
+  \tt T\itt{c} TL\itt{c} TR\itt{c}                       & move (absolute, left, right) \\
+  \tt \itt{r}/                                           & vert. positioning (skip lines) \\
+  \tt \itt{r}(...)                                       & grouping / repetition \\
+  \tt :                                                  & format scanning control \\
+  \tt S~SP~SS                                            & sign control \\
+  \tt BN~BZ                                              & blank control (blanks as zeros)
+  \end{tabular}
+
+  \vspace{1ex}
+  \itt{w} full length,
+  \itt{m} minimum digits,
+  \itt{d} dec.\ places,
+  \itt{e} exponent length,
+  \itt{n} positions to skip,
+  \itt{c} positions to move,
+  \itt{r} repetitions
+
+  \vspace{1ex}
+  \subsection{Argument Processing / OS Interaction}
+  \begin{verbatim}
+n = command_argument_count()
+call get_command_argument(2, value) ! get 2nd arg
+call get_environment_variable(name,             &
+&    value, length, status, trim_name) ! optional
+call execute_command_line(command,              &
+&    wait, exitstat, cmdstat, cmdmsg)  ! optional
+  \end{verbatim}
+
+  \vspace{-2ex}
+  These are part of \textit{F2003}/\textit{F2008}. Older Fortran compilers might
+  have vendor extensions: {\tt iargc, getarg, getenv, system}
+
+  \subsection{Reading and Writing to Files}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt print~'(i10)',~2                            & print to stdout with format \\
+  \tt print~*,~"Hello~World"                      & list-directed I/O (stdout)\\
+  \tt write(*,*)~"Hello~World"                    & list-directed I/O (stdout)\\
+  \tt write(unit,~fmt,~spec)~list                 & write list to unit \\
+  \tt read(unit,~fmt,~spec)~list                  & read list from unit \\
+  \tt open(unit,~specifiers)                      & open file \\
+  \tt close(unit,~specifiers)                     & close file \\
+  \tt inquire(unit,~spec)                         & inquiry by unit \\
+  \tt inquire(file=filename,~spec)                & inquiry by filename \\
+  \tt inquire(iolength=iol)~outlist               & inquiry by output item list \\
+  \tt backspace(unit,~spec)                       & go back one record \\
+  \tt endfile(unit,~spec)                         & write eof record \\
+  \tt rewind(unit,~spec)                          & jump to beginning of file
+  \end{tabular}
+
+
+  \subsection{I/O Specifiers}
+  \vspace*{-10pt}\hspace{2.5cm} ({\tt open} statement)
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt iostat=error                                & save int error code to {\tt error}\\
+  \tt err=label                                   & label to jump to on error \\
+  \tt file='filename'                             & name of file to open \\
+  \tt status='old'~'new'~'replace'                & status of input file \\
+  \tt ~~~~~~~'scratch'~'unknown'                  &  \\
+  \tt access='sequential'~'direct'                & access method \\
+  \tt form='formatted'~'unformatted'              & formatted/unformatted I/O \\
+  \tt recl=integer                                & length of record \\
+  \tt blank='null'~'zero'                         & ignore blanks/treat as 0 \\
+  \tt position='asis' 'rewind'                    & position, if sequential I/O \\
+  \tt ~~~~~~~~~'append'                           &  \\
+  \tt action='read'~'write'                       & read/write mode \\
+  \tt ~~~~~~~'readwrite'                          &  \\
+  \tt delim='quote'~'apostrophe'~                 & delimiter for char constants \\
+  \tt ~~~~~~'none'                                &  \\
+  \tt pad='yes' 'no'                              & pad with blanks \\
+  \end{tabular}
+  \textbf{close-specifiers:} {\tt iostat, err, status='keep' 'delete'}\\
+  \textbf{inquire-specifiers:} {\tt access, action, blank, delim, direct,
+    exist, form, formatted, iostat, name, named, nextrec, number, opened, pad,
+    position, read, readwrite, recl, sequential, unformatted, write, iolength}\\
+  \textbf{backspace-,  endfile-, rewind-specifiers:} {\tt iostat, err}
+
+  \vspace{1ex}
+  \subsection{Data Transfer Specifiers}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt iostat=error                                & save int error code to {\tt error}\\
+  \tt advance='yes'~'no'                          & new line? \\
+  \tt err=label                                   & label to jump to on error \\
+  \tt end=label                                   & label to jump to on EOF\\
+  \tt eor=label                                   & label for end of  record \\
+  \tt rec=integer                                 & record number to read/write \\
+  \tt size=integer-variable                       & number of characters read
+  \end{tabular}
+
+\vspace*{3ex}
+\vfill
+
+For a complete reference, see: \\
+$\Rightarrow$
+Adams, Brainerd, Martin, Smith, Wagener,\\
+\hspace*{1.2em} \textit{Fortran 90 Handbook}, Intertext Publications, 1992. \\
+There are also editions for Fortran 95, and Fortran 2003. \\
+For Fortran 2008 features, please consult: \\
+$\Rightarrow$
+Reid, \textit{The new features of Fortran 2008}.\\
+\hspace*{1.2em} ACM Fortran Forum 27, 8 (2008).\\
+$\Rightarrow$
+Szymanski. Mistakes in Fortran that might surprise you:\\
+\hspace*{1.2em} \url{http://t.co/SPa0Y5uB}
+
+
+\end{multicols}
+\end{document}
