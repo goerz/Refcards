@@ -183,7 +183,7 @@ Alike 3.0 License. To view a copy of this license, visit
 
   \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
   \tt \textbf{function}~f(a,g) result r     & function definition            \\
-  \tt ~~integer,~intent(in)~::~a            & input parameter                \\
+  \tt ~~real,~intent(in)~::~a               & input parameter                \\
   \tt ~~real~::~r                           & return type                    \\
   \tt ~~interface                           & explicit interface block       \\
   \tt ~~~~real~function~g(x)                & dummy var {\tt g} is function  \\
@@ -208,7 +208,7 @@ Alike 3.0 License. To view a copy of this license, visit
   \tt ~~real(idp) ::~c(10,*)                     &  assumed size dummy array     \\
   \tt ~~real,~allocatable~::~d(:)                &  deferred shape (\textit{F2008}) \\
   \tt ~~character(len=*)~::~r                    &  assumed length string        \\
-  \tt ~~integer,~optional~::~e                   &  optional named argument      \\
+  \tt ~~integer,~optional~::~e                   &  optional dummy variable      \\
   \tt ~~integer~::~m~=~1                         &  same as {\tt integer,save::m=1} \\
   \tt ~~if~(present(e))~...                      &  presence check               \\
   \tt ~~return                                   &  forced exit                  \\
@@ -423,7 +423,7 @@ call execute_command_line(command,              &
 
   \subsection{Reading and Writing to Files}
   \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
-  \tt print~'(i10)',~2                            & print to stdout with format \\
+  \tt print~'(I10)',~2                            & print to stdout with format \\
   \tt print~*,~"Hello~World"                      & list-directed I/O (stdout)\\
   \tt write(*,*)~"Hello~World"                    & list-directed I/O (stdout)\\
   \tt write(unit,~fmt,~spec)~list                 & write list to unit \\
