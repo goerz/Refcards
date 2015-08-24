@@ -1,0 +1,88 @@
+\documentclass[8pt]{extarticle} % extarticle: font sizes < 10
+
+\usepackage[
+      pdftitle={Sympy Reference Card},
+      pdfauthor={Michael Goerz},
+      pdfkeywords={Python, Sympy, Computer Algebra, Quick Reference, Refcard, Cheat Sheet},
+      pdfsubject={Quick Reference Card for the Sympy Computer Algebra Python Package}
+]{hyperref}
+
+\usepackage{refcards}
+
+\usepackage{vmargin}
+% A4
+\setpapersize[landscape]{A4}
+\setmarginsrb%
+{1.5cm}  % left
+{1.0cm}  % top
+{1.5cm}  % right
+{1.0cm}  % bottom
+{0ex}    % header height
+{0ex}    % header separation
+{0ex}    % footer height
+{0ex}    % footser separation
+\setlength\columnsep{7mm}
+
+% Letter
+%\setpapersize[landscape]{USletter}
+%\setmarginsrb%
+%{1.1cm}  % left
+%{1.1cm}  % top
+%{0.9cm}  % right
+%{0.9cm}  % bottom
+%{0ex}    % header height
+%{0ex}    % header separation
+%{0ex}    % footer height
+%{0ex}    % footser separation
+%\setlength\columnsep{4mm}
+
+\begin{document}
+\raggedright
+
+\begin{multicols}{3}
+
+\title{Sympy Reference Card}
+
+{\small
+(c) 2015 Michael Goerz \url{<goerz@physik.uni-kassel.de>}\\
+\url{http://www.michaelgoerz.net}
+
+This work is licensed under the Creative Commons Attribution-Noncommercial-Share
+Alike 3.0 License. To view a copy of this license, visit
+\url{http://creativecommons.org/licenses/by-nc-sa/}
+}
+
+\vspace*{1pt}
+
+\section{Initialization}
+
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  {\tt import sympy as sp}  & import {\tt sympy package} \\
+  {\tt sp.init\_printing()} & activate best printing \\
+  {\tt sp.init\_session()} & interactive calculator session\\
+  \end{tabular}
+
+\section{Symbol Declarations}
+
+  \vspace{1ex}
+  {\tt from sympy import symbols, Symbol}
+  \begin{tabular}{L{0.65\linewidth} L{0.35\linewidth}}
+  \tt x~=~Symbol('x',real=True)                    & real number                  \\
+  \tt y,z~=~symbols('y z',real=True)               & multiple defs                \\
+  \tt psi,chi~=~symbols(('\bs{}psi','\bs{}chi'))   & latex names                  \\
+  \tt symbols('x:z')                               & \tt x, y, z                  \\
+  \tt A~=~sp.Matrix([[1,x],[y,1]])                 & matrix                       \\
+  \tt f~=~symbols('f',cls=sp.Function)             & function                     \\
+  \end{tabular}
+
+\section{Substitution and Rewriting}
+
+  \begin{tabular}{L{0.65\linewidth} L{0.35\linewidth}}
+  \verb|e.subs([(a,1.0),(b,0)])|               & plug in numbers              \\
+  \end{tabular}
+
+\vfill
+\clearpage % remove when enough material for 3 columns
+
+\end{multicols}
+\end{document}
