@@ -1,0 +1,16 @@
+\documentclass{article} % for A4 size paper
+\usepackage[a4paper,margin=8mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\hypersetup{%
+  unicode=true,
+  pdfpagelabels=true,
+  pdftitle={Conda cheat sheet},
+  pdfauthor={Continuum Analytics},
+}
+
+\begin{document}
+\thispagestyle{empty}
+\includepdf[pages={1-2},nup=1x2,landscape=true,noautoscale,height=194mm]{conda.pdf}
+\end{document}
