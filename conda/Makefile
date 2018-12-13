@@ -16,8 +16,8 @@ clean:
 	rm -f conda-letter.out
 	rm -f conda-letter.log
 	rm -f conda-letter.aux
-	rm -f conda-cheatsheet.pdf
 
 distclean: clean
 	rm -f conda-a4.pdf
 	rm -f conda-letter.pdf
+	rm -f conda-cheatsheet.pdf
