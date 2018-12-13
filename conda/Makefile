@@ -21,3 +21,5 @@ distclean: clean
 	rm -f conda-a4.pdf
 	rm -f conda-letter.pdf
 	rm -f conda-cheatsheet.pdf
+
+.PHONY: all clean distclean

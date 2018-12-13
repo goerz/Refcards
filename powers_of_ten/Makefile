@@ -8,3 +8,5 @@ clean:
 
 distclean: clean
 	rm -f powers_of_ten.pdf
+
+.PHONY: all clean distclean

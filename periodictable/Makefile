@@ -25,3 +25,5 @@ distclean: clean
 	rm -f periodictable-a4.pdf
 	rm -f periodictable-letter.tex
 	rm -f periodictable-letter.pdf
+
+.PHONY: all clean distclean

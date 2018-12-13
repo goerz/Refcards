@@ -6,3 +6,5 @@ clean:
 
 distclean: clean
 	rm -f vimlatexqrc.pdf
+
+.PHONY: all clean distclean

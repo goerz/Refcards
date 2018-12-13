@@ -6,3 +6,5 @@ clean:
 
 distclean: clean
 	rm -f vimqrc.pdf
+
+.PHONY: all clean distclean

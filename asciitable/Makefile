@@ -21,3 +21,5 @@ clean:
 distclean: clean
 	rm -f ascii_letter.tex
 	rm -f *.pdf
+
+.PHONY: all clean distclean

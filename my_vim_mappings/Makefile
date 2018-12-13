@@ -6,3 +6,5 @@ clean:
 
 distclean: clean
 	rm -f my_vim_mappings.pdf
+
+.PHONY: all clean distclean

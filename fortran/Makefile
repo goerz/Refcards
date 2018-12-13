@@ -19,3 +19,5 @@ clean:
 distclean: clean
 	rm -f fortran_refcard_letter.tex
 	rm -f *.pdf
+
+.PHONY: all clean distclean
