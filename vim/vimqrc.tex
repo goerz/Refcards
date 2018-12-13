@@ -9,7 +9,13 @@
 \pdfpageheight=21cm
 \pdfpagewidth=29.7cm
 
-\pdfinfo { 
+% suppress all hyphenation
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\pdfinfo {
 /Title    (Vim Quick Reference Card)
 /Author   (Michael Goerz)
 /Subject  (Vim Text Editor)
@@ -354,7 +360,7 @@ $m$ is movement; leave out for visual mode commands \\
 \cm{:set cuc } {show cursor column visually}
 \cm{ga }{show A{\smallrm SCII} value of character under cursor}
 \cm{:mkview $[f]$ :loadview $[f]$ }{save/load configuration}
-\cm{:set ff=dos } {convert file to dos eol format} 
+\cm{:set ff=dos } {convert file to dos eol format}
 \cm{:e ++ff=unix } {reopen file in unix eol format}
 \cm{:write ++enc=utf-8}{Write file in utf-8}
 \cm{:set hlsearch } {highlight searches}
@@ -366,7 +372,7 @@ $m$ is movement; leave out for visual mode commands \\
 {\smallrm This card may be freely distributed under
 the terms of the GNU general public licence ---
 Copyright \copyright\ {\oldstyle 2010} by Michael Goerz.
-{\smalltt http://www.physik.fu-berlin.de/\tild{goerz/}}. Based on original by
+{\smalltt https://michaelgoerz.net}. Based on original by
 Laurent Gr\'egoire  ({\smalltt http://tnerual.eriogerg.free.fr/})}
 % Ending
 \supereject
