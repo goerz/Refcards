@@ -1,0 +1,52 @@
+--- fortran_refcard.tex	2018-12-12 19:51:46.000000000 -0500
++++ fortran_refcard_letter.tex	2018-12-13 12:55:24.000000000 -0500
+@@ -11,30 +11,30 @@
+ 
+ \usepackage{vmargin}
+ % A4
+-\setpapersize[landscape]{A4}
+-\setmarginsrb%
+-{1.5cm}  % left
+-{1.0cm}  % top
+-{1.5cm}  % right
+-{1.0cm}  % bottom
+-{0ex}    % header height
+-{0ex}    % header separation
+-{0ex}    % footer height
+-{0ex}    % footser separation
+-\setlength\columnsep{7mm}
+-
+-% Letter
+-%\setpapersize[landscape]{USletter}
++%\setpapersize[landscape]{A4}
+ %\setmarginsrb%
+-%{1.1cm}  % left
+-%{1.1cm}  % top
+-%{0.9cm}  % right
+-%{0.9cm}  % bottom
++%{1.5cm}  % left
++%{1.0cm}  % top
++%{1.5cm}  % right
++%{1.0cm}  % bottom
+ %{0ex}    % header height
+ %{0ex}    % header separation
+ %{0ex}    % footer height
+ %{0ex}    % footser separation
+-%\setlength\columnsep{4mm}
++%\setlength\columnsep{7mm}
++
++% Letter
++\setpapersize[landscape]{USletter}
++\setmarginsrb%
++{1.1cm}  % left
++{1.1cm}  % top
++{0.9cm}  % right
++{0.9cm}  % bottom
++{0ex}    % header height
++{0ex}    % header separation
++{0ex}    % footer height
++{0ex}    % footser separation
++\setlength\columnsep{4mm}
+ 
+ \begin{document}
+ \raggedright

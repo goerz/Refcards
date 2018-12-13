@@ -1,4 +1,9 @@
 /fortran_refcard.aux
 /fortran_refcard.log
 /fortran_refcard.out
-/fortran_refcard.pdf
+/fortran_refcard_a4.pdf
+/fortran_refcard_letter.aux
+/fortran_refcard_letter.log
+/fortran_refcard_letter.out
+/fortran_refcard_letter.pdf
+/fortran_refcard_letter.tex
