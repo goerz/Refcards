@@ -1,0 +1,13 @@
+--- ascii.tex	2018-12-13 13:11:58.000000000 -0500
++++ ascii_letter.tex	2018-12-13 13:20:03.000000000 -0500
+@@ -7,8 +7,8 @@
+ 
+ % Don't ask me why getting a page in landscape is so inconsistent and messy.
+ 
+-\documentclass[a4paper, landscape, 10pt]{article} % for A4 size paper
+-%\documentclass[letter, landscape, 10pt]{article} % for letter size paper
++%\documentclass[a4paper, landscape, 10pt]{article} % for A4 size paper
++\documentclass[letter, landscape, 10pt]{article} % for letter size paper
+ 
+ % without using the hyperref package, the result is not in landscape for me
+ \usepackage[

@@ -1,10 +1,10 @@
+% For very old releases of texlive,
 % pdflatex has a problem with the 'ascii' font that I'm using. It seems to work
 % with xetex:
 %  xelatex -output-driver="xdvipdfmx -q -E -p a4 -l" ascii.tex
 % for A4 paper, or
 %  xelatex -papersize=letter ascii.tex
 % for letter sized paper
-
 % Don't ask me why getting a page in landscape is so inconsistent and messy.
 
 \documentclass[a4paper, landscape, 10pt]{article} % for A4 size paper
@@ -26,7 +26,7 @@
 
 \usepackage[T1]{fontenc}
 
-\TPGrid[10mm,5mm]{26}{20} 
+\TPGrid[10mm,5mm]{26}{20}
 
 \parindent=0pt
 \parskip=0.5\baselineskip
@@ -45,21 +45,21 @@
 {\tt
   \begin{tabular*}{\textwidth}{|cccc}
     \hline
-    000\textit{d} & 00\textit{h} & \NUL & (nul) \\ 
-    001\textit{d} & 01\textit{h} & \SOH & (soh) \\ 
-    002\textit{d} & 02\textit{h} & \STX & (stx) \\ 
-    003\textit{d} & 03\textit{h} & \ETX & (etx) \\ 
-    004\textit{d} & 04\textit{h} & \EOT & (eot) \\ 
-    005\textit{d} & 05\textit{h} & \ENQ & (enq) \\ 
-    006\textit{d} & 06\textit{h} & \ACK & (ack) \\ 
-    007\textit{d} & 07\textit{h} & \BEL & (bel) \\ 
-    008\textit{d} & 08\textit{h} & \BS  & (bs)  \\ 
-    009\textit{d} & 09\textit{h} & ~    & (tab) \\ 
-    010\textit{d} & 0A\textit{h} & \LF  & (lf)  \\ 
-    011\textit{d} & 0B\textit{h} & \VT  & (vt)  \\ 
-    012\textit{d} & 0C\textit{h} &  ~   & (np)  \\ 
-    013\textit{d} & 0D\textit{h} & \CR  & (cr)  \\ 
-    014\textit{d} & 0E\textit{h} & \SO  & (so)  \\ 
+    000\textit{d} & 00\textit{h} & \NUL & (nul) \\
+    001\textit{d} & 01\textit{h} & \SOH & (soh) \\
+    002\textit{d} & 02\textit{h} & \STX & (stx) \\
+    003\textit{d} & 03\textit{h} & \ETX & (etx) \\
+    004\textit{d} & 04\textit{h} & \EOT & (eot) \\
+    005\textit{d} & 05\textit{h} & \ENQ & (enq) \\
+    006\textit{d} & 06\textit{h} & \ACK & (ack) \\
+    007\textit{d} & 07\textit{h} & \BEL & (bel) \\
+    008\textit{d} & 08\textit{h} & \BS  & (bs)  \\
+    009\textit{d} & 09\textit{h} & ~    & (tab) \\
+    010\textit{d} & 0A\textit{h} & \LF  & (lf)  \\
+    011\textit{d} & 0B\textit{h} & \VT  & (vt)  \\
+    012\textit{d} & 0C\textit{h} &  ~   & (np)  \\
+    013\textit{d} & 0D\textit{h} & \CR  & (cr)  \\
+    014\textit{d} & 0E\textit{h} & \SO  & (so)  \\
     015\textit{d} & 0F\textit{h} & \SI  & (si)  \\
     \hline
   \end{tabular*}
@@ -69,24 +69,24 @@
 
 %%%%  1: 016-031  %%%%
 \begin{textblock}{4}(4,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|cccc}
     \hline
-    016\textit{d} & 10\textit{h} & \DLE & (dle) \\ 
-    017\textit{d} & 11\textit{h} & \DCa & (dc1) \\ 
-    018\textit{d} & 12\textit{h} & \DCb & (dc2) \\ 
-    019\textit{d} & 13\textit{h} & \DCc & (dc3) \\ 
-    020\textit{d} & 14\textit{h} & \DCd & (dc4) \\ 
-    021\textit{d} & 15\textit{h} & \NAK & (nak) \\ 
-    022\textit{d} & 16\textit{h} & \SYN & (syn) \\ 
-    023\textit{d} & 17\textit{h} & \ETB & (etb) \\ 
-    024\textit{d} & 18\textit{h} & \CAN & (can) \\ 
-    025\textit{d} & 19\textit{h} & \EM  & (em)  \\ 
-    026\textit{d} & 1A\textit{h} & ~    & (eof) \\ 
-    027\textit{d} & 1B\textit{h} & \ESC & (esc) \\ 
-    028\textit{d} & 1C\textit{h} & \FS  & (fs)  \\ 
-    029\textit{d} & 1D\textit{h} & \GS  & (gs)  \\ 
-    030\textit{d} & 1E\textit{h} & \RS & (rs)  \\ 
+    016\textit{d} & 10\textit{h} & \DLE & (dle) \\
+    017\textit{d} & 11\textit{h} & \DCa & (dc1) \\
+    018\textit{d} & 12\textit{h} & \DCb & (dc2) \\
+    019\textit{d} & 13\textit{h} & \DCc & (dc3) \\
+    020\textit{d} & 14\textit{h} & \DCd & (dc4) \\
+    021\textit{d} & 15\textit{h} & \NAK & (nak) \\
+    022\textit{d} & 16\textit{h} & \SYN & (syn) \\
+    023\textit{d} & 17\textit{h} & \ETB & (etb) \\
+    024\textit{d} & 18\textit{h} & \CAN & (can) \\
+    025\textit{d} & 19\textit{h} & \EM  & (em)  \\
+    026\textit{d} & 1A\textit{h} & ~    & (eof) \\
+    027\textit{d} & 1B\textit{h} & \ESC & (esc) \\
+    028\textit{d} & 1C\textit{h} & \FS  & (fs)  \\
+    029\textit{d} & 1D\textit{h} & \GS  & (gs)  \\
+    030\textit{d} & 1E\textit{h} & \RS & (rs)  \\
     031\textit{d} & 1F\textit{h} & \US & (us)  \\
     \hline
   \end{tabular*}
@@ -97,7 +97,7 @@
 
 %%%%  2: 032-047  %%%%
 \begin{textblock}{3}(8,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     032\textit{d} & 20\textit{h} & \textvisiblespace  \\
@@ -124,7 +124,7 @@
 
 %%%%  3: 048-063  %%%%
 \begin{textblock}{3}(11,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     048\textit{d} & 30\textit{h} & 0 \\
@@ -151,7 +151,7 @@
 
 %%%%  4: 064-079  %%%%
 \begin{textblock}{3}(14,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     064\textit{d} & 40\textit{h} & @ \\
@@ -178,7 +178,7 @@
 
 %%%%  5: 080-095  %%%%
 \begin{textblock}{3}(17,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     080\textit{d} & 50\textit{h} & P \\
@@ -206,7 +206,7 @@
 
 %%%%  6: 096-111  %%%%
 \begin{textblock}{3}(20,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     096\textit{d} & 60\textit{h} & \textquoteleft \\
@@ -233,7 +233,7 @@
 
 %%%%  7: 112-127  %%%%
 \begin{textblock}{3}(23,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     112\textit{d} & 70\textit{h} & p \\
@@ -260,10 +260,10 @@
 
 % use a dummy table to get the vertical line at the right edge
 \begin{textblock}{3}(26,1)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|c}
-    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ 
-    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ 
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~
   \end{tabular*}
 }
 \end{textblock}
@@ -304,11 +304,11 @@
 
 %%%%  9: 144-143  %%%%
 \begin{textblock}{4}(4,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|cccc}
     \hline
     144\textit{d} & 90\textit{h} & ~ & ~ \\
-    145\textit{d} & 91\textit{h} & ~ & ` \\    
+    145\textit{d} & 91\textit{h} & ~ & ` \\
     146\textit{d} & 92\textit{h} & ~ & ' \\
     147\textit{d} & 93\textit{h} & ~ & `` \\
     148\textit{d} & 94\textit{h} & ~ & '' \\
@@ -332,7 +332,7 @@
 
 %%%% 10: 160-175  %%%%
 \begin{textblock}{3}(8,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     160\textit{d} & A0\textit{h} & \NBSP \\
@@ -359,7 +359,7 @@
 
 %%%% 11: 176-191  %%%%
 \begin{textblock}{3}(11,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     176\textit{d} & B0\textit{h} & \textdegree \\
@@ -386,7 +386,7 @@
 
 %%%% 12: 192-207  %%%%
 \begin{textblock}{3}(14,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     192\textit{d} & C0\textit{h} & \`{A} \\
@@ -413,7 +413,7 @@
 
 %%%% 13: 208-223  %%%%
 \begin{textblock}{3}(17,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     208\textit{d} & D0\textit{h} & \DH \\
@@ -441,7 +441,7 @@
 
 %%%% 14: 224-223  %%%%
 \begin{textblock}{3}(20,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     224\textit{d} & E0\textit{h} & \`{a} \\
@@ -468,7 +468,7 @@
 
 %%%% 15: 240-255  %%%%
 \begin{textblock}{3}(23,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|ccc}
     \hline
     240\textit{d} & F0\textit{h} & \dh \\
@@ -495,10 +495,10 @@
 
 % use a dummy table to get the vertical line at the right edge
 \begin{textblock}{3}(26,9)
-{\tt 
+{\tt
   \begin{tabular*}{\textwidth}{|c}
-    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ 
-    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ 
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\
+    ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~ \\ ~
   \end{tabular*}
 }
 \end{textblock}
@@ -515,9 +515,9 @@
 {\tt
     \begin{tabular}{|cc|cc||cc|cc|}
       \hline
-      0 & 0000 & 4 & 0100 & 8 & 1000 & C & 1100 \\ 
-      1 & 0001 & 5 & 0101 & 9 & 1001 & D & 1101 \\ 
-      2 & 0010 & 6 & 0110 & A & 1010 & E & 1110 \\ 
+      0 & 0000 & 4 & 0100 & 8 & 1000 & C & 1100 \\
+      1 & 0001 & 5 & 0101 & 9 & 1001 & D & 1101 \\
+      2 & 0010 & 6 & 0110 & A & 1010 & E & 1110 \\
       3 & 0011 & 7 & 0111 & B & 1011 & F & 1111 \\
       \hline
     \end{tabular}
@@ -535,9 +535,9 @@
     \hline
     Bit 6       & Bit 5       & Group \\
     \hline
-    {\tt 0}     & {\tt 0}     & Control Characters     \\ 
-    {\tt 0}     & {\tt 1}     & Digits and Punctuation \\ 
-    {\tt 1}     & {\tt 0}     & Upper Case and Special \\ 
+    {\tt 0}     & {\tt 0}     & Control Characters     \\
+    {\tt 0}     & {\tt 1}     & Digits and Punctuation \\
+    {\tt 1}     & {\tt 0}     & Upper Case and Special \\
     {\tt 1}     & {\tt 1}     & Lower Case and Special \\
     \hline
   \end{tabular}
@@ -550,7 +550,7 @@
   This work is licensed under the Creative Commons \\
   Attribution-Noncommercial-Share Alike 3.0 License.\\
   To view a copy of this license, visit\\
-  http://creativecommons.org/licenses/by-nc-sa/ 
+  http://creativecommons.org/licenses/by-nc-sa/
   }
 \end{textblock}
 
