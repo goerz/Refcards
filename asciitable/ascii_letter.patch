@@ -1,7 +1,7 @@
---- ascii.tex	2018-12-13 13:11:58.000000000 -0500
-+++ ascii_letter.tex	2018-12-13 13:20:03.000000000 -0500
+--- ascii.tex	2018-12-13 13:27:21.000000000 -0500
++++ ascii_letter.tex	2018-12-14 17:46:54.000000000 -0500
 @@ -7,8 +7,8 @@
- 
+ % for letter sized paper
  % Don't ask me why getting a page in landscape is so inconsistent and messy.
  
 -\documentclass[a4paper, landscape, 10pt]{article} % for A4 size paper

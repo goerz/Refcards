@@ -25,6 +25,7 @@ collect: all
 	cp python24/python_refcard.pdf $@/
 	cp vim/vimqrc.pdf $@/
 	cp vimlatex/vimlatexqrc.pdf $@/
+	cp powers_of_ten//powers_of_ten.pdf $@/
 	rm -f $@/*.png
 	(cd $@ && convert -density 150 -background white -colorspace Gray -flatten ascii_a4.pdf[0] ascii.png)
 	(cd $@ && convert -density 20 -background white -colorspace Gray -flatten ascii_a4.pdf[0] ascii_thumbnail.png)
