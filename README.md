@@ -11,7 +11,7 @@ typeset documents that you still want to be able to reproduce ten years later).
 ## Prerequisites
 
 * Full LaTeX installation ([texlive 2018](https://www.tug.org/texlive/) should do)
-* [Python >= 3.5](https://www.anaconda.com/download/)
+* [Python >= 3.5](https://www.anaconda.com/download/) with [numpy](https://numpy.org), [pandas](https://pandas.pydata.org), [click](https://click.palletsprojects.com/) packages installed.
 * [Open Office](https://www.libreoffice.org) for *.odt files
 * gnu make (macOS: `xcode-select --install`)
 * [ImageMagick](http://www.imagemagick.org/script/index.php) (macOS: `brew install imagemagick`)
